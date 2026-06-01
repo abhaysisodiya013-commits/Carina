@@ -1,0 +1,2665 @@
+fileFormatVersion: 2
+guid: 226e214316514b04c8cbd0dd3ae69f01
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2262328421443920674
+    second: mercy-dreams-spritesheet_0
+  - first:
+      213: 8825251696328313690
+    second: mercy-dreams-spritesheet_1
+  - first:
+      213: 8567521253123799605
+    second: mercy-dreams-spritesheet_2
+  - first:
+      213: 3979289638459941564
+    second: mercy-dreams-spritesheet_3
+  - first:
+      213: -7515539318529228496
+    second: mercy-dreams-spritesheet_4
+  - first:
+      213: -6826659358754791160
+    second: mercy-dreams-spritesheet_5
+  - first:
+      213: -1934131253253720324
+    second: mercy-dreams-spritesheet_6
+  - first:
+      213: 2975744305137821192
+    second: mercy-dreams-spritesheet_7
+  - first:
+      213: 475318815542644804
+    second: mercy-dreams-spritesheet_8
+  - first:
+      213: -2787977927455135760
+    second: mercy-dreams-spritesheet_9
+  - first:
+      213: 3927688982847438438
+    second: mercy-dreams-spritesheet_10
+  - first:
+      213: -8395153942106205828
+    second: mercy-dreams-spritesheet_11
+  - first:
+      213: -4057974949924674832
+    second: mercy-dreams-spritesheet_12
+  - first:
+      213: 3702914959153838212
+    second: mercy-dreams-spritesheet_13
+  - first:
+      213: 3031802750347635087
+    second: mercy-dreams-spritesheet_14
+  - first:
+      213: -2670058246328081197
+    second: mercy-dreams-spritesheet_15
+  - first:
+      213: 6376869688177747205
+    second: mercy-dreams-spritesheet_16
+  - first:
+      213: -32487986646732416
+    second: mercy-dreams-spritesheet_17
+  - first:
+      213: -981122184746541945
+    second: mercy-dreams-spritesheet_18
+  - first:
+      213: -4294984747380876019
+    second: mercy-dreams-spritesheet_19
+  - first:
+      213: 8273669320835466800
+    second: mercy-dreams-spritesheet_20
+  - first:
+      213: -1470851243797195246
+    second: mercy-dreams-spritesheet_21
+  - first:
+      213: -1852015545107199669
+    second: mercy-dreams-spritesheet_22
+  - first:
+      213: 1155327416681395295
+    second: mercy-dreams-spritesheet_23
+  - first:
+      213: 3377330345077033716
+    second: mercy-dreams-spritesheet_24
+  - first:
+      213: -4525278990952991048
+    second: mercy-dreams-spritesheet_25
+  - first:
+      213: -3178292833317401635
+    second: mercy-dreams-spritesheet_26
+  - first:
+      213: -1143883692759629968
+    second: mercy-dreams-spritesheet_27
+  - first:
+      213: -7931903081464814970
+    second: mercy-dreams-spritesheet_28
+  - first:
+      213: 2489139871258386324
+    second: mercy-dreams-spritesheet_29
+  - first:
+      213: -608151463716229214
+    second: mercy-dreams-spritesheet_30
+  - first:
+      213: 4122676818457915480
+    second: mercy-dreams-spritesheet_31
+  - first:
+      213: -4643900973870154940
+    second: mercy-dreams-spritesheet_32
+  - first:
+      213: 3730900365015226688
+    second: mercy-dreams-spritesheet_33
+  - first:
+      213: -5131319287222488955
+    second: mercy-dreams-spritesheet_34
+  - first:
+      213: 9057407546204082813
+    second: mercy-dreams-spritesheet_35
+  - first:
+      213: 7173367819749873969
+    second: mercy-dreams-spritesheet_36
+  - first:
+      213: -6664711671996187586
+    second: mercy-dreams-spritesheet_37
+  - first:
+      213: 2876363400065008165
+    second: mercy-dreams-spritesheet_38
+  - first:
+      213: 1859700579795743656
+    second: mercy-dreams-spritesheet_39
+  - first:
+      213: 273228309421750596
+    second: mercy-dreams-spritesheet_40
+  - first:
+      213: 7744421210407269935
+    second: mercy-dreams-spritesheet_41
+  - first:
+      213: -8702519717066675029
+    second: mercy-dreams-spritesheet_42
+  - first:
+      213: -365985722925435173
+    second: mercy-dreams-spritesheet_43
+  - first:
+      213: -5906611705124598102
+    second: mercy-dreams-spritesheet_44
+  - first:
+      213: -6307097055733554246
+    second: mercy-dreams-spritesheet_45
+  - first:
+      213: 1538155795718519665
+    second: mercy-dreams-spritesheet_46
+  - first:
+      213: 8287423529804011802
+    second: mercy-dreams-spritesheet_47
+  - first:
+      213: 7128392371674054991
+    second: mercy-dreams-spritesheet_48
+  - first:
+      213: 3494555664629653635
+    second: mercy-dreams-spritesheet_49
+  - first:
+      213: 4504765332645891659
+    second: mercy-dreams-spritesheet_50
+  - first:
+      213: 7508055255366834077
+    second: mercy-dreams-spritesheet_51
+  - first:
+      213: 5074160702748675287
+    second: mercy-dreams-spritesheet_52
+  - first:
+      213: -2175649229054035017
+    second: mercy-dreams-spritesheet_53
+  - first:
+      213: 6621548552177469689
+    second: mercy-dreams-spritesheet_54
+  - first:
+      213: -3757074600079899553
+    second: mercy-dreams-spritesheet_55
+  - first:
+      213: -2820003219137389960
+    second: mercy-dreams-spritesheet_56
+  - first:
+      213: -1362902967426717633
+    second: mercy-dreams-spritesheet_57
+  - first:
+      213: -5335563813534378272
+    second: mercy-dreams-spritesheet_58
+  - first:
+      213: 3204316613443208973
+    second: mercy-dreams-spritesheet_59
+  - first:
+      213: -4476232650218959866
+    second: mercy-dreams-spritesheet_60
+  - first:
+      213: -4341654273273254859
+    second: mercy-dreams-spritesheet_61
+  - first:
+      213: 4287209440035998627
+    second: mercy-dreams-spritesheet_62
+  - first:
+      213: -5278588731834317033
+    second: mercy-dreams-spritesheet_63
+  - first:
+      213: -6790466004017302885
+    second: mercy-dreams-spritesheet_64
+  - first:
+      213: 2900564044430725581
+    second: mercy-dreams-spritesheet_65
+  - first:
+      213: 3276154118534033612
+    second: mercy-dreams-spritesheet_66
+  - first:
+      213: 7408663234025306066
+    second: mercy-dreams-spritesheet_67
+  - first:
+      213: -5840597103274430032
+    second: mercy-dreams-spritesheet_68
+  - first:
+      213: 137944250190862736
+    second: mercy-dreams-spritesheet_69
+  - first:
+      213: 245789711873754563
+    second: mercy-dreams-spritesheet_70
+  - first:
+      213: -7053805373487455620
+    second: mercy-dreams-spritesheet_71
+  - first:
+      213: -4831263727482043351
+    second: mercy-dreams-spritesheet_72
+  - first:
+      213: -7873255325266693980
+    second: mercy-dreams-spritesheet_73
+  - first:
+      213: -2993891281415812765
+    second: mercy-dreams-spritesheet_74
+  - first:
+      213: -5231532792472961482
+    second: mercy-dreams-spritesheet_75
+  - first:
+      213: 5826092439620283179
+    second: mercy-dreams-spritesheet_76
+  - first:
+      213: -580512678315923049
+    second: mercy-dreams-spritesheet_77
+  - first:
+      213: -6729149154145812033
+    second: mercy-dreams-spritesheet_78
+  - first:
+      213: -3647854708835025380
+    second: mercy-dreams-spritesheet_79
+  - first:
+      213: 4895749243964806026
+    second: mercy-dreams-spritesheet_80
+  - first:
+      213: -1055931061613892006
+    second: mercy-dreams-spritesheet_81
+  - first:
+      213: -4223219350366085666
+    second: mercy-dreams-spritesheet_82
+  - first:
+      213: -986335354438576990
+    second: mercy-dreams-spritesheet_83
+  - first:
+      213: -2595504290465685863
+    second: mercy-dreams-spritesheet_84
+  - first:
+      213: 5144909578679372243
+    second: mercy-dreams-spritesheet_85
+  - first:
+      213: -1428164867630063901
+    second: mercy-dreams-spritesheet_86
+  - first:
+      213: -4378990864531565501
+    second: mercy-dreams-spritesheet_87
+  - first:
+      213: 4398331400460224586
+    second: mercy-dreams-spritesheet_88
+  - first:
+      213: 7345589280935922174
+    second: mercy-dreams-spritesheet_89
+  - first:
+      213: 4100428888039519578
+    second: mercy-dreams-spritesheet_90
+  - first:
+      213: 1188843132969893185
+    second: mercy-dreams-spritesheet_91
+  - first:
+      213: -1189216670801333162
+    second: mercy-dreams-spritesheet_92
+  - first:
+      213: -8670364764539099016
+    second: mercy-dreams-spritesheet_93
+  - first:
+      213: -1452907139582329698
+    second: mercy-dreams-spritesheet_94
+  - first:
+      213: 1633657843933186600
+    second: mercy-dreams-spritesheet_95
+  - first:
+      213: -7799599581779028740
+    second: mercy-dreams-spritesheet_96
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 982
+        width: 66
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc909a79489a90e0800000000000000
+      internalID: -2262328421443920674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 982
+        width: 67
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5b001dd8a7997a70800000000000000
+      internalID: 8825251696328313690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 982
+        width: 67
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53abd02ef23f5e670800000000000000
+      internalID: 8567521253123799605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 981
+        width: 67
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb22ccec7d6493730800000000000000
+      internalID: 3979289638459941564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 980
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 031859f0fc073b790800000000000000
+      internalID: -7515539318529228496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 979
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80123de7b75d241a0800000000000000
+      internalID: -6826659358754791160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 979
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf6b4d46fd59825e0800000000000000
+      internalID: -1934131253253720324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 974
+        width: 104
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 806a12aeda7fb4920800000000000000
+      internalID: 2975744305137821192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 999
+        width: 66
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4409a73c1fba89600800000000000000
+      internalID: 475318815542644804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 999
+        width: 67
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f72868a8dc1f49d0800000000000000
+      internalID: -2787977927455135760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 912
+        width: 27
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66e36d2f154f18630800000000000000
+      internalID: 3927688982847438438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 911
+        width: 34
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c711a0618fb6e7b80800000000000000
+      internalID: -8395153942106205828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 862
+        width: 116
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f26e4a784d2fa7c0800000000000000
+      internalID: -4057974949924674832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 795
+        width: 65
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48838d55985636330800000000000000
+      internalID: 3702914959153838212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 910
+        width: 34
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f89e58bc980231a20800000000000000
+      internalID: 3031802750347635087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 928
+        width: 93
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d4230aeb2c02fad0800000000000000
+      internalID: -2670058246328081197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 913
+        width: 63
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5056acef1313f7850800000000000000
+      internalID: 6376869688177747205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 925
+        width: 98
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 081347829549c8ff0800000000000000
+      internalID: -32487986646732416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 912
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78c5de8329a5262f0800000000000000
+      internalID: -981122184746541945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 910
+        width: 68
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d54a8c0262564c0800000000000000
+      internalID: -4294984747380876019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 909
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0360279596af1d270800000000000000
+      internalID: 8273669320835466800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 973
+        width: 67
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 216d600369c769be0800000000000000
+      internalID: -1470851243797195246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 808
+        width: 29
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4942639ca15c46e0800000000000000
+      internalID: -1852015545107199669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 891
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f54709e0a2c880010800000000000000
+      internalID: 1155327416681395295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 898
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fac6731e00bede20800000000000000
+      internalID: 3377330345077033716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 855
+        width: 73
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b675b2dbbaf231c0800000000000000
+      internalID: -4525278990952991048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 851
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddb42f5e18f64e3d0800000000000000
+      internalID: -3178292833317401635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 817
+        width: 74
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07f33bc87db1020f0800000000000000
+      internalID: -1143883692759629968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 903
+        width: 32
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 682a6742c283ce190800000000000000
+      internalID: -7931903081464814970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 905
+        width: 66
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49f1e9e56833b8220800000000000000
+      internalID: 2489139871258386324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 905
+        width: 55
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2af6f8347796f87f0800000000000000
+      internalID: -608151463716229214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 855
+        width: 34
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 850fbe739b0b63930800000000000000
+      internalID: 4122676818457915480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 887
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44bf0603bac8d8fb0800000000000000
+      internalID: -4643900973870154940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 841
+        width: 75
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0499b156d12d6c330800000000000000
+      internalID: 3730900365015226688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 870
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5803eff8b44e9c8b0800000000000000
+      internalID: -5131319287222488955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 866
+        width: 72
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72df61dc2062bd70800000000000000
+      internalID: 9057407546204082813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 844
+        width: 20
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 139d863a60cec8360800000000000000
+      internalID: 7173367819749873969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 843
+        width: 66
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3c7444ab003283a0800000000000000
+      internalID: -6664711671996187586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 874
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5224fc1d545eae720800000000000000
+      internalID: 2876363400065008165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 880
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a3305ff2dbfec910800000000000000
+      internalID: 1859700579795743656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 843
+        width: 26
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 449f9a523b3bac300800000000000000
+      internalID: 273228309421750596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 865
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2673552f06b97b60800000000000000
+      internalID: 7744421210407269935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 847
+        width: 31
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bac686ddc607a3780800000000000000
+      internalID: -8702519717066675029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 844
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd63a209ce1cbeaf0800000000000000
+      internalID: -365985722925435173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 839
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aae42e1e2ff770ea0800000000000000
+      internalID: -5906611705124598102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 837
+        width: 66
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab3e61de4a0b878a0800000000000000
+      internalID: -6307097055733554246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 838
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17bb205fb80a85510800000000000000
+      internalID: 1538155795718519665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 849
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a199e2daac7d20370800000000000000
+      internalID: 8287423529804011802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 848
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f418c3d18132de260800000000000000
+      internalID: 7128392371674054991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 841
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 380641eacd72f7030800000000000000
+      internalID: 3494555664629653635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 825
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e4ad8e334248e30800000000000000
+      internalID: 4504765332645891659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 680
+        width: 86
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d971522b978f13860800000000000000
+      internalID: 7508055255366834077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 684
+        width: 90
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dcc49c664a0b6640800000000000000
+      internalID: 5074160702748675287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 684
+        width: 90
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bbb162ad8a8ec1e0800000000000000
+      internalID: -2175649229054035017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 684
+        width: 90
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f84a83635774eb50800000000000000
+      internalID: 6621548552177469689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 808
+        width: 70
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f54489b9e803cdbc0800000000000000
+      internalID: -3757074600079899553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 809
+        width: 71
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87a9bd163065dd8d0800000000000000
+      internalID: -2820003219137389960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 760
+        width: 34
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f38643bd8fef51de0800000000000000
+      internalID: -1362902967426717633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 718
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e6dad90bf444f5b0800000000000000
+      internalID: -5335563813534378272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 718
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d074a249bf4087c20800000000000000
+      internalID: 3204316613443208973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_60
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 718
+        width: 16
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60c81b7ee1a31e1c0800000000000000
+      internalID: -4476232650218959866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 718
+        width: 16
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53cadf701785fb3c0800000000000000
+      internalID: -4341654273273254859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_62
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 718
+        width: 36
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ab0c07654a3f7b30800000000000000
+      internalID: 4287209440035998627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_63
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 718
+        width: 26
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717c2abf38faeb6b0800000000000000
+      internalID: -5278588731834317033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_64
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 750
+        width: 34
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b92be23952b63c1a0800000000000000
+      internalID: -6790466004017302885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_65
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 757
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1509c61afd04820800000000000000
+      internalID: 2900564044430725581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_66
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 713
+        width: 16
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc077a020dc377d20800000000000000
+      internalID: 3276154118534033612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_67
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 713
+        width: 16
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d7339465fbd0d660800000000000000
+      internalID: 7408663234025306066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_68
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 716
+        width: 54
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b1f62f11e702fea0800000000000000
+      internalID: -5840597103274430032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_69
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 716
+        width: 47
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0991f6f80931ae100800000000000000
+      internalID: 137944250190862736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_70
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c54ea1d078396300800000000000000
+      internalID: 245789711873754563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 719
+        width: 34
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c72e98ea269db1e90800000000000000
+      internalID: -7053805373487455620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 675
+        width: 66
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 924043bac37e3fcb0800000000000000
+      internalID: -4831263727482043351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 532
+        width: 36
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a0b687fef39cb290800000000000000
+      internalID: -7873255325266693980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_74
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 532
+        width: 36
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 369421bedbf8376d0800000000000000
+      internalID: -2993891281415812765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_75
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 628
+        width: 81
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63e77d1a4acd567b0800000000000000
+      internalID: -5231532792472961482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_76
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 632
+        width: 78
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2be724b4307ad050800000000000000
+      internalID: 5826092439620283179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_77
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 627
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7996e557bca91f7f0800000000000000
+      internalID: -580512678315923049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_78
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 627
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb1c4823f724d92a0800000000000000
+      internalID: -6729149154145812033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_79
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 633
+        width: 50
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1ef6af2877306dc0800000000000000
+      internalID: -3647854708835025380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_80
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 639
+        width: 42
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a83d8e3aff131f340800000000000000
+      internalID: 4895749243964806026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_81
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 639
+        width: 42
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5ee3354b449851f0800000000000000
+      internalID: -1055931061613892006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_82
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 557
+        width: 90
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edd9fdc506c1465c0800000000000000
+      internalID: -4223219350366085666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_83
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 584
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a497419835df42f0800000000000000
+      internalID: -986335354438576990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_84
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 584
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99e5ac1799aeafbd0800000000000000
+      internalID: -2595504290465685863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_85
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 611
+        width: 71
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d940beb004666740800000000000000
+      internalID: 5144909578679372243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_86
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 592
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ee9730ae932e2ce0800000000000000
+      internalID: -1428164867630063901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_87
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 592
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3445ae47203ba33c0800000000000000
+      internalID: -4378990864531565501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_88
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 592
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48c0e8fa130a0d30800000000000000
+      internalID: 4398331400460224586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_89
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 592
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef94a1c4886c0f560800000000000000
+      internalID: 7345589280935922174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_90
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 553
+        width: 71
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5578524956a7e830800000000000000
+      internalID: 4100428888039519578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_91
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 464
+        width: 93
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14d355ad78e9f7010800000000000000
+      internalID: 1188843132969893185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_92
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 464
+        width: 93
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 654f9e71dbd0f7fe0800000000000000
+      internalID: -1189216670801333162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_93
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 424
+        width: 167
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87865982f2daca780800000000000000
+      internalID: -8670364764539099016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_94
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 424
+        width: 117
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9cf09587ac36dbe0800000000000000
+      internalID: -1452907139582329698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_95
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3
+        width: 305
+        height: 361
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a0b20572beba610800000000000000
+      internalID: 1633657843933186600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercy-dreams-spritesheet_96
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 22
+        width: 165
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf496c1218142c390800000000000000
+      internalID: -7799599581779028740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      mercy-dreams-spritesheet_0: -2262328421443920674
+      mercy-dreams-spritesheet_1: 8825251696328313690
+      mercy-dreams-spritesheet_10: 3927688982847438438
+      mercy-dreams-spritesheet_11: -8395153942106205828
+      mercy-dreams-spritesheet_12: -4057974949924674832
+      mercy-dreams-spritesheet_13: 3702914959153838212
+      mercy-dreams-spritesheet_14: 3031802750347635087
+      mercy-dreams-spritesheet_15: -2670058246328081197
+      mercy-dreams-spritesheet_16: 6376869688177747205
+      mercy-dreams-spritesheet_17: -32487986646732416
+      mercy-dreams-spritesheet_18: -981122184746541945
+      mercy-dreams-spritesheet_19: -4294984747380876019
+      mercy-dreams-spritesheet_2: 8567521253123799605
+      mercy-dreams-spritesheet_20: 8273669320835466800
+      mercy-dreams-spritesheet_21: -1470851243797195246
+      mercy-dreams-spritesheet_22: -1852015545107199669
+      mercy-dreams-spritesheet_23: 1155327416681395295
+      mercy-dreams-spritesheet_24: 3377330345077033716
+      mercy-dreams-spritesheet_25: -4525278990952991048
+      mercy-dreams-spritesheet_26: -3178292833317401635
+      mercy-dreams-spritesheet_27: -1143883692759629968
+      mercy-dreams-spritesheet_28: -7931903081464814970
+      mercy-dreams-spritesheet_29: 2489139871258386324
+      mercy-dreams-spritesheet_3: 3979289638459941564
+      mercy-dreams-spritesheet_30: -608151463716229214
+      mercy-dreams-spritesheet_31: 4122676818457915480
+      mercy-dreams-spritesheet_32: -4643900973870154940
+      mercy-dreams-spritesheet_33: 3730900365015226688
+      mercy-dreams-spritesheet_34: -5131319287222488955
+      mercy-dreams-spritesheet_35: 9057407546204082813
+      mercy-dreams-spritesheet_36: 7173367819749873969
+      mercy-dreams-spritesheet_37: -6664711671996187586
+      mercy-dreams-spritesheet_38: 2876363400065008165
+      mercy-dreams-spritesheet_39: 1859700579795743656
+      mercy-dreams-spritesheet_4: -7515539318529228496
+      mercy-dreams-spritesheet_40: 273228309421750596
+      mercy-dreams-spritesheet_41: 7744421210407269935
+      mercy-dreams-spritesheet_42: -8702519717066675029
+      mercy-dreams-spritesheet_43: -365985722925435173
+      mercy-dreams-spritesheet_44: -5906611705124598102
+      mercy-dreams-spritesheet_45: -6307097055733554246
+      mercy-dreams-spritesheet_46: 1538155795718519665
+      mercy-dreams-spritesheet_47: 8287423529804011802
+      mercy-dreams-spritesheet_48: 7128392371674054991
+      mercy-dreams-spritesheet_49: 3494555664629653635
+      mercy-dreams-spritesheet_5: -6826659358754791160
+      mercy-dreams-spritesheet_50: 4504765332645891659
+      mercy-dreams-spritesheet_51: 7508055255366834077
+      mercy-dreams-spritesheet_52: 5074160702748675287
+      mercy-dreams-spritesheet_53: -2175649229054035017
+      mercy-dreams-spritesheet_54: 6621548552177469689
+      mercy-dreams-spritesheet_55: -3757074600079899553
+      mercy-dreams-spritesheet_56: -2820003219137389960
+      mercy-dreams-spritesheet_57: -1362902967426717633
+      mercy-dreams-spritesheet_58: -5335563813534378272
+      mercy-dreams-spritesheet_59: 3204316613443208973
+      mercy-dreams-spritesheet_6: -1934131253253720324
+      mercy-dreams-spritesheet_60: -4476232650218959866
+      mercy-dreams-spritesheet_61: -4341654273273254859
+      mercy-dreams-spritesheet_62: 4287209440035998627
+      mercy-dreams-spritesheet_63: -5278588731834317033
+      mercy-dreams-spritesheet_64: -6790466004017302885
+      mercy-dreams-spritesheet_65: 2900564044430725581
+      mercy-dreams-spritesheet_66: 3276154118534033612
+      mercy-dreams-spritesheet_67: 7408663234025306066
+      mercy-dreams-spritesheet_68: -5840597103274430032
+      mercy-dreams-spritesheet_69: 137944250190862736
+      mercy-dreams-spritesheet_7: 2975744305137821192
+      mercy-dreams-spritesheet_70: 245789711873754563
+      mercy-dreams-spritesheet_71: -7053805373487455620
+      mercy-dreams-spritesheet_72: -4831263727482043351
+      mercy-dreams-spritesheet_73: -7873255325266693980
+      mercy-dreams-spritesheet_74: -2993891281415812765
+      mercy-dreams-spritesheet_75: -5231532792472961482
+      mercy-dreams-spritesheet_76: 5826092439620283179
+      mercy-dreams-spritesheet_77: -580512678315923049
+      mercy-dreams-spritesheet_78: -6729149154145812033
+      mercy-dreams-spritesheet_79: -3647854708835025380
+      mercy-dreams-spritesheet_8: 475318815542644804
+      mercy-dreams-spritesheet_80: 4895749243964806026
+      mercy-dreams-spritesheet_81: -1055931061613892006
+      mercy-dreams-spritesheet_82: -4223219350366085666
+      mercy-dreams-spritesheet_83: -986335354438576990
+      mercy-dreams-spritesheet_84: -2595504290465685863
+      mercy-dreams-spritesheet_85: 5144909578679372243
+      mercy-dreams-spritesheet_86: -1428164867630063901
+      mercy-dreams-spritesheet_87: -4378990864531565501
+      mercy-dreams-spritesheet_88: 4398331400460224586
+      mercy-dreams-spritesheet_89: 7345589280935922174
+      mercy-dreams-spritesheet_9: -2787977927455135760
+      mercy-dreams-spritesheet_90: 4100428888039519578
+      mercy-dreams-spritesheet_91: 1188843132969893185
+      mercy-dreams-spritesheet_92: -1189216670801333162
+      mercy-dreams-spritesheet_93: -8670364764539099016
+      mercy-dreams-spritesheet_94: -1452907139582329698
+      mercy-dreams-spritesheet_95: 1633657843933186600
+      mercy-dreams-spritesheet_96: -7799599581779028740
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

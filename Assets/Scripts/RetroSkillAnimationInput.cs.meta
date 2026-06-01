@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 479c574b13744eeb8a3765475959f7e1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SpellClip: {fileID: 7400000, guid: 5404a712f7f91fd4b8cf2624c1a633f0, type: 2}
+  - MultiAttackClip: {fileID: 7400000, guid: b33a87af3b7e77d42a120d7efcf9fbdf, type: 2}
+  - SplashAttackClip: {fileID: 7400000, guid: 460af6ef40aed3c44a6a9d80e22332e4, type: 2}
+  - RageSpellClip: {fileID: 7400000, guid: ef7cf4cfc1a7ab14bbb789de192c6645, type: 2}
+  - RageMultiAttackClip: {fileID: 7400000, guid: 4f2096c9b59a56e49b738796f8fd8f1d, type: 2}
+  - RageAreaAttackClip: {fileID: 7400000, guid: 0ebde653119ceb5458460476492c8d04, type: 2}
+  - SpellCastProjectileSprite: {fileID: 4106631527713801451, guid: 26ad64cccb51b2e4eb3826a71fb82650, type: 3}
+  - SpellCastProjectileClip: {fileID: 7400000, guid: 8d93ddd51147aee4a902b1d024b1bc4e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

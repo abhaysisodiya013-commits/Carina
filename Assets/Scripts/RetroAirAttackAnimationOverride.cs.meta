@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 19bdc53aff204272afe4e64009f429ce
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - NormalAirAttackClip: {fileID: 7400000, guid: f39a9d29c9292f34ea3859cd0ead13e2, type: 2}
+  - RageAirAttackClip: {fileID: 7400000, guid: c5a2840388430374bb54e5f1f270a4cb, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
