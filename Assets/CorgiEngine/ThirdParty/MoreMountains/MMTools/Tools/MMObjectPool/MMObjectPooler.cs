@@ -197,10 +197,6 @@ namespace MoreMountains.Tools
 		/// <param name="loadSceneMode"></param>
 		private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
 		{
-			if (this == null)
-			{
-				return;
-			}
 			if ((_objectPool == null) || (_waitingPool == null))
 			{
 				if (this != null)

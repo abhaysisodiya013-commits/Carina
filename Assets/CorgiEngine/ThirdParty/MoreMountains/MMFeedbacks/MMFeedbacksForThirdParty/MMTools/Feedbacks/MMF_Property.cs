@@ -28,12 +28,12 @@ namespace MoreMountains.Feedbacks
 		/// the possible modes for this feedback
 		public enum Modes { OverTime, Instant } 
         
-		[MMFInspectorGroup("Target Property", true, 12)]
+		[Header("Target Property")]
 		/// the receiver to write the level to
 		[Tooltip("the receiver to write the level to")]
 		public MMPropertyReceiver Target;
 
-		[MMFInspectorGroup("Mode", true, 29)]
+		[Header("Mode")]
 		/// whether the feedback should affect the target property instantly or over a period of time
 		[Tooltip("whether the feedback should affect the target property instantly or over a period of time")]
 		public Modes Mode = Modes.OverTime;
@@ -51,7 +51,7 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
 		public bool AllowAdditivePlays = false;
 
-		[MMFInspectorGroup("Level", true, 30)]
+		[Header("Level")]
 		/// the curve to tween the intensity on
 		[Tooltip("the curve to tween the intensity on")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]

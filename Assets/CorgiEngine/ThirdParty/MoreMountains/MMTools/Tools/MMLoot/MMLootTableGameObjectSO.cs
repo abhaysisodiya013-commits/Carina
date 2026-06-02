@@ -24,10 +24,5 @@ namespace  MoreMountains.Tools
 		{
 			LootTable.ComputeWeights();
 		}
-		
-		protected virtual void OnValidate()
-		{
-			ComputeWeights();
-		}
 	}
 }

@@ -329,7 +329,6 @@ namespace MoreMountains.Feedbacks
             
 			if (Time.frameCount < 2)
 			{
-				this.enabled = false;
 				StartCoroutine(FrameOnePlayCo(position, feedbacksIntensity, forceRevert));
 				return;
 			}
@@ -347,7 +346,6 @@ namespace MoreMountains.Feedbacks
 		protected virtual IEnumerator FrameOnePlayCo(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
 			yield return null;
-			this.enabled = true;
 			_startTime = GetTime();
 			_lastStartAt = _startTime;
 			IsPlaying = true;

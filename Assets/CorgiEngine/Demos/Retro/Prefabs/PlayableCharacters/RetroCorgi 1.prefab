@@ -4925,6 +4925,7 @@ GameObject:
   - component: {fileID: 305839841127577160}
   - component: {fileID: 5709105135841585061}
   - component: {fileID: 3123888226987949864}
+  - component: {fileID: -3683325441927462758}
   m_Layer: 9
   m_Name: RetroCorgi 1
   m_TagString: Player
@@ -6022,6 +6023,12 @@ MonoBehaviour:
   TintCharacterDuringRage: 1
   RageSpriteColor: {r: 0.25, g: 0.65, b: 1, a: 1}
   MatchWalkFeedbackToSpriteColor: 1
+  RageModeParticles: []
+  TintRageModeParticles: 1
+  RageParticleColor: {r: 0.25, g: 0.75, b: 1, a: 1}
+  ClearRageModeParticlesOnStop: 1
+  HideNormalSlashSpriteDuringRage: 1
+  NormalSlashSpriteName: RetroSwordSlash
   DropBoltAfterAbilityAppear: 1
   BoltPrefab: {fileID: 0}
   BoltClip: {fileID: 7400000, guid: 884fea1d4ebef5440becb0c5130e1d5f, type: 2}
@@ -6190,6 +6197,22 @@ MonoBehaviour:
   ShieldVfxMinimumSortingOrder: 101
   FlipShieldVfxWithFacing: 1
   ShieldVfxFacesRight: 0
+  ShieldCancelAttackUsesComboHit: 1
+  ShieldCancelComboHitIndex: 2
+  ShieldCancelAttackClip: {fileID: 0}
+  RageShieldCancelAttackClip: {fileID: 0}
+  ShieldCancelAttackAnimationDuration: 0
+  UseRawShieldCancelAttackInput: 1
+  RawShieldCancelAttackKeys: 4301000032010000
+  DropBlockedProjectiles: 1
+  BlockedProjectileDropSpeed: 8
+  BlockedProjectileGroundRaycastDistance: 6
+  BlockedProjectileGroundOffset: 0.05
+  BlockedProjectileFadeDelay: 0.35
+  BlockedProjectileFadeDuration: 0.6
+  BlockedProjectileGroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
   EnableSkillDamage: 1
   SkillDamageTargetLayerMask:
     serializedVersion: 2
@@ -6245,6 +6268,40 @@ MonoBehaviour:
   SpellCastSortingOrderOffset: 1
   SpellCastMinimumSortingOrder: 100
   LogSpellCastDebug: 1
+--- !u!114 &-3683325441927462758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383539409296422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64578247383140469c45370654a984a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PixelCrushers.DialogueSystem.Wrappers.DialogueActor
+  actor: Player
+  persistentDataName: 
+  portrait: {fileID: 0}
+  spritePortrait: {fileID: 0}
+  barkUISettings:
+    barkUI: {fileID: 11453294, guid: d5a18ab9ec93e0d4284d6fbae4f557e0, type: 3}
+    barkUIOffset: {x: 0, y: 2, z: 0}
+  standardDialogueUISettings:
+    subtitlePanelNumber: 2
+    customSubtitlePanel: {fileID: 11451678, guid: 9052074e55e1f964c8c25e4b6d86be6c,
+      type: 3}
+    customSubtitlePanelOffset: {x: 0, y: 0, z: 0}
+    menuPanelNumber: 0
+    customMenuPanel: {fileID: 0}
+    customMenuPanelOffset: {x: 0, y: 0, z: 0}
+    useMenuPanelFor: 0
+    portraitAnimatorController: {fileID: 0}
+    setSubtitleColor: 0
+    applyColorToPrependedName: 0
+    prependActorNameSeparator: ': '
+    prependActorNameFormat: '{0}{1}'
+    subtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1693914667617252
 GameObject:
   m_ObjectHideFlags: 0

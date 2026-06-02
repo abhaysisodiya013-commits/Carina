@@ -99,14 +99,6 @@ namespace MoreMountains.Feedbacks
 		/// </summary>
 		protected virtual void InstantiateParticleSystem()
 		{
-			if ((RandomParticlePrefabs == null) || (RandomParticlePrefabs.Count == 0))
-			{
-				if (ParticlesPrefab == null)
-				{
-					return;
-				}
-			}
-
 			if (CachedRecycle)
 			{
 				if (_instantiatedParticleSystem != null)
@@ -138,10 +130,6 @@ namespace MoreMountains.Feedbacks
 					_instantiatedRandomParticleSystems = new List<ParticleSystem>();
 					foreach(ParticleSystem system in RandomParticlePrefabs)
 					{
-						if (system == null)
-						{
-							continue;
-						}
 						ParticleSystem newSystem = GameObject.Instantiate(system, newParent) as ParticleSystem;
 						if (newParent == null)
 						{
@@ -153,10 +141,6 @@ namespace MoreMountains.Feedbacks
 				else
 				{
 					int random = Random.Range(0, RandomParticlePrefabs.Count);
-					if (RandomParticlePrefabs[random] == null)
-					{
-						return;
-					}
 					_instantiatedParticleSystem = GameObject.Instantiate(RandomParticlePrefabs[random], newParent) as ParticleSystem;
 					if (newParent == null)
 					{
