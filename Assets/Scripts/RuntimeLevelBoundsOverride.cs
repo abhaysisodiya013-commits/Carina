@@ -1972,22 +1972,3 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour
     }
 }
 
-//[DisallowMultipleComponent]
-//public class GateGameOverTrigger : MonoBehaviour
-//{
-//    public string gameOverSceneName = "RetroAdventureGameOver";
-
-//    private void OnTriggerEnter2D(Collider2D other)
-//    {
-//        Character character = other.GetComponentInParent<Character>();
-//        if (character == null || character.CharacterType != Character.CharacterTypes.Player)
-//        {
-//            return;
-//        }
-
-//        if (!string.IsNullOrEmpty(gameOverSceneName))
-//        {
-//            SceneManager.LoadScene(gameOverSceneName);
-//        }
-//    }
-//}
