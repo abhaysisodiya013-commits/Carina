@@ -18095,17 +18095,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
-      propertyPath: initialDatabase
-      value: 
-      objectReference: {fileID: 11400000, guid: 3633d8ba73d854a4a8ece40c6194becd,
-        type: 2}
-    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
-      propertyPath: instantiateDatabase
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
-      propertyPath: displaySettings.subtitleSettings.continueButton
+    - target: {fileID: 2446038282401206623, guid: 58ac37417e60e534f91138088a3e6f70,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -25610,11 +25602,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a343ffc127af4b41b1e509d55d21956, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.11
+      value: -17.21
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a343ffc127af4b41b1e509d55d21956, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.09
+      value: 24.16
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a343ffc127af4b41b1e509d55d21956, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27696,7 +27688,7 @@ PrefabInstance:
     - target: {fileID: 1406814930825652035, guid: 5073b7dcd5ffceb4faf9425a426e7170,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 98.27177
+      value: 99.16367
       objectReference: {fileID: 0}
     - target: {fileID: 1406814930825652035, guid: 5073b7dcd5ffceb4faf9425a426e7170,
         type: 3}
@@ -35271,9 +35263,10 @@ GameObject:
   - component: {fileID: 1969222405}
   - component: {fileID: 1969222407}
   - component: {fileID: 1969222406}
+  - component: {fileID: 1969222408}
   m_Layer: 0
   m_Name: OldMan
-  m_TagString: Untagged
+  m_TagString: npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35487,7 +35480,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.08861923, y: 0}
+  m_Offset: {x: -0.050453186, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -35497,7 +35490,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.1617508, y: 2.0357144}
+  m_Size: {x: 12.935059, y: 2.0357144}
   m_EdgeRadius: 0
 --- !u!114 &1969222405
 MonoBehaviour:
@@ -35522,7 +35515,7 @@ MonoBehaviour:
     subtitlePanelNumber: 2
     customSubtitlePanel: {fileID: 11451678, guid: 9052074e55e1f964c8c25e4b6d86be6c,
       type: 3}
-    customSubtitlePanelOffset: {x: 0, y: 0, z: 0}
+    customSubtitlePanelOffset: {x: 0.29, y: 0.6, z: 0}
     menuPanelNumber: 0
     customMenuPanel: {fileID: 0}
     customMenuPanelOffset: {x: 0, y: 0, z: 0}
@@ -35596,6 +35589,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   usablesInRange: []
+--- !u!114 &1969222408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969222399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8955d9e34bbf2254187265484824d21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueCorgiAutoWalk
+  StopDistance: 3
+  PlayOnce: 1
 --- !u!1001 &1982034319
 PrefabInstance:
   m_ObjectHideFlags: 0
