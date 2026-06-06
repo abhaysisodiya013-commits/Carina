@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 88e20e5adf9b6ea468aa240bcd8c991c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2380448562575469646
+    second: Basic_Attack_Finisher_0
+  - first:
+      213: -4169748319242056265
+    second: Basic_Attack_Finisher_1
+  - first:
+      213: 5496293492816887629
+    second: Basic_Attack_Finisher_2
+  - first:
+      213: -6861398829148343119
+    second: Basic_Attack_Finisher_3
+  - first:
+      213: 5836911899124308575
+    second: Basic_Attack_Finisher_4
+  - first:
+      213: -4334101172699266292
+    second: Basic_Attack_Finisher_5
+  - first:
+      213: -786223010940979004
+    second: Basic_Attack_Finisher_6
+  - first:
+      213: 2842639602092705104
+    second: Basic_Attack_Finisher_7
+  - first:
+      213: -8748269560734164549
+    second: Basic_Attack_Finisher_8
+  - first:
+      213: -7971636483737414099
+    second: Basic_Attack_Finisher_9
+  - first:
+      213: -428429362598289147
+    second: Basic_Attack_Finisher_10
+  - first:
+      213: 4501565938319841488
+    second: Basic_Attack_Finisher_11
+  - first:
+      213: 4538129780016982295
+    second: Basic_Attack_Finisher_12
+  - first:
+      213: 6025324264375914785
+    second: Basic_Attack_Finisher_13
+  - first:
+      213: 8586491741387409030
+    second: Basic_Attack_Finisher_14
+  - first:
+      213: 596012459166037333
+    second: Basic_Attack_Finisher_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 18
+        width: 36
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4c66620b5d090120800000000000000
+      internalID: 2380448562575469646
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_1
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 18
+        width: 36
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bd8bc4fef31226c0800000000000000
+      internalID: -4169748319242056265
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_2
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 18
+        width: 36
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f34a4afc1c64c40800000000000000
+      internalID: 5496293492816887629
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_3
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 18
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b4f45e3e1a67c0a0800000000000000
+      internalID: -6861398829148343119
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_4
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 18
+        width: 44
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a1e8c6270e00150800000000000000
+      internalID: 5836911899124308575
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_5
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 18
+        width: 45
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0308ac42fd2ad3c0800000000000000
+      internalID: -4334101172699266292
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_6
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 18
+        width: 44
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c8ff9e4656c615f0800000000000000
+      internalID: -786223010940979004
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_7
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 18
+        width: 44
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 055813b38a5137720800000000000000
+      internalID: 2842639602092705104
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_8
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 18
+        width: 54
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb9d3115f27e79680800000000000000
+      internalID: -8748269560734164549
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_9
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 18
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2699448ade0f5190800000000000000
+      internalID: -7971636483737414099
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_10
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 18
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5016bfeb3c9ed0af0800000000000000
+      internalID: -428429362598289147
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_11
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 18
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d85d8ede56c87e30800000000000000
+      internalID: 4501565938319841488
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_12
+      rect:
+        serializedVersion: 2
+        x: 1767
+        y: 18
+        width: 51
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 719a88aadfcaafe30800000000000000
+      internalID: 4538129780016982295
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_13
+      rect:
+        serializedVersion: 2
+        x: 1917
+        y: 18
+        width: 45
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1211ba2be704e9350800000000000000
+      internalID: 6025324264375914785
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_14
+      rect:
+        serializedVersion: 2
+        x: 2074
+        y: 18
+        width: 32
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 686c830eeb8592770800000000000000
+      internalID: 8586491741387409030
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic_Attack_Finisher_15
+      rect:
+        serializedVersion: 2
+        x: 2219
+        y: 18
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5557c4e7c26754800800000000000000
+      internalID: 596012459166037333
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    outline: []
+    customData:
+    physicsShape: []
+    bones: []
+    spriteID:
+    internalID: 0
+    vertices: []
+    indices:
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Basic_Attack_Finisher_0: 2380448562575469646
+      Basic_Attack_Finisher_1: -4169748319242056265
+      Basic_Attack_Finisher_10: -428429362598289147
+      Basic_Attack_Finisher_11: 4501565938319841488
+      Basic_Attack_Finisher_12: 4538129780016982295
+      Basic_Attack_Finisher_13: 6025324264375914785
+      Basic_Attack_Finisher_14: 8586491741387409030
+      Basic_Attack_Finisher_15: 596012459166037333
+      Basic_Attack_Finisher_2: 5496293492816887629
+      Basic_Attack_Finisher_3: -6861398829148343119
+      Basic_Attack_Finisher_4: 5836911899124308575
+      Basic_Attack_Finisher_5: -4334101172699266292
+      Basic_Attack_Finisher_6: -786223010940979004
+      Basic_Attack_Finisher_7: 2842639602092705104
+      Basic_Attack_Finisher_8: -8748269560734164549
+      Basic_Attack_Finisher_9: -7971636483737414099
+  mipmapLimitGroupName:
+  pSDRemoveMatte: 0
+  userData:
+  assetBundleName:
+  assetBundleVariant:
