@@ -4921,6 +4921,7 @@ GameObject:
   - component: {fileID: 8142255087451268405}
   - component: {fileID: 5683150900215798491}
   - component: {fileID: 3138931876945488989}
+  - component: {fileID: 2026847954117093032}
   m_Layer: 9
   m_Name: RetroCorgi
   m_TagString: Player
@@ -5319,6 +5320,37 @@ MonoBehaviour:
   RollStyleDashReadsInput: 1
   RollStyleDashIgnoresVerticalInput: 1
   RequireNeutralVerticalInput: 0
+  EnableAirborneDashKick: 1
+  AirborneDashKickTargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  AirborneDashKickDamage: 10
+  AirborneDashKickAreaSize: {x: 2, y: 1.2}
+  AirborneDashKickAreaOffset: {x: 1.05, y: 0.05}
+  AirborneDashKickInvincibilityDuration: 0.1
+  AirborneDashKickEnemyKnockback: {x: 6, y: 2}
+  RefreshDashOnAirborneKickHit: 1
+  JumpPastTargetOnAirborneKickHit: 1
+  AirborneKickHitHorizontalMove: 1.25
+  AirborneKickHitVerticalMove: 0.2
+  AirborneKickHitMoveDuration: 0.08
+  AirborneKickHitForce: {x: 8, y: 6}
+  AirborneKickHitDashCooldown: 0
+  AirborneKickHitObstacleMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AirborneDashKickVfxPrefab: {fileID: 0}
+  AirborneDashKickVfxClip: {fileID: 0}
+  AirborneDashKickVfxOffset: {x: 1.05, y: 0.05}
+  AirborneDashKickVfxSize: {x: 1.6, y: 1}
+  AirborneDashKickVfxDuration: 0.18
+  AirborneDashKickVfxSortingOrderOffset: 3
+  StopAirborneKickMomentumOnMiss: 1
+  ShowAirborneDashKickHitboxGizmo: 1
+  ShowAirborneDashKickGizmosOnlyWhenSelected: 0
+  AirborneDashKickHitboxGizmoColor: {r: 1, g: 0.05, b: 0.05, a: 0.9}
+  ShowAirborneDashKickVfxGizmo: 1
+  AirborneDashKickVfxGizmoColor: {r: 0.2, g: 0.8, b: 1, a: 0.75}
 --- !u!114 &114540723652440904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5459,10 +5491,17 @@ MonoBehaviour:
   BlockingConditionStates: 
   WallClingingSlowFactor: 0.6
   RaycastVerticalOffset: 1
+  HorizontalProbeOffset: 0
+  RightHorizontalProbeOffset: 0
+  LeftHorizontalProbeOffset: 0
   WallClingingTolerance: 0.18
+  MaximumWallClingDistance: 0.2
   MinimumWallAngleForCling: 80
   InputIndependent: 1
   InvertSpriteRendererDuringWallCling: 1
+  WallClingVisualGap: 0.36
+  WallClingVisualVerticalOffset: 0
+  DrawWallClingingGizmos: 0
 --- !u!114 &114235575369676186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5504,6 +5543,20 @@ MonoBehaviour:
   LadderClimbingSpeed: 2
   ForceRightFacing: 0
   ForceAnchorToGroundOnExit: 0
+  SmoothCenterCharacterOnLadder: 1
+  LadderCenteringSpeed: 8
+  HoldLastClimbAnimationWhenStopped: 1
+  FreezeLastLadderFrameWhenStopped: 1
+  ExitAtLadderTop: 1
+  StopAtLadderPlatform: 1
+  LadderPlatformStopDistance: 0.2
+  LadderTopManualJumpForce: 10
+  AllowLadderJumpBoost: 1
+  DropFromLadderWhenJumpingDown: 1
+  LadderJumpBoostSpeed: 6
+  LadderJumpBoostDuration: 0.18
+  LadderJumpBoostCooldown: 0.2
+  BlockNormalJumpWhileClimbing: 1
 --- !u!114 &114601844263833296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5557,7 +5610,7 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
-  InitialWeapon: {fileID: 114169761508843964, guid: 804a6978904b4ac4e9adc187c6fa72be, type: 3}
+  InitialWeapon: {fileID: 0}
   CanPickupWeapons: 1
   WeaponAttachment: {fileID: 0}
   ForceWeaponScaleResetOnEquip: 0
@@ -5722,6 +5775,14 @@ MonoBehaviour:
   IdleAnimationName: PixelCorgiIdle
   ClimbingAnimationDuration: 0.18333334
   MinimumHangingTime: 0.2
+  AllowLedgeClimbJump: 1
+  LedgeClimbJumpKey: 32
+  UseDefaultLedgeClimbJumpSettings: 1
+  LedgeClimbJumpAnimationTime: 0.2
+  MoveToClimbOffsetBeforeLedgeJump: 1
+  LedgeClimbJumpHorizontalForce: 6
+  LedgeClimbJumpVerticalForce: 8
+  UseClimbOffsetDirectionForLedgeHop: 1
 --- !u!114 &1885844844233380838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5890,6 +5951,27 @@ MonoBehaviour:
   BlockingConditionStates: 
   StunButton: 0
   ExitStunButton: 0
+--- !u!114 &2026847954117093032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383539409296422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e9ce43f98c3c49b0b2d639d745988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoreMountains.CorgiEngine.CharacterFlaskHealing
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  MaxFlasks: 2
+  CurrentFlasks: 2
+  HealAmount: 50
+  FlaskInput: 0
 --- !u!1 &1693914667617252
 GameObject:
   m_ObjectHideFlags: 0

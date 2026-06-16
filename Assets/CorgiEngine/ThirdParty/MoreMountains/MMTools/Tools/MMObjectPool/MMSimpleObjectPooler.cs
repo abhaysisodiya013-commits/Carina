@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -78,6 +78,8 @@ namespace MoreMountains.Tools
 			// we go through the pool looking for an inactive object
 			for (int i=0; i< _pooledGameObjects.Count; i++)
 			{
+				if (_pooledGameObjects[i] == null) continue; // Safely skip objects that were destroyed
+				
 				if (!_pooledGameObjects[i].gameObject.activeInHierarchy)
 				{
 					// if we find one, we return it

@@ -148,7 +148,7 @@ namespace MoreMountains.CorgiEngine
         public LayerMask SkillDamageTargetLayerMask = LayerManager.EnemiesLayerMask;
         public bool DamageAnyAICharacter = true;
         public bool DestroySpellProjectileOnEnemyHit = true;
-        public float SpellDamage = 10f;
+        public float SpellDamage = 18f;
         public Vector2 SpellDamageAreaSize = new Vector2(0.5f, 0.5f);
         public Vector2 SpellDamageAreaOffset = Vector2.zero;
         public float MultiAttackDamage = 12f;
@@ -158,6 +158,7 @@ namespace MoreMountains.CorgiEngine
         public Vector2 MultiAttackDamageAreaSize = new Vector2(2f, 1.25f);
         public Vector2 MultiAttackDamageAreaOffset = new Vector2(1f, 0f);
         public float SplashAttackDamage = 15f;
+        public float UltimateDamage = 20f;
         public int SplashAttackDamageFramesBeforeEnd = 1;
         public float SplashAttackDamageTimeOffset = 0f;
         public float SplashAttackDamageDelayOverride = -1f;
@@ -231,6 +232,11 @@ namespace MoreMountains.CorgiEngine
         protected readonly List<GameObject> _groundAttackVfxObjects = new List<GameObject>();
         protected readonly List<PlayableGraph> _groundAttackVfxGraphs = new List<PlayableGraph>();
 
+        protected MMTouchButton _spellTouchBtn;
+        protected MMTouchButton _multiAtkTouchBtn;
+        protected MMTouchButton _splashAtkTouchBtn;
+        protected MMTouchButton _freezeAtkTouchBtn;
+
         public override string HelpBoxText()
         {
             return "Press V, B, N, M, L, or K to play direct skill animation clips. Rage mode automatically uses the rage clip variants.";
@@ -273,6 +279,15 @@ namespace MoreMountains.CorgiEngine
             if ((_animator == null) && (_character != null) && (_character.CharacterModel != null))
             {
                 _animator = _character.CharacterModel.GetComponentInChildren<Animator>();
+            }
+
+            MMTouchButton[] touchButtons = FindObjectsOfType<MMTouchButton>(true);
+            foreach (MMTouchButton btn in touchButtons)
+            {
+                if (btn.gameObject.name == "SpellBtn") _spellTouchBtn = btn;
+                else if (btn.gameObject.name == "MultiAtkBtn") _multiAtkTouchBtn = btn;
+                else if (btn.gameObject.name == "AreaAtkBtn") _splashAtkTouchBtn = btn;
+                else if (btn.gameObject.name == "FreezeAtkBtn") _freezeAtkTouchBtn = btn;
             }
         }
 
@@ -328,27 +343,55 @@ namespace MoreMountains.CorgiEngine
                 }
             }
 
-            if (Input.GetKeyDown(SpellKey))
+            bool spellPressed = Input.GetKeyDown(SpellKey);
+            bool multiPressed = Input.GetKeyDown(MultiAttackKey);
+            bool splashPressed = Input.GetKeyDown(SplashAttackKey);
+            bool shieldPressed = Input.GetKeyDown(ShieldKey);
+            bool groundPressed = Input.GetKeyDown(GroundAttackKey);
+            bool jumperPressed = Input.GetKeyDown(SpawnJumperKey);
+
+#if ENABLE_INPUT_SYSTEM
+            if (UnityEngine.InputSystem.Gamepad.current != null)
+            {
+                if (UnityEngine.InputSystem.Gamepad.current.buttonWest.wasPressedThisFrame) spellPressed = true; // X button
+                if (UnityEngine.InputSystem.Gamepad.current.buttonNorth.wasPressedThisFrame) multiPressed = true; // Y button
+                
+                // Triggers in Input System can be treated as buttons with wasPressedThisFrame
+                if (UnityEngine.InputSystem.Gamepad.current.rightTrigger.wasPressedThisFrame) splashPressed = true; // RT button
+                
+                // Mapped Freeze to both Right Shoulder (RB) and Face Button B (Circle) to cover all bases
+                if (UnityEngine.InputSystem.Gamepad.current.rightShoulder.wasPressedThisFrame) groundPressed = true; 
+                if (UnityEngine.InputSystem.Gamepad.current.buttonEast.wasPressedThisFrame) groundPressed = true; 
+            }
+#endif
+
+            // Check mobile UI buttons
+            if (_spellTouchBtn != null && _spellTouchBtn.CurrentState == MMTouchButton.ButtonStates.ButtonDown) spellPressed = true;
+            if (_multiAtkTouchBtn != null && _multiAtkTouchBtn.CurrentState == MMTouchButton.ButtonStates.ButtonDown) multiPressed = true;
+            if (_splashAtkTouchBtn != null && _splashAtkTouchBtn.CurrentState == MMTouchButton.ButtonStates.ButtonDown) splashPressed = true;
+            if (_freezeAtkTouchBtn != null && _freezeAtkTouchBtn.CurrentState == MMTouchButton.ButtonStates.ButtonDown) groundPressed = true;
+
+            if (spellPressed)
             {
                 PlaySpell();
             }
-            if (Input.GetKeyDown(MultiAttackKey))
+            if (multiPressed)
             {
                 PlayMultiAttack();
             }
-            if (Input.GetKeyDown(SplashAttackKey))
+            if (splashPressed)
             {
                 PlaySplashOrAreaAttack();
             }
-            if (Input.GetKeyDown(ShieldKey))
+            if (shieldPressed)
             {
                 PlayShield();
             }
-            if (Input.GetKeyDown(GroundAttackKey))
+            if (groundPressed)
             {
                 PlayGroundAttack();
             }
-            if (Input.GetKeyDown(SpawnJumperKey))
+            if (jumperPressed)
             {
                 PlaySpawnJumper();
             }

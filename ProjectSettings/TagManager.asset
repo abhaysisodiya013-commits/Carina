@@ -9,6 +9,7 @@ TagManager:
   - Background
   - NoMask
   - npc
+  - Tool
   layers:
   - Default
   - TransparentFX

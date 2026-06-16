@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using MoreMountains.Tools;
 using System;
 using UnityEngine.EventSystems;
@@ -377,6 +377,24 @@ namespace MoreMountains.InventoryEngine
 				_dropKeyPressed = WasPressedThisFrameSafe(DropKey);
 			#else
 			_toggleInventoryKeyPressed = Input.GetKeyDown(ToggleInventoryKey) || Input.GetKeyDown(ToggleInventoryAltKey);
+			
+			// Intercept Gamepad RT (which maps to ShootAxis in Corgi Engine)
+			if (MoreMountains.CorgiEngine.InputManager.Instance != null)
+			{
+				if (MoreMountains.CorgiEngine.InputManager.Instance.ShootAxis.CurrentState == MMInput.ButtonStates.ButtonDown || MoreMountains.CorgiEngine.InputManager.Instance.ShootButton.State.CurrentState == MMInput.ButtonStates.ButtonDown)
+				{
+					// We only want to use the RT Axis for inventory, but we'll capture ShootButton down if it comes from the Gamepad.
+					// Actually, to be safe, any shoot button will toggle inventory? No, we only want RT.
+					// RT is mapped to ShootAxis.
+					if (MoreMountains.CorgiEngine.InputManager.Instance.ShootAxis.CurrentState == MMInput.ButtonStates.ButtonDown)
+					{
+						_toggleInventoryKeyPressed = true;
+						MoreMountains.CorgiEngine.InputManager.Instance.ShootAxis.ChangeState(MMInput.ButtonStates.Off);
+						MoreMountains.CorgiEngine.InputManager.Instance.ShootButton.State.ChangeState(MMInput.ButtonStates.Off);
+					}
+				}
+			}
+
 			_cancelKeyPressed = (Input.GetKeyDown(CancelKey)) || (Input.GetKeyDown(CancelKeyAlt));
 			_prevInvKeyPressed = Input.GetKeyDown(PrevInvKey) || Input.GetKeyDown(PrevInvAltKey);
 			_nextInvKeyPressed = Input.GetKeyDown(NextInvKey) || Input.GetKeyDown(NextInvAltKey);

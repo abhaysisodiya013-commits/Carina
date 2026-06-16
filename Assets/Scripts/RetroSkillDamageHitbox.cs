@@ -6,6 +6,8 @@ namespace MoreMountains.CorgiEngine
 {
     public class RetroSkillDamageHitbox : MonoBehaviour
     {
+        public float DestroyDelay = 0f;
+
         protected GameObject _owner;
         protected LayerMask _targetLayerMask;
         protected float _damage;
@@ -78,6 +80,22 @@ namespace MoreMountains.CorgiEngine
                     continue;
                 }
 
+                bool isVSpell = GetComponent<RetroSpellCastProjectile>() != null || GetComponentInParent<RetroSpellCastProjectile>() != null;
+
+                if (isVSpell)
+                {
+                    ShieldGoatAIController shieldGoat = targetHealth.GetComponent<ShieldGoatAIController>();
+                    if (shieldGoat == null)
+                    {
+                        shieldGoat = targetHealth.GetComponentInParent<ShieldGoatAIController>();
+                    }
+
+                    if (shieldGoat != null && shieldGoat.HasShield)
+                    {
+                        continue;
+                    }
+                }
+
                 if (_damage > 0f)
                 {
                     Vector3 damageDirection = targetHealth.transform.position - transform.position;
@@ -94,7 +112,15 @@ namespace MoreMountains.CorgiEngine
                 ApplyFreezeEffect(targetHealth);
                 if (_destroyOnHit)
                 {
-                    Destroy(gameObject);
+                    if (DestroyDelay > 0f)
+                    {
+                        enabled = false; // Stop applying damage!
+                        Destroy(gameObject, DestroyDelay);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
                     return;
                 }
             }
