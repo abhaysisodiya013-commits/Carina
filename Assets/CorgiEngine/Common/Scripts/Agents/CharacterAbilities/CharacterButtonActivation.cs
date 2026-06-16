@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using MoreMountains.Tools;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -35,6 +35,7 @@ namespace MoreMountains.CorgiEngine
 
 		protected bool _activating = false;
 		protected float _lastActivatedAt = -10f;
+		protected bool _upPressedLastFrame = false;
 
 		// animation parameters
 		protected const string _activatingAnimationParameterName = "Activating";
@@ -62,11 +63,15 @@ namespace MoreMountains.CorgiEngine
 					return;
 				}
 
+				bool upPressed = _inputManager.PrimaryMovement.y > 0.5f || UnityEngine.Input.GetAxis("Vertical") > 0.5f;
+				bool upPressedThisFrame = upPressed && !_upPressedLastFrame;
+				_upPressedLastFrame = upPressed;
+
 				bool buttonPressed = false;
 				switch (ButtonActivatedZone.InputType)
 				{
 					case ButtonActivated.InputTypes.Default:
-						buttonPressed = (_inputManager.InteractButton.State.CurrentState == MMInput.ButtonStates.ButtonDown);
+						buttonPressed = (_inputManager.InteractButton.State.CurrentState == MMInput.ButtonStates.ButtonDown) || upPressedThisFrame;
 						break;
 					#if ENABLE_INPUT_SYSTEM
 						case ButtonActivated.InputTypes.Button:
@@ -154,6 +159,7 @@ namespace MoreMountains.CorgiEngine
 
 		public virtual void SetTriggerParameter()
 		{
+			if (_animator == null) return;
 			if ((ButtonActivatedZone != null) && (ButtonActivatedZone.AnimationTriggerParameterName != ""))
 			{
 				_animator.SetTrigger(ButtonActivatedZone.AnimationTriggerParameterName);

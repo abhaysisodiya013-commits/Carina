@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114505998259787332}
   - component: {fileID: 114889255539485478}
   - component: {fileID: 114568025754017870}
+  - component: {fileID: 569335915292252193}
   m_Layer: 13
   m_Name: RetroSwordsman
   m_TagString: Untagged
@@ -111,7 +112,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.3147124, y: 0}
+  m_Offset: {x: 0.28800178, y: -0.839833}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -121,7 +122,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.4194298, y: 1.72}
+  m_Size: {x: 4.2572985, y: 2.279718}
   m_EdgeRadius: 0
 --- !u!114 &114738098234071618
 MonoBehaviour:
@@ -175,8 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterType: 1
   PlayerID: 
-  InitialFacingDirection: 0
-  DirectionOnSpawn: 1
+  InitialFacingDirection: 1
+  DirectionOnSpawn: 2
   CharacterAnimator: {fileID: 95535927665812756}
   UseDefaultMecanim: 1
   PerformAnimatorSanityChecks: 1
@@ -728,8 +729,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
-  Radius: 4
-  DetectionOriginOffset: {x: 0, y: 0, z: 0}
+  Radius: 1.69
+  DetectionOriginOffset: {x: 0, y: -0.63, z: 0}
   TargetLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -748,6 +749,92 @@ MonoBehaviour:
   Label: 
   AfterTimeMin: 2
   AfterTimeMax: 2
+--- !u!114 &569335915292252193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675362664273752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 1
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot:
+    - Loot: {fileID: 1162568021598160, guid: 6e1ac49bfe99a4ae88e76e5c1c1f34ad, type: 3}
+      Weight: 70
+      ChancePercentage: 70
+    - Loot: {fileID: 1472130053336478, guid: 0900b44ab58ac43e4afbf2105361fa18, type: 3}
+      Weight: 30
+      ChancePercentage: 30
+    WeightsTotal: 100
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1731962913224454
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,8 +862,8 @@ Transform:
   m_GameObject: {fileID: 1731962913224454}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.311, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 0, y: 9.61, z: 0}
+  m_LocalScale: {x: 6.4608, y: 6.4608, z: 6.4608}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4077180903101272}
@@ -828,7 +915,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6718998377516119877, guid: b9970d98e20ea2a41930ccdd0565b9b7,
+  m_Sprite: {fileID: 4723107735738678597, guid: 3cfada48ce4eaee4eab5370e805a59f7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -850,7 +937,7 @@ Animator:
   m_GameObject: {fileID: 1731962913224454}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b3eaff97eeb2602419b80562340b341a, type: 2}
+  m_Controller: {fileID: 9100000, guid: d8a77d70248c8ca44ac36a6a3f196898, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

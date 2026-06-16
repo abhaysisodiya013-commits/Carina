@@ -4926,6 +4926,8 @@ GameObject:
   - component: {fileID: 5709105135841585061}
   - component: {fileID: 3123888226987949864}
   - component: {fileID: -3683325441927462758}
+  - component: {fileID: 6414363025146254977}
+  - component: {fileID: 9202982021457611536}
   m_Layer: 9
   m_Name: RetroCorgi 1
   m_TagString: Player
@@ -4943,7 +4945,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -98.188, y: 0.5, z: 0}
-  m_LocalScale: {x: 2.0019734, y: 2.0019734, z: 2.0019734}
+  m_LocalScale: {x: 2.0019734, y: 2.0019734, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3226905252963850618}
@@ -5047,7 +5049,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.21020775, y: -0.644007}
+  m_Offset: {x: -0.20819938, y: -0.644007}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5057,7 +5059,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.19612989, y: 1.4384805}
+  m_Size: {x: 0.31263787, y: 1.4384805}
   m_EdgeRadius: 0
 --- !u!114 &114993703828558004
 MonoBehaviour:
@@ -5186,14 +5188,14 @@ MonoBehaviour:
   ImmuneToKnockbackIfZeroDamage: 0
   DeathFeedbacks: {fileID: 8656313568225783935}
   DestroyOnDeath: 1
-  DelayBeforeDestruction: 0
-  CollisionsOffOnDeath: 1
+  DelayBeforeDestruction: 3
+  CollisionsOffOnDeath: 0
   GravityOffOnDeath: 0
   PointsWhenDestroyed: 0
   RespawnAtInitialLocation: 0
-  ApplyDeathForce: 1
+  ApplyDeathForce: 0
   DeathForce: {x: 0, y: 10}
-  ResetForcesOnDeath: 0
+  ResetForcesOnDeath: 1
   ResetColorOnRevive: 1
   ColorMaterialPropertyName: _Color
   UseMaterialPropertyBlocks: 0
@@ -5677,11 +5679,11 @@ MonoBehaviour:
   BlockingConditionStates: 
   PlayerID: Player1
   MainInventoryName: RetroInventory
-  WeaponInventoryName: RetroWeaponInventory
+  WeaponInventoryName: DummyInventory
   HotbarInventoryName: 
   AutoEquipWeaponOnCharacterSwitch: 0
   WeaponRotationMode: 1
-  CharacterHandleWeapon: {fileID: 114238553675504360}
+  CharacterHandleWeapon: {fileID: 6414363025146254977}
   InventoryTransform: {fileID: 0}
   AutoAddItemsMainInventory:
   - Item: {fileID: 11400000, guid: 3b5dde34a476c9e498396d1d4e419e00, type: 2}
@@ -6302,6 +6304,60 @@ MonoBehaviour:
     prependActorNameSeparator: ': '
     prependActorNameFormat: '{0}{1}'
     subtitleColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &6414363025146254977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383539409296422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3141ca867f14a464ab5c3a815142ad80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.CharacterHandleSecondaryWeapon
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  InitialWeapon: {fileID: 0}
+  CanPickupWeapons: 1
+  WeaponAttachment: {fileID: 0}
+  ForceWeaponScaleResetOnEquip: 0
+  ForceWeaponRotationResetOnEquip: 0
+  AutomaticallyBindAnimator: 1
+  AmmoDisplayID: 0
+  ContinuousPress: 0
+  GettingHitInterruptsAttack: 0
+  CanShootFromLadders: 0
+  FaceWeaponDirection: 0
+  InvertHorizontalAimWhenWallclinging: 0
+  BufferInput: 0
+  NewInputExtendsBuffer: 0
+  MaximumBufferDuration: 0.25
+  CurrentWeapon: {fileID: 0}
+--- !u!114 &9202982021457611536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383539409296422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e9ce43f98c3c49b0b2d639d745988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoreMountains.CorgiEngine.CharacterFlaskHealing
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  MaxFlasks: 2
+  CurrentFlasks: 2
+  HealAmount: 50
+  FlaskInput: 0
 --- !u!1 &1693914667617252
 GameObject:
   m_ObjectHideFlags: 0
@@ -21602,7 +21658,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1628607475
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2210844048083403687, guid: 3644ded751c192c4bb156af006f61d2e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
