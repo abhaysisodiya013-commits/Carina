@@ -10,6 +10,7 @@ TagManager:
   - NoMask
   - npc
   - Tool
+  - People
   layers:
   - Default
   - TransparentFX

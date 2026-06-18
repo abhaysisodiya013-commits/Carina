@@ -6231,6 +6231,7 @@ MonoBehaviour:
   MultiAttackDamageAreaSize: {x: 2, y: 1}
   MultiAttackDamageAreaOffset: {x: 1, y: -1}
   SplashAttackDamage: 15
+  UltimateDamage: 20
   SplashAttackDamageFramesBeforeEnd: 1
   SplashAttackDamageTimeOffset: 0
   SplashAttackDamageDelayOverride: 1
@@ -6290,9 +6291,8 @@ MonoBehaviour:
     barkUI: {fileID: 11453294, guid: d5a18ab9ec93e0d4284d6fbae4f557e0, type: 3}
     barkUIOffset: {x: 0, y: 2, z: 0}
   standardDialogueUISettings:
-    subtitlePanelNumber: 2
-    customSubtitlePanel: {fileID: 11451678, guid: 9052074e55e1f964c8c25e4b6d86be6c,
-      type: 3}
+    subtitlePanelNumber: 0
+    customSubtitlePanel: {fileID: 0}
     customSubtitlePanelOffset: {x: 0, y: 0, z: 0}
     menuPanelNumber: 0
     customMenuPanel: {fileID: 0}
