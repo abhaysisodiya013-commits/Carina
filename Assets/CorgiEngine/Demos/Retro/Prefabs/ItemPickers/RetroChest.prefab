@@ -390,3 +390,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265d3dd31964ab748b3795ae51a3732e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoreMountains.CorgiEngine.ChestLoot
+  ChestID: Chest_01

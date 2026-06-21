@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
@@ -228,7 +228,8 @@ namespace MoreMountains.CorgiEngine
 
             FollowsPlayer = false;
             _virtualCamera.Follow = null;
-            _virtualCamera.enabled = false;
+            // WE MUST NOT TURN IT OFF, otherwise it falls back to the persistent Priority 0 Cinematic Camera!
+            // _virtualCamera.enabled = false; 
         }
 
         protected virtual void LateUpdate()

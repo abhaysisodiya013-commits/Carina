@@ -1511,6 +1511,46 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 5.908
       objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4090207507453690960, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
         type: 3}
       propertyPath: m_Type
@@ -1522,6 +1562,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5948741127423719091, guid: c5719ab30aff70f43bbb11c9a05d87e1,
         type: 3}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6781,6 +6861,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1970492610207638073, guid: 33045ab65856b494a94b1e2cf0c0c94e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1981486468665043452, guid: 33045ab65856b494a94b1e2cf0c0c94e,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -7176,11 +7261,18 @@ MonoBehaviour:
   disableSceneGravityZonesOnStart: 1
   disableDeadEnemyDamageZonesAtRuntime: 1
   deadEnemyDamageZoneCheckInterval: 0.25
+  capEnemyMachineGunProjectileSpeed: 1
+  enemyMachineGunProjectileMaxSpeed: 120
+  enemyProjectileSpeedCheckInterval: 0.02
   repairGroundedJumpStateAtRuntime: 1
   groundedJumpStateRepairInterval: 0.1
   grantRetroWeaponsOnStart: 1
   clearPlayerInventoriesBeforeGrantingWeapons: 1
   equipRetroSwordOnStart: 1
+  stopGroundMovementWhileAttacking: 1
+  installAirAttackAnimationOverride: 1
+  normalAirAttackClip: {fileID: 0}
+  rageAirAttackClip: {fileID: 0}
   retroSwordResourcePath: Items/RetroComboSword
   retroMachineGunResourcePath: Items/RetroMachineGun
   retroShotgunResourcePath: Items/RetroShotgun
@@ -17491,7 +17583,7 @@ PrefabInstance:
     - target: {fileID: 1406814930825652035, guid: 5073b7dcd5ffceb4faf9425a426e7170,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 58.732094
+      value: 61.244484
       objectReference: {fileID: 0}
     - target: {fileID: 1406814930825652035, guid: 5073b7dcd5ffceb4faf9425a426e7170,
         type: 3}
@@ -18448,6 +18540,11 @@ MonoBehaviour:
   CenterCharacterOnLadder: 0
   LadderPlatform: {fileID: 0}
   AutoPositionLadderPlatform: 0
+  ShowLadderCenterGizmos: 1
+  LadderCenterGizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  PlayerCenterGizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  LadderTopGizmoColor: {r: 0, g: 1, b: 0, a: 1}
+  LadderGizmoDotSize: 0.08
 --- !u!850595691 &1401160909
 LightingSettings:
   m_ObjectHideFlags: 0

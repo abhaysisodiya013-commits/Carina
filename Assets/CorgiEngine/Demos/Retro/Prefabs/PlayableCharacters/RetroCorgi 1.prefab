@@ -6354,8 +6354,8 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
-  MaxFlasks: 2
-  CurrentFlasks: 2
+  MaxFlasks: 3
+  CurrentFlasks: 3
   HealAmount: 50
   FlaskInput: 0
 --- !u!1 &1693914667617252
