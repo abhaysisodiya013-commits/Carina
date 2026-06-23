@@ -271,7 +271,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4758793}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &4758791 stripped
 Transform:
@@ -279,6 +283,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4758790}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4758792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4758790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4758793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &5930094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -373,7 +463,12 @@ PrefabInstance:
     - target: {fileID: 114177488089891134, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
         type: 3}
       propertyPath: ForcedMode
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114177488089891134, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: MovementControl
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114298093912582072, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
         type: 3}
@@ -1526,6 +1621,36 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -229
       objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930690264555537338, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4090207507453690960, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
         type: 3}
       propertyPath: m_Type
@@ -1537,6 +1662,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5948741127423719091, guid: c5719ab30aff70f43bbb11c9a05d87e1,
         type: 3}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119719489834115758, guid: 96bc7b13f7426664e83ab2c20b22e6c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4136,7 +4291,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 60128232}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &60128230 stripped
 Transform:
@@ -4144,6 +4303,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 60128229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &60128231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 60128229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &60128232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60128231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &65802094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4396,7 +4641,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77767735}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &77767733 stripped
 Transform:
@@ -4404,6 +4653,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 77767732}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &77767734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 77767732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &77767735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77767734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &107624708
 GameObject:
   m_ObjectHideFlags: 0
@@ -9233,6 +9568,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6be6b5536e7cdfa4b8dea369e32707e5, type: 3}
+--- !u!1001 &190179859
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3395573350278899817, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_Name
+      value: CinematicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812435710197217092, guid: 12c5a62cf04709d4882bd603314a3796,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12c5a62cf04709d4882bd603314a3796, type: 3}
 --- !u!1 &213527044
 GameObject:
   m_ObjectHideFlags: 0
@@ -9405,14 +9808,24 @@ MonoBehaviour:
   scenePropWorldZ: 0
   disableBackgroundDepthWriteOnStart: 0
   refreshAbilityInputManagersAfterSpawn: 1
+  resetPlayerInputOnSpawn: 1
+  spawnInputResetFrames: 20
+  cancelAccidentalDashOnSpawn: 1
   disableSceneGravityZonesOnStart: 1
   disableDeadEnemyDamageZonesAtRuntime: 1
   deadEnemyDamageZoneCheckInterval: 0.25
+  capEnemyMachineGunProjectileSpeed: 1
+  enemyMachineGunProjectileMaxSpeed: 120
+  enemyProjectileSpeedCheckInterval: 0.02
   repairGroundedJumpStateAtRuntime: 1
   groundedJumpStateRepairInterval: 0.1
   grantRetroWeaponsOnStart: 1
   clearPlayerInventoriesBeforeGrantingWeapons: 1
   equipRetroSwordOnStart: 1
+  stopGroundMovementWhileAttacking: 1
+  installAirAttackAnimationOverride: 1
+  normalAirAttackClip: {fileID: 0}
+  rageAirAttackClip: {fileID: 0}
   retroSwordResourcePath: Items/RetroComboSword
   retroMachineGunResourcePath: Items/RetroMachineGun
   retroShotgunResourcePath: Items/RetroShotgun
@@ -9456,8 +9869,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 235.75826, y: 108.31174, z: 10}
-  m_Center: {x: 86.34724, y: -0.5026245, z: 0}
+  m_Size: {x: 128.00427, y: 65.631836, z: 10}
+  m_Center: {x: 32.127785, y: 20.837326, z: 0}
 --- !u!1 &245066750
 GameObject:
   m_ObjectHideFlags: 0
@@ -18110,46 +18523,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 18, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 452
-      m_TileSpriteIndex: 435
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 18, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 451
-      m_TileSpriteIndex: 437
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 18, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 18, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -54, y: 19, z: 0}
     second:
       serializedVersion: 2
@@ -18295,46 +18668,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 453
       m_TileSpriteIndex: 442
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 19, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 450
-      m_TileSpriteIndex: 436
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 19, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 449
-      m_TileSpriteIndex: 438
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 19, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 19, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
       m_TileMatrixIndex: 1
       m_TileColorIndex: 8
       m_TileObjectToInstantiateIndex: 65535
@@ -18490,46 +18823,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 20, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 452
-      m_TileSpriteIndex: 435
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 20, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 451
-      m_TileSpriteIndex: 437
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 20, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 20, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -54, y: 21, z: 0}
     second:
       serializedVersion: 2
@@ -18675,46 +18968,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 453
       m_TileSpriteIndex: 442
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 21, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 450
-      m_TileSpriteIndex: 436
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 21, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 449
-      m_TileSpriteIndex: 438
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 21, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 21, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
       m_TileMatrixIndex: 1
       m_TileColorIndex: 8
       m_TileObjectToInstantiateIndex: 65535
@@ -18870,46 +19123,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 22, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 452
-      m_TileSpriteIndex: 435
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 22, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 451
-      m_TileSpriteIndex: 437
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 22, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 22, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -54, y: 23, z: 0}
     second:
       serializedVersion: 2
@@ -19060,46 +19273,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 23, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 450
-      m_TileSpriteIndex: 436
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 23, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 449
-      m_TileSpriteIndex: 438
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 23, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 23, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -54, y: 24, z: 0}
     second:
       serializedVersion: 2
@@ -19205,46 +19378,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 455
       m_TileSpriteIndex: 440
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 24, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 452
-      m_TileSpriteIndex: 435
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 24, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 451
-      m_TileSpriteIndex: 437
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 24, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 24, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
       m_TileMatrixIndex: 1
       m_TileColorIndex: 8
       m_TileObjectToInstantiateIndex: 65535
@@ -19360,46 +19493,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 25, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 450
-      m_TileSpriteIndex: 436
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 25, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 449
-      m_TileSpriteIndex: 438
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 25, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 25, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -54, y: 26, z: 0}
     second:
       serializedVersion: 2
@@ -19505,46 +19598,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 455
       m_TileSpriteIndex: 440
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 26, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 452
-      m_TileSpriteIndex: 435
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 26, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 451
-      m_TileSpriteIndex: 437
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 26, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 26, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
       m_TileMatrixIndex: 1
       m_TileColorIndex: 8
       m_TileObjectToInstantiateIndex: 65535
@@ -19660,46 +19713,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 70, y: 27, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 450
-      m_TileSpriteIndex: 436
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 71, y: 27, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 449
-      m_TileSpriteIndex: 438
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 72, y: 27, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 448
-      m_TileSpriteIndex: 433
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 27, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 447
-      m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -54, y: 28, z: 0}
     second:
       serializedVersion: 2
@@ -19760,26 +19773,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -54, y: 29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 456
-      m_TileSpriteIndex: 439
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -53, y: 29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 455
-      m_TileSpriteIndex: 440
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -33, y: 29, z: 0}
     second:
       serializedVersion: 2
@@ -19815,26 +19808,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 447
       m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -54, y: 30, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 454
-      m_TileSpriteIndex: 441
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -53, y: 30, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 453
-      m_TileSpriteIndex: 442
       m_TileMatrixIndex: 1
       m_TileColorIndex: 8
       m_TileObjectToInstantiateIndex: 65535
@@ -19880,26 +19853,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -54, y: 31, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 456
-      m_TileSpriteIndex: 439
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -53, y: 31, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 455
-      m_TileSpriteIndex: 440
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -33, y: 31, z: 0}
     second:
       serializedVersion: 2
@@ -19935,26 +19888,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 447
       m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -54, y: 32, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 454
-      m_TileSpriteIndex: 441
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -53, y: 32, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 453
-      m_TileSpriteIndex: 442
       m_TileMatrixIndex: 1
       m_TileColorIndex: 8
       m_TileObjectToInstantiateIndex: 65535
@@ -20000,26 +19933,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -54, y: 33, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 456
-      m_TileSpriteIndex: 439
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -53, y: 33, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 455
-      m_TileSpriteIndex: 440
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -33, y: 33, z: 0}
     second:
       serializedVersion: 2
@@ -20055,26 +19968,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 447
       m_TileSpriteIndex: 434
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -54, y: 34, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 454
-      m_TileSpriteIndex: 441
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 8
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -53, y: 34, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 453
-      m_TileSpriteIndex: 442
       m_TileMatrixIndex: 1
       m_TileColorIndex: 8
       m_TileObjectToInstantiateIndex: 65535
@@ -21016,25 +20909,25 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 144
+  - m_RefCount: 134
     m_Data: {fileID: 11400000, guid: 4edf384839d59ef408267f51ab071b2b, type: 2}
-  - m_RefCount: 178
+  - m_RefCount: 168
     m_Data: {fileID: 11400000, guid: 3f51576d08b62c54380f4001d3b6cd35, type: 2}
-  - m_RefCount: 66
+  - m_RefCount: 61
     m_Data: {fileID: 11400000, guid: 6dd01fd875151454db2d27ff6e324b9e, type: 2}
-  - m_RefCount: 65
+  - m_RefCount: 60
     m_Data: {fileID: 11400000, guid: 0dd8ccb45e728b24fb0e7fd8aa6b42d4, type: 2}
-  - m_RefCount: 63
+  - m_RefCount: 58
     m_Data: {fileID: 11400000, guid: c136093664393fc41b6e99ed6814ca6e, type: 2}
-  - m_RefCount: 64
+  - m_RefCount: 59
     m_Data: {fileID: 11400000, guid: b61c75afa312f8044945b4ff777dc105, type: 2}
-  - m_RefCount: 70
+  - m_RefCount: 67
     m_Data: {fileID: 11400000, guid: d72d91bbf358c8b49bc50626423d3adf, type: 2}
-  - m_RefCount: 70
+  - m_RefCount: 67
     m_Data: {fileID: 11400000, guid: 676ab2dcd45c65947acc887219323f26, type: 2}
-  - m_RefCount: 70
+  - m_RefCount: 67
     m_Data: {fileID: 11400000, guid: b1cc5676d70f0d944892306f834bcf27, type: 2}
-  - m_RefCount: 69
+  - m_RefCount: 66
     m_Data: {fileID: 11400000, guid: e9033e703a8d866488ac5ce3613ca47c, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -21903,25 +21796,25 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 178
+  - m_RefCount: 168
     m_Data: {fileID: 343858904, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 144
+  - m_RefCount: 134
     m_Data: {fileID: -1526403247, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 64
+  - m_RefCount: 59
     m_Data: {fileID: -1525003172, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 65
+  - m_RefCount: 60
     m_Data: {fileID: -1905694722, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 63
+  - m_RefCount: 58
     m_Data: {fileID: -2147247023, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 66
+  - m_RefCount: 61
     m_Data: {fileID: -213809981, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 69
+  - m_RefCount: 66
     m_Data: {fileID: 303231350, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 70
+  - m_RefCount: 67
     m_Data: {fileID: 110381834, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 70
+  - m_RefCount: 67
     m_Data: {fileID: 444528724, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
-  - m_RefCount: 70
+  - m_RefCount: 67
     m_Data: {fileID: -694069859, guid: bf99b303eee138c469712b5bcb101c86, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 0
@@ -21942,7 +21835,7 @@ Tilemap:
       e31: 0
       e32: 6.66e-43
       e33: 6.66e-43
-  - m_RefCount: 859
+  - m_RefCount: 807
     m_Data:
       e00: 1
       e01: 0
@@ -21977,7 +21870,7 @@ Tilemap:
     m_Data: {r: 2.06672e-40, g: 2.06672e-40, b: 2.06672e-40, a: 2.06672e-40}
   - m_RefCount: 0
     m_Data: {r: 2.06672e-40, g: 2.06672e-40, b: 2.06672e-40, a: 2.06672e-40}
-  - m_RefCount: 859
+  - m_RefCount: 807
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -25187,6 +25080,51 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &396334021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 396334022}
+  - component: {fileID: 396334023}
+  m_Layer: 0
+  m_Name: TravelSpawn_FromPrevious
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &396334022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396334021}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.75, y: -4.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 915029320}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &396334023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396334021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae391d40942d63438923fae82ee233d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CorgiCustomMechanics.ChapterTravelSpawn
+  SpawnId: TravelSpawn_FromPrevious
 --- !u!4 &409836812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8982701881776074149, guid: e34a370d13054c34e98bec50a9c938e3,
@@ -25693,7 +25631,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3592319805452970567, guid: 9e23937239b78844bad3d27387566e42,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 518413532}
   m_SourcePrefab: {fileID: 100100000, guid: 9e23937239b78844bad3d27387566e42, type: 3}
 --- !u!4 &518413530 stripped
 Transform:
@@ -25701,6 +25643,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 518413529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &518413531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3592319805452970567, guid: 9e23937239b78844bad3d27387566e42,
+    type: 3}
+  m_PrefabInstance: {fileID: 518413529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &518413532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518413531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &524114716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25853,7 +25881,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524114719}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &524114717 stripped
 Transform:
@@ -25861,6 +25893,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 524114716}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &524114718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 524114716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &524114719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524114718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &589088313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26058,7 +26176,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2837795514112207213, guid: 271785ad4a3328642b6c2354e1e9f696,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 589088316}
   m_SourcePrefab: {fileID: 100100000, guid: 271785ad4a3328642b6c2354e1e9f696, type: 3}
 --- !u!4 &589088314 stripped
 Transform:
@@ -26066,6 +26188,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 589088313}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &589088315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2837795514112207213, guid: 271785ad4a3328642b6c2354e1e9f696,
+    type: 3}
+  m_PrefabInstance: {fileID: 589088313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &589088316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589088315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &595725712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26218,7 +26426,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 595725715}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &595725713 stripped
 Transform:
@@ -26226,6 +26438,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 595725712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &595725714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 595725712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &595725715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595725714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &646597172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26285,8 +26583,198 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1305392817997198, guid: bc28339b89f2a6d40ad9f521e4cd9b05,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 841451353}
+    - targetCorrespondingSourceObject: {fileID: 1608034844476318, guid: bc28339b89f2a6d40ad9f521e4cd9b05,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 646597177}
+    - targetCorrespondingSourceObject: {fileID: 1640157754429554, guid: bc28339b89f2a6d40ad9f521e4cd9b05,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 646597176}
   m_SourcePrefab: {fileID: 100100000, guid: bc28339b89f2a6d40ad9f521e4cd9b05, type: 3}
+--- !u!1 &646597173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1640157754429554, guid: bc28339b89f2a6d40ad9f521e4cd9b05,
+    type: 3}
+  m_PrefabInstance: {fileID: 646597172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &646597174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1608034844476318, guid: bc28339b89f2a6d40ad9f521e4cd9b05,
+    type: 3}
+  m_PrefabInstance: {fileID: 646597172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &646597175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1305392817997198, guid: bc28339b89f2a6d40ad9f521e4cd9b05,
+    type: 3}
+  m_PrefabInstance: {fileID: 646597172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &646597176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646597173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
+--- !u!114 &646597177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646597174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!4 &652937827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2138494973089799884, guid: 9b734c1bfc100614cbb8fca3548b64bd,
@@ -27278,7 +27766,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2746492010353037712, guid: 780440eb3cf920b41a06f9e8ffbff9b7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 774520214}
   m_SourcePrefab: {fileID: 100100000, guid: 780440eb3cf920b41a06f9e8ffbff9b7, type: 3}
 --- !u!4 &774520212 stripped
 Transform:
@@ -27286,6 +27778,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 774520211}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &774520213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2746492010353037712, guid: 780440eb3cf920b41a06f9e8ffbff9b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 774520211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &774520214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774520213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &784277672 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1406814931148311551, guid: 5073b7dcd5ffceb4faf9425a426e7170,
@@ -27595,7 +28173,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2138494973089799906, guid: 9b734c1bfc100614cbb8fca3548b64bd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 836042035}
   m_SourcePrefab: {fileID: 100100000, guid: 9b734c1bfc100614cbb8fca3548b64bd, type: 3}
 --- !u!4 &836042033 stripped
 Transform:
@@ -27603,12 +28185,178 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 836042032}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &836042034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2138494973089799906, guid: 9b734c1bfc100614cbb8fca3548b64bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 836042032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &836042035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836042034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!4 &841451352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4521448691679874, guid: bc28339b89f2a6d40ad9f521e4cd9b05,
     type: 3}
   m_PrefabInstance: {fileID: 646597172}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &841451353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646597175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &841542540
 GameObject:
   m_ObjectHideFlags: 0
@@ -27855,6 +28603,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 920433731}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &915029319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915029320}
+  m_Layer: 0
+  m_Name: Chapter Travel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &915029320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915029319}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 396334022}
+  - {fileID: 1880680581}
+  - {fileID: 1324281893}
+  - {fileID: 1837826716}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &920433731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28242,7 +29025,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2837795514112207213, guid: 271785ad4a3328642b6c2354e1e9f696,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1010118585}
   m_SourcePrefab: {fileID: 100100000, guid: 271785ad4a3328642b6c2354e1e9f696, type: 3}
 --- !u!4 &1010118583 stripped
 Transform:
@@ -28250,6 +29037,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1010118582}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1010118584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2837795514112207213, guid: 271785ad4a3328642b6c2354e1e9f696,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010118582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1010118585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010118584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &1030895307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28502,7 +29375,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1034098267}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &1034098265 stripped
 Transform:
@@ -28510,6 +29387,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1034098264}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1034098266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1034098264}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1034098267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034098266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1050494543
 GameObject:
   m_ObjectHideFlags: 0
@@ -28617,8 +29580,18 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1643528135131952, guid: 5b5c95ee342ec9044abeecd353d082a1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1843962295}
   m_SourcePrefab: {fileID: 100100000, guid: 5b5c95ee342ec9044abeecd353d082a1, type: 3}
+--- !u!1 &1070750825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1643528135131952, guid: 5b5c95ee342ec9044abeecd353d082a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1070750824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1150035405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28816,7 +29789,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2837795514112207213, guid: 271785ad4a3328642b6c2354e1e9f696,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1150035408}
   m_SourcePrefab: {fileID: 100100000, guid: 271785ad4a3328642b6c2354e1e9f696, type: 3}
 --- !u!4 &1150035406 stripped
 Transform:
@@ -28824,6 +29801,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1150035405}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1150035407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2837795514112207213, guid: 271785ad4a3328642b6c2354e1e9f696,
+    type: 3}
+  m_PrefabInstance: {fileID: 1150035405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1150035408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150035407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &1152113939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28961,7 +30024,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1297406248094218851, guid: 08b8cb52b3b06044dac491f1226d3ead,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1152113942}
   m_SourcePrefab: {fileID: 100100000, guid: 08b8cb52b3b06044dac491f1226d3ead, type: 3}
 --- !u!4 &1152113940 stripped
 Transform:
@@ -28969,6 +30036,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1152113939}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1152113941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1297406248094218851, guid: 08b8cb52b3b06044dac491f1226d3ead,
+    type: 3}
+  m_PrefabInstance: {fileID: 1152113939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1152113942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152113941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1175366652
 GameObject:
   m_ObjectHideFlags: 0
@@ -29214,7 +30367,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1190818740}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &1190818738 stripped
 Transform:
@@ -29222,6 +30379,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1190818737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1190818739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1190818737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1190818740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190818739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1209413207
 GameObject:
   m_ObjectHideFlags: 0
@@ -29323,7 +30566,7 @@ PrefabInstance:
     - target: {fileID: 1406814930825652035, guid: 5073b7dcd5ffceb4faf9425a426e7170,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.15696
+      value: 61.32202
       objectReference: {fileID: 0}
     - target: {fileID: 1406814930825652035, guid: 5073b7dcd5ffceb4faf9425a426e7170,
         type: 3}
@@ -29724,7 +30967,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1288168525}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &1288168523 stripped
 Transform:
@@ -29732,6 +30979,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1288168522}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1288168524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1288168522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1288168525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288168524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1291493264
 GameObject:
   m_ObjectHideFlags: 0
@@ -30280,6 +31613,134 @@ MonoBehaviour:
   CenterCharacterOnLadder: 0
   LadderPlatform: {fileID: 0}
   AutoPositionLadderPlatform: 0
+  ShowLadderCenterGizmos: 1
+  LadderCenterGizmoColor: {r: 0, g: 1, b: 1, a: 1}
+  PlayerCenterGizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  LadderTopGizmoColor: {r: 0, g: 1, b: 0, a: 1}
+  LadderGizmoDotSize: 0.08
+--- !u!1 &1324281892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1324281893}
+  - component: {fileID: 1324281895}
+  - component: {fileID: 1324281894}
+  m_Layer: 0
+  m_Name: Chapter Exit Forward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1324281893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324281892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 97.5, y: -14.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 915029320}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1324281894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324281892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3619e78d2430a0b488e5243eb58b2273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CorgiCustomMechanics.ChapterTravelTrigger
+  TargetSceneName: Area 4
+  DestinationSpawnId: TravelSpawn_FromPrevious
+  FadeOutDuration: 0.35
+  FadeInDuration: 0.35
+  FaderID: 0
+  FadeTween:
+    MMTweenDefinitionType: 0
+    MMTweenCurve: 6
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+--- !u!61 &1324281895
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324281892}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 3.0274734, y: 3.246121}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.39102173, y: 9.576993}
+  m_EdgeRadius: 0
 --- !u!850595691 &1401160909
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -30568,7 +32029,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1437356365}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &1437356363 stripped
 Transform:
@@ -30576,6 +32041,228 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1437356362}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1437356364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1437356362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1437356365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437356364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
+--- !u!1001 &1482830745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1300416984134314135, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_Name
+      value: MiniMapCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751286376483420084, guid: 280c520caffb9284da2739e0e91cb6e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 280c520caffb9284da2739e0e91cb6e0, type: 3}
+--- !u!1001 &1484968915
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013380495007871616, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593695785026685179, guid: 9aa9da0aa78997b469c756284e83f730,
+        type: 3}
+      propertyPath: m_Name
+      value: MissionManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9aa9da0aa78997b469c756284e83f730, type: 3}
 --- !u!1 &1487085692
 GameObject:
   m_ObjectHideFlags: 0
@@ -32982,6 +34669,834 @@ MonoBehaviour:
   HitNonDamageableFeedback: {fileID: 0}
   FreezeFramesOnHitDuration: 0
   Owner: {fileID: 0}
+--- !u!1001 &1576848477
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 438311013405590938, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438311013405590938, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438311013405590938, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438311013405590938, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438311013405590938, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438311013405590938, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840200506296178337, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840200506296178337, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840200506296178337, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840200506296178337, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840200506296178337, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840200506296178337, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272488143201240626, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272488143201240626, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272488143201240626, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272488143201240626, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272488143201240626, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272488143201240626, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287946435805062646, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287946435805062646, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287946435805062646, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287946435805062646, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287946435805062646, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287946435805062646, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287946435805559020, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287946435805559020, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136124656979199521, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136124656979199521, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136124656979199521, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136124656979199521, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136124656979199521, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136124656979199521, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333951058252715819, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333951058252715819, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333951058252715819, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333951058252715819, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333951058252715819, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333951058252715819, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392301653241893196, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392301653241893196, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392301653241893196, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392301653241893196, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392301653241893196, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392301653241893196, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245174330337896370, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245174330337896370, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245174330337896370, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245174330337896370, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245174330337896370, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245174330337896370, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249253946, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249257676, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249257676, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249257676, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249257676, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249257676, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249257676, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249262680, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249262680, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249265342, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249265342, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249281680, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249281680, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249318160, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249320000, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249320000, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249320000, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249320000, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249320000, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249320000, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249321532, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249321532, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249321532, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249321532, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249321532, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249321532, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249333540, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249333540, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249333540, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249333540, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249333540, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249333540, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249346570, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249348924, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249348924, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249348924, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249348924, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249348924, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249348924, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249370412, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249370412, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249370412, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249370412, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249370412, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249370412, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249376062, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249376062, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249376062, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249376062, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249376062, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070516557249376062, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051908100497271900, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051908100497271900, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051908100497271900, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051908100497271900, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051908100497271900, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051908100497271900, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124876054484162665, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124876054484162665, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124876054484162665, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124876054484162665, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124876054484162665, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124876054484162665, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558648091833734103, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558648091833734103, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558648091833734103, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558648091833734103, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558648091833734103, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558648091833734103, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955436063087620718, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955436063087620718, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955436063087620718, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142903135938182556, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142903135938182556, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142903135938182556, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142903135938182556, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142903135938182556, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142903135938182556, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267018516, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_Name
+      value: Dialogue Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -318.7353
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.5069
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710757630267185204, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629999976800111210, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629999976800111210, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629999976800111210, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629999976800111210, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629999976800111210, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629999976800111210, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925181576772479290, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925181576772479290, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925181576772479290, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925181576772479290, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925181576772479290, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925181576772479290, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056753546499630107, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056753546499630107, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056753546499630107, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056753546499630107, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056753546499630107, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056753546499630107, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090640521487007691, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090640521487007691, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090640521487007691, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090640521487007691, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090640521487007691, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090640521487007691, guid: bd1bba5e714dc924e8bece1eb5510ca9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd1bba5e714dc924e8bece1eb5510ca9, type: 3}
 --- !u!1 &1656047827
 GameObject:
   m_ObjectHideFlags: 0
@@ -33366,8 +35881,98 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1781358765750078, guid: 44d586a6cb95da24bae39f8790075b78,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1764131883}
   m_SourcePrefab: {fileID: 100100000, guid: 44d586a6cb95da24bae39f8790075b78, type: 3}
+--- !u!1 &1764131882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1781358765750078, guid: 44d586a6cb95da24bae39f8790075b78,
+    type: 3}
+  m_PrefabInstance: {fileID: 1764131881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1764131883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764131882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1803144848
 GameObject:
   m_ObjectHideFlags: 0
@@ -33480,12 +36085,215 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803144848}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1837826715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1837826716}
+  - component: {fileID: 1837826718}
+  - component: {fileID: 1837826717}
+  m_Layer: 0
+  m_Name: Chapter Exit Back
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1837826716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837826715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.27, y: -4.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 915029320}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1837826717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837826715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3619e78d2430a0b488e5243eb58b2273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CorgiCustomMechanics.ChapterTravelTrigger
+  TargetSceneName: Area 6
+  DestinationSpawnId: TravelSpawn_FromNext
+  FadeOutDuration: 0.35
+  FadeInDuration: 0.35
+  FaderID: 0
+  FadeTween:
+    MMTweenDefinitionType: 0
+    MMTweenCurve: 6
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+--- !u!61 &1837826718
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837826715}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.0425272, y: 3.1682594}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.44838142, y: 6.936827}
+  m_EdgeRadius: 0
 --- !u!4 &1843962294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4836997907918112, guid: 5b5c95ee342ec9044abeecd353d082a1,
     type: 3}
   m_PrefabInstance: {fileID: 1070750824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1843962295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070750825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1851622204
 GameObject:
   m_ObjectHideFlags: 0
@@ -33610,6 +36418,136 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2837795515613804299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1880680580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1880680581}
+  - component: {fileID: 1880680582}
+  m_Layer: 0
+  m_Name: TravelSpawn_FromNext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1880680581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880680580}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 98.14, y: -15.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 915029320}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1880680582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880680580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae391d40942d63438923fae82ee233d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CorgiCustomMechanics.ChapterTravelSpawn
+  SpawnId: TravelSpawn_FromNext
+--- !u!1001 &1904870016
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3607421196914312731, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_Name
+      value: CarinaStarterAltar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431449345330220007, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: AltarCheckPoint
+      value: 
+      objectReference: {fileID: 1904870017}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.369995
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207427303883456633, guid: f124dcc34261244458594b5d77144288,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f124dcc34261244458594b5d77144288, type: 3}
+--- !u!114 &1904870017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5204589530641952408, guid: f124dcc34261244458594b5d77144288,
+    type: 3}
+  m_PrefabInstance: {fileID: 1904870016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923a01d66c4618446abb082250646478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.CheckPoint
 --- !u!1 &1905712244
 GameObject:
   m_ObjectHideFlags: 0
@@ -33761,7 +36699,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 5ae9d87fe63352c4392d91e46d8c2111,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1918876302}
   m_SourcePrefab: {fileID: 100100000, guid: 5ae9d87fe63352c4392d91e46d8c2111, type: 3}
 --- !u!4 &1918876300 stripped
 Transform:
@@ -33769,6 +36711,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1918876299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1918876301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 5ae9d87fe63352c4392d91e46d8c2111,
+    type: 3}
+  m_PrefabInstance: {fileID: 1918876299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1918876302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918876301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1933418478
 GameObject:
   m_ObjectHideFlags: 0
@@ -34487,6 +37515,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953047009}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1962841025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.369995
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450875477168254119, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454239087904023685, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6,
+        type: 3}
+      propertyPath: m_Name
+      value: CarinaStarterChest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ebffd0d4cf9facc47b32bbe6bff0d8a6, type: 3}
 --- !u!1 &1979592619
 GameObject:
   m_ObjectHideFlags: 0
@@ -34727,7 +37823,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 5ae9d87fe63352c4392d91e46d8c2111,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1982034322}
   m_SourcePrefab: {fileID: 100100000, guid: 5ae9d87fe63352c4392d91e46d8c2111, type: 3}
 --- !u!4 &1982034320 stripped
 Transform:
@@ -34735,6 +37835,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1982034319}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1982034321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 5ae9d87fe63352c4392d91e46d8c2111,
+    type: 3}
+  m_PrefabInstance: {fileID: 1982034319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1982034322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982034321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1001 &1984058831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34877,7 +38063,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984058834}
   m_SourcePrefab: {fileID: 100100000, guid: 8f734d48712330d4f8563f54d226677b, type: 3}
 --- !u!4 &1984058832 stripped
 Transform:
@@ -34885,6 +38075,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1984058831}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1984058833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495095744959786, guid: 8f734d48712330d4f8563f54d226677b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1984058831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1984058834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984058833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1989781074
 GameObject:
   m_ObjectHideFlags: 0
@@ -51808,6 +55084,74 @@ MonoBehaviour:
   BoundsCollider: {fileID: 2022083852}
   ActivateOnStartIfPlayerInside: 1
   IsActiveRoom: 0
+--- !u!1001 &2036179991
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6112336415344823009, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerUpgradeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -107.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387995232583132193, guid: 4afe36507bbe2f44f86a69f7721659d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4afe36507bbe2f44f86a69f7721659d9, type: 3}
 --- !u!1 &2054197583
 GameObject:
   m_ObjectHideFlags: 0
@@ -54947,7 +58291,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2746492010353037712, guid: 780440eb3cf920b41a06f9e8ffbff9b7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2128933749}
   m_SourcePrefab: {fileID: 100100000, guid: 780440eb3cf920b41a06f9e8ffbff9b7, type: 3}
 --- !u!4 &2128933747 stripped
 Transform:
@@ -54955,6 +58303,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2128933746}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2128933748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2746492010353037712, guid: 780440eb3cf920b41a06f9e8ffbff9b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2128933746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2128933749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128933748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!4 &2144629639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1297406248094218896, guid: 08b8cb52b3b06044dac491f1226d3ead,
@@ -55603,8 +59037,98 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1297406248094218851, guid: 08b8cb52b3b06044dac491f1226d3ead,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1297406247453280537}
   m_SourcePrefab: {fileID: 100100000, guid: 08b8cb52b3b06044dac491f1226d3ead, type: 3}
+--- !u!1 &1297406247453280536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1297406248094218851, guid: 08b8cb52b3b06044dac491f1226d3ead,
+    type: 3}
+  m_PrefabInstance: {fileID: 1297406247453280535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1297406247453280537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297406247453280536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &1327801139373671073
 GameObject:
   m_ObjectHideFlags: 0
@@ -56196,8 +59720,98 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2138494973089799906, guid: 9b734c1bfc100614cbb8fca3548b64bd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2138494973712192689}
   m_SourcePrefab: {fileID: 100100000, guid: 9b734c1bfc100614cbb8fca3548b64bd, type: 3}
+--- !u!1 &2138494973712192688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2138494973089799906, guid: 9b734c1bfc100614cbb8fca3548b64bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2138494973712192687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2138494973712192689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138494973712192688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!114 &2232213380686876682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56582,8 +60196,98 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2746492010353037712, guid: 780440eb3cf920b41a06f9e8ffbff9b7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2746492010957775007}
   m_SourcePrefab: {fileID: 100100000, guid: 780440eb3cf920b41a06f9e8ffbff9b7, type: 3}
+--- !u!1 &2746492010957775006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2746492010353037712, guid: 780440eb3cf920b41a06f9e8ffbff9b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2746492010957775005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2746492010957775007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2746492010957775006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!23 &2837219967107185995
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -56829,8 +60533,98 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2837795514112207213, guid: 271785ad4a3328642b6c2354e1e9f696,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2837795515613804301}
   m_SourcePrefab: {fileID: 100100000, guid: 271785ad4a3328642b6c2354e1e9f696, type: 3}
+--- !u!1 &2837795515613804300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2837795514112207213, guid: 271785ad4a3328642b6c2354e1e9f696,
+    type: 3}
+  m_PrefabInstance: {fileID: 2837795515613804299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2837795515613804301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2837795515613804300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!23 &2838106528038466023
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -57235,8 +61029,98 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3592319805452970567, guid: 9e23937239b78844bad3d27387566e42,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3592319805465358761}
   m_SourcePrefab: {fileID: 100100000, guid: 9e23937239b78844bad3d27387566e42, type: 3}
+--- !u!1 &3592319805465358760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3592319805452970567, guid: 9e23937239b78844bad3d27387566e42,
+    type: 3}
+  m_PrefabInstance: {fileID: 3592319805465358759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3592319805465358761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592319805465358760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!1 &3694847317463424128
 GameObject:
   m_ObjectHideFlags: 0
@@ -57523,8 +61407,18 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6827138762926177345, guid: 06fbdff59b6b4ce42a2ce477d7db655d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7568012426139487452}
   m_SourcePrefab: {fileID: 100100000, guid: 06fbdff59b6b4ce42a2ce477d7db655d, type: 3}
+--- !u!1 &4015000557844099253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6827138762926177345, guid: 06fbdff59b6b4ce42a2ce477d7db655d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4015000557844099252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4027281187739065329
 GameObject:
   m_ObjectHideFlags: 0
@@ -58957,6 +62851,86 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4015000557844099252}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7568012426139487452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015000557844099253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!33 &7598631148253244284
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -59584,8 +63558,98 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8982701881776073808, guid: e34a370d13054c34e98bec50a9c938e3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8982701882171682987}
   m_SourcePrefab: {fileID: 100100000, guid: e34a370d13054c34e98bec50a9c938e3, type: 3}
+--- !u!1 &8982701882171682986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8982701881776073808, guid: e34a370d13054c34e98bec50a9c938e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8982701882171682985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8982701882171682987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982701882171682986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80847f84ae6ba45af399df14d43c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.CorgiEngine::MoreMountains.CorgiEngine.Loot
+  LootMode: 0
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 0}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
+    MinimumSphereRadius: 1
+    MaximumSphereRadius: 2
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AvoidRadius: 0.25
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GimosSize: 1
+  SpawnLootButton: 0
 --- !u!114 &9026271657234871462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59716,3 +63780,11 @@ SceneRoots:
   - {fileID: 2104385616}
   - {fileID: 1030895307}
   - {fileID: 65802094}
+  - {fileID: 1576848477}
+  - {fileID: 2036179991}
+  - {fileID: 1482830745}
+  - {fileID: 1484968915}
+  - {fileID: 190179859}
+  - {fileID: 1904870016}
+  - {fileID: 1962841025}
+  - {fileID: 915029320}

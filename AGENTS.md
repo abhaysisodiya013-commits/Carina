@@ -3,6 +3,14 @@
 ## Project
 Unity 2D game using Corgi Engine.
 
+## Required project memory
+- For simple one-off tasks, you do not need to read `.codex/CARINA_MEMORY.md`.
+- For non-trivial Carina work, read or reference `.codex/CARINA_MEMORY.md` before acting.
+- For deep or risky work, read the relevant sections carefully before planning changes.
+- Treat `.codex/CARINA_MEMORY.md` as the inherited Antigravity project memory and architecture map.
+- Keep that memory safe. Do not delete, overwrite, or shrink it unless the user explicitly asks.
+- The memory is historical context, not live truth. Verify current code, Inspector values, prefab links, scene hierarchy, animator parameters, and save state with code search or Unity MCP before acting.
+
 ## Allowed scope
 Work only in:
 - Assets
@@ -35,6 +43,7 @@ Ignore these folders unless explicitly asked:
 - Follow existing Corgi Engine patterns/components.
 - Do not create duplicate player, camera, enemy, input, UI, or manager systems.
 - Do not change unrelated gameplay logic.
+- When the user asks for an implementation or fix, do the file/code/scene edits directly. Do not tell the user to copy-paste scripts or manually create files unless tool access is blocked or the user explicitly asks for instructions only.
 - Explain the root cause before editing.
 - Show changed files and summarize the diff.
 
@@ -438,6 +447,12 @@ Before writing ANY new script, search the project for similar existing code:
 3. **Identify the cause** before attempting a fix. Don't guess.
 4. **Fix in the same conversation** if possible — don't leave broken code for the user.
 
+### When Unity MCP tools are unavailable
+1. **Stop before editing Unity-related files.** Tool access failure means Inspector/prefab/scene facts may be unavailable.
+2. Check whether Unity is open with the Carina project loaded and whether the project MCP endpoint is reachable at `localhost:22436`.
+3. Run `.codex/check-setup.ps1` if local shell access is available.
+4. If MCP still is not visible, explain the tool-access problem first and avoid guessing Unity component, prefab, scene, animator, or Inspector state.
+
 ### When you realize you used the wrong approach
 1. **Tell the user** what went wrong and why.
 2. **Undo if possible** (revert the script, remove the component).
@@ -584,6 +599,7 @@ When debugging a visual issue, call `screenshot-game-view` AND `gameobject-compo
 - User says "continue from before" or "remember what we did" → read the conversation transcript
 - User references a feature/fix from a previous session → check conversation summaries
 - A bug appears in something you fixed before → the previous conversation has the context
+- For Antigravity migration context, read `.codex/CARINA_MEMORY.md` first. Treat it as historical context, not current truth; verify with code and Unity MCP before acting.
 
 ### How to check
 - Conversation summaries are provided at the start of each session

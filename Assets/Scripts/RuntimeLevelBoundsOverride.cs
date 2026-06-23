@@ -13,7 +13,7 @@ using UnityEditor;
 
 [AddComponentMenu("Corgi Engine/Level Bounds/Runtime Level Bounds Override")]
 [DefaultExecutionOrder(-1000)]
-public class RuntimeLevelBoundsOverride : MonoBehaviour
+public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEngineEvent>
 {
     [Header("Horizontal Bounds Override")]
     [Tooltip("Applies the override in Awake so camera and character bounds use the expanded values immediately.")]
@@ -119,6 +119,16 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour
 
     [Tooltip("Refreshes player ability input managers after spawn so abilities like dash don't miss startup input binding.")]
     public bool refreshAbilityInputManagersAfterSpawn = true;
+
+    [Tooltip("Clears stale mobile/keyboard input during level start so the player doesn't dash once immediately after spawning.")]
+    public bool resetPlayerInputOnSpawn = true;
+
+    [Tooltip("How many startup frames to keep clearing stale input after a level starts or the player respawns.")]
+    [Min(1)]
+    public int spawnInputResetFrames = 20;
+
+    [Tooltip("If enabled, cancels an accidental Dashing state during the spawn input reset window.")]
+    public bool cancelAccidentalDashOnSpawn = true;
 
     [Tooltip("Disables accidental Corgi GravityZone triggers in this scene. This fixes large invisible areas where player/enemies float and jump direction becomes wrong.")]
     public bool disableSceneGravityZonesOnStart = true;
@@ -254,6 +264,17 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour
     protected bool _cameraPerformanceApplied;
     protected bool _postProcessingPerformanceApplied;
     protected bool _animatorPerformanceApplied;
+    protected Coroutine _spawnInputResetCoroutine;
+
+    protected virtual void OnEnable()
+    {
+        this.MMEventStartListening<CorgiEngineEvent>();
+    }
+
+    protected virtual void OnDisable()
+    {
+        this.MMEventStopListening<CorgiEngineEvent>();
+    }
 
     protected virtual void Awake()
     {
@@ -273,6 +294,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour
         ForceScenePropsVisible();
         DisableCharacterHorizontalBounds();
         RepairGroundedJumpState();
+        BeginSpawnInputReset();
     }
 
     protected virtual void Start()
@@ -294,6 +316,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour
         ForceSceneItemPickerVisuals();
         DisableCharacterHorizontalBounds();
         RefreshPlayerAbilityInputManagers();
+        BeginSpawnInputReset();
         EnsureAirAttackAnimationOverrides();
         RepairUninitializedEnemyHealth();
         DisableDeadEnemyDamageZones();
@@ -326,6 +349,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour
         DisableSceneGravityZones();
         DisableCharacterHorizontalBounds();
         RefreshPlayerAbilityInputManagers();
+        BeginSpawnInputReset();
         EnsureAirAttackAnimationOverrides();
         GrantRetroStartingWeapons();
     }
@@ -361,6 +385,103 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour
         RepairGroundedJumpState();
         BeginRetroWeaponStartupSync();
         GrantRetroStartingWeapons();
+    }
+
+    public virtual void OnMMEvent(CorgiEngineEvent engineEvent)
+    {
+        if ((engineEvent.EventType == CorgiEngineEventTypes.LevelStart)
+            || (engineEvent.EventType == CorgiEngineEventTypes.Respawn))
+        {
+            BeginSpawnInputReset();
+        }
+    }
+
+    protected virtual void BeginSpawnInputReset()
+    {
+        if (!resetPlayerInputOnSpawn)
+        {
+            return;
+        }
+
+        ResetPlayerInputState();
+
+        if (_spawnInputResetCoroutine != null)
+        {
+            StopCoroutine(_spawnInputResetCoroutine);
+        }
+
+        _spawnInputResetCoroutine = StartCoroutine(SpawnInputResetCoroutine());
+    }
+
+    protected virtual IEnumerator SpawnInputResetCoroutine()
+    {
+        int frames = Mathf.Max(1, spawnInputResetFrames);
+        for (int i = 0; i < frames; i++)
+        {
+            ResetPlayerInputState();
+            yield return null;
+        }
+
+        _spawnInputResetCoroutine = null;
+    }
+
+    protected virtual void ResetPlayerInputState()
+    {
+        if (InputManager.HasInstance)
+        {
+            InputManager inputManager = InputManager.Instance;
+            inputManager.SetMovement(Vector2.zero);
+            inputManager.SetHorizontalMovement(0f);
+            inputManager.SetVerticalMovement(0f);
+            inputManager.SetSecondaryMovement(Vector2.zero);
+            inputManager.SetSecondaryHorizontalMovement(0f);
+            inputManager.SetSecondaryVerticalMovement(0f);
+
+            SetButtonOff(inputManager.JumpButton);
+            SetButtonOff(inputManager.DashButton);
+            SetButtonOff(inputManager.ShootButton);
+            SetButtonOff(inputManager.SecondaryShootButton);
+            SetButtonOff(inputManager.InteractButton);
+            SetButtonOff(inputManager.RunButton);
+            SetButtonOff(inputManager.RollButton);
+            SetButtonOff(inputManager.ThrowButton);
+            SetButtonOff(inputManager.GrabButton);
+        }
+
+        if (!cancelAccidentalDashOnSpawn)
+        {
+            return;
+        }
+
+        Character[] characters = FindObjectsOfType<Character>();
+        foreach (Character character in characters)
+        {
+            if (character == null
+                || character.CharacterType != Character.CharacterTypes.Player
+                || character.MovementState == null
+                || character.MovementState.CurrentState != CharacterStates.MovementStates.Dashing)
+            {
+                continue;
+            }
+
+            character.MovementState.ChangeState(CharacterStates.MovementStates.Idle);
+
+            CorgiController controller = character.GetComponent<CorgiController>();
+            if (controller != null)
+            {
+                controller.SetForce(Vector2.zero);
+            }
+        }
+    }
+
+    protected virtual void SetButtonOff(MMInput.IMButton button)
+    {
+        if (button == null)
+        {
+            return;
+        }
+
+        button.State.ChangeState(MMInput.ButtonStates.Off);
     }
 
     [ContextMenu("Apply Override")]
