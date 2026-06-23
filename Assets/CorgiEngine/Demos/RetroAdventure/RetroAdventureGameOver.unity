@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 742471601}
   - component: {fileID: 742471600}
   - component: {fileID: 742471599}
+  - component: {fileID: 742471605}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -576,9 +577,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d042072253d11428147ba0d074fa39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: Prison
+  LevelName: Main Menu (Mobile)
   Fade: 1
   Save: 1
+--- !u!114 &742471605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742471597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b5dd093d4a4e77804227056a82d5e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuSceneName: Main Menu (Mobile)
 --- !u!114 &742471601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,8 +609,8 @@ MonoBehaviour:
   ButtonPressedFirstTime:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742471600}
-        m_MethodName: GoToLevelDirect
+      - m_Target: {fileID: 742471605}
+        m_MethodName: BackToChapterSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
