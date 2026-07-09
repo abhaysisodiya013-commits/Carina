@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114111731038218972}
   - component: {fileID: 114347423533753932}
   - component: {fileID: 114519799712904978}
+  - component: {fileID: 6801851485247296636}
   m_Layer: 13
   m_Name: RetroGhost
   m_TagString: Untagged
@@ -758,6 +759,54 @@ MonoBehaviour:
   DisplayDurationOnHit: 1
   HideBarAtZero: 1
   HideBarAtZeroDelay: 0
+--- !u!114 &6801851485247296636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643528135131952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightCollider2D
+  shadowType: 1
+  shadowLayer: 0
+  shadowDistance: 0
+  shadowTranslucency: 0
+  maskType: 1
+  maskEffect: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskTranslucency: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 212794025785470094}
+  applyToChildren: 0
+  usingEvents: 0
+  mainShape:
+    shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    shadowDistance: 0
+    shadowTranslucency: 0
+    maskTranslucency: 1
+    transform: {fileID: 4836997907918112}
+  shapes:
+  - shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    shadowDistance: 0
+    shadowTranslucency: 0
+    maskTranslucency: 1
+    transform: {fileID: 4836997907918112}
 --- !u!1 &4353946734877776802
 GameObject:
   m_ObjectHideFlags: 0

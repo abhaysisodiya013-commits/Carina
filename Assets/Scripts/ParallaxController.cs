@@ -86,6 +86,7 @@ namespace MoreMountains.CorgiEngine
         private Vector3 previousCameraPosition;
         private bool initialized;
         private bool warnedAboutTiles;
+        private int _lastUpdatedFrame = -1;
 
         private void OnEnable()
         {
@@ -102,6 +103,14 @@ namespace MoreMountains.CorgiEngine
             Initialize();
         }
 
+        private void LateUpdate()
+        {
+            if (camComponent == null)
+            {
+                UpdateParallax();
+            }
+        }
+
         private void HandleCameraPreCull(Camera renderingCamera)
         {
             if (camComponent != null && renderingCamera != camComponent)
@@ -114,6 +123,13 @@ namespace MoreMountains.CorgiEngine
 
         private void UpdateParallax()
         {
+            if (_lastUpdatedFrame == Time.frameCount)
+            {
+                return;
+            }
+
+            _lastUpdatedFrame = Time.frameCount;
+
             if (!initialized)
             {
                 Initialize();

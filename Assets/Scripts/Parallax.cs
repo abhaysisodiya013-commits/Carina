@@ -46,6 +46,7 @@ public class Parallax : MonoBehaviour
     private bool warnedAboutTiles;
     private Camera cameraComponent;
     private MoreMountains.CorgiEngine.ParallaxLayerOverride overrideSettings;
+    private int _lastUpdatedFrame = -1;
 
     private void OnEnable()
     {
@@ -62,6 +63,14 @@ public class Parallax : MonoBehaviour
         Initialize();
     }
 
+    private void LateUpdate()
+    {
+        if (cameraComponent == null)
+        {
+            UpdateParallax();
+        }
+    }
+
     private void HandleCameraPreCull(Camera renderingCamera)
     {
         if (cameraComponent != null && renderingCamera != cameraComponent)
@@ -74,6 +83,13 @@ public class Parallax : MonoBehaviour
 
     private void UpdateParallax()
     {
+        if (_lastUpdatedFrame == Time.frameCount)
+        {
+            return;
+        }
+
+        _lastUpdatedFrame = Time.frameCount;
+
         if (!initialized)
         {
             Initialize();

@@ -6,7 +6,7 @@ using UnityEngine;
 public class GateGameOverTrigger : MonoBehaviour
 {
     [Tooltip("Scene to load when the player enters this gate. If empty, the active GameManager GameOverScene is used.")]
-    public string gameOverSceneName = "RetroAdventureGameOver";
+    public string gameOverSceneName = "";
 
     [Tooltip("If true, GameManager.Instance.GameOverScene is preferred when it is set.")]
     public bool preferGameManagerGameOverScene = true;
@@ -27,17 +27,14 @@ public class GateGameOverTrigger : MonoBehaviour
         }
 
         _triggered = true;
-        CorgiEngineEvent.Trigger(CorgiEngineEventTypes.GameOver);
 
-        string targetScene = gameOverSceneName;
-        if (preferGameManagerGameOverScene && GameManager.HasInstance && !string.IsNullOrEmpty(GameManager.Instance.GameOverScene))
+        Health health = character.GetComponent<Health>();
+        if (health != null)
         {
-            targetScene = GameManager.Instance.GameOverScene;
+            health.Kill();
+            return;
         }
 
-        if (!string.IsNullOrEmpty(targetScene))
-        {
-            MMSceneLoadingManager.LoadScene(targetScene);
-        }
+        CorgiEngineEvent.Trigger(CorgiEngineEventTypes.PlayerDeath, character);
     }
 }

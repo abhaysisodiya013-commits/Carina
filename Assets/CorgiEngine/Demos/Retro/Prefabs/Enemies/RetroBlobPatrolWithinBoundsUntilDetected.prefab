@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 3592319805452970566}
   - component: {fileID: 3592319805452970582}
   - component: {fileID: 3592319805452970583}
+  - component: {fileID: 7274958290873909665}
   m_Layer: 13
   m_Name: RetroBlobPatrolWithinBoundsUntilDetected
   m_TagString: Untagged
@@ -774,6 +775,54 @@ MonoBehaviour:
   ObstaclesLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &7274958290873909665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592319805452970567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightCollider2D
+  shadowType: 1
+  shadowLayer: 0
+  shadowDistance: 0
+  shadowTranslucency: 0
+  maskType: 1
+  maskEffect: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskTranslucency: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 3592319805452970569}
+  applyToChildren: 0
+  usingEvents: 0
+  mainShape:
+    shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    shadowDistance: 0
+    shadowTranslucency: 0
+    maskTranslucency: 1
+    transform: {fileID: 3592319805452970568}
+  shapes:
+  - shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    shadowDistance: 0
+    shadowTranslucency: 0
+    maskTranslucency: 1
+    transform: {fileID: 3592319805452970568}
 --- !u!1 &5271560857002093525
 GameObject:
   m_ObjectHideFlags: 0

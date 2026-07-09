@@ -616,16 +616,8 @@ namespace MoreMountains.CorgiEngine
 					// if we're out of lives, we check if we have an exit scene, and move there
 					if (GameManager.Instance.CurrentLives <= 0)
 					{
-						if ((GameManager.Instance.GameOverScene != null) && (GameManager.Instance.GameOverScene != ""))
-						{
-							gameOverTriggered = true;
-							StartCoroutine(GameOverCo());
-						}
-						else
-						{
-							Cleanup();
-							CorgiEngineEvent.Trigger(CorgiEngineEventTypes.GameOver);
-						}
+						gameOverTriggered = true;
+						StartCoroutine(GameOverCo());
 					}
 				}
 
@@ -671,7 +663,11 @@ namespace MoreMountains.CorgiEngine
 
 			Cleanup();
 			CorgiEngineEvent.Trigger(CorgiEngineEventTypes.GameOver);
-			MMSceneLoadingManager.LoadScene(GameManager.Instance.GameOverScene);
+			
+			if (!string.IsNullOrEmpty(GameManager.Instance.GameOverScene))
+			{
+				MMSceneLoadingManager.LoadScene(GameManager.Instance.GameOverScene);
+			}
 		}
 
 		/// <summary>

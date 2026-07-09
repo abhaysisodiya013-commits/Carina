@@ -43,6 +43,7 @@ Ignore these folders unless explicitly asked:
 - Follow existing Corgi Engine patterns/components.
 - Do not create duplicate player, camera, enemy, input, UI, or manager systems.
 - Do not change unrelated gameplay logic.
+- **NEVER use `git checkout`, `git restore`, `git reset`, or any destructive revert command on `.unity`, `.prefab`, `.asset`, `.anim`, `.controller`, `.meta`, or other Unity serialized files unless the user explicitly asks for that exact revert and confirms they are okay losing uncommitted Inspector/scene work.** Unity scene and prefab changes are often uncommitted user work; preserve them first by copying the file to a timestamped backup and inspect/recover with Unity MCP or targeted diffs instead.
 - When the user asks for an implementation or fix, do the file/code/scene edits directly. Do not tell the user to copy-paste scripts or manually create files unless tool access is blocked or the user explicitly asks for instructions only.
 - Explain the root cause before editing.
 - Show changed files and summarize the diff.
@@ -455,7 +456,7 @@ Before writing ANY new script, search the project for similar existing code:
 
 ### When you realize you used the wrong approach
 1. **Tell the user** what went wrong and why.
-2. **Undo if possible** (revert the script, remove the component).
+2. **Undo safely if possible**. For C# scripts, a targeted revert may be acceptable if the diff is known to be yours. For Unity serialized files (`.unity`, `.prefab`, `.asset`, `.anim`, `.controller`, `.meta`), do not run destructive git revert commands; first copy the current file to a timestamped backup, inspect whether the file contains user scene/Inspector work, and recover by applying a targeted patch or using Unity MCP.
 3. **Propose the correct approach** before executing it.
 
 ### When MCP tool returns unexpected data
@@ -676,3 +677,14 @@ Things that trip up AI agents specifically:
 ## What changes made
 
 - always tell what changes you made to the file and which file in short and simple, You dont need to explain it deeply but cover the full context of the changes.
+
+## Inspector field explanations
+
+- When adding or mentioning new public/serialized Inspector fields, always tell the user exactly where to find them: GameObject/component name, Inspector section/header, and field names.
+- Explain what each field controls in practical terms, including value direction for offsets/sizes when relevant.
+- If the field only has a visible effect during runtime or a specific state, say that clearly. Example: cooldown timer text is visible only while a skill is cooling down and `Show Skill Cooldown Timers` is enabled.
+
+## Verify Component Attachments Before Editing
+- **Never assume a script drives an action just because of its name.** (e.g. assuming `RestartScreenManager` handles the restart button).
+- Before modifying a script for a UI or gameplay behavior, **trace the actual event** (like `OnClick`) or read the Prefab/GameObject to confirm which script is *actually attached*.
+- Modifying an unattached script wastes time and quota. Use IDE tools (`grep` on `.prefab`) or MCP tools to verify what component is actually used by the object in question.

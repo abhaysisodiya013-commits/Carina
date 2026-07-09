@@ -80,7 +80,10 @@ namespace MoreMountains.CorgiEngine
                     continue;
                 }
 
-                bool isVSpell = GetComponent<RetroSpellCastProjectile>() != null || GetComponentInParent<RetroSpellCastProjectile>() != null;
+                bool isVSpell = GetComponent<RetroSpellCastProjectile>() != null
+                                || GetComponentInParent<RetroSpellCastProjectile>() != null
+                                || GetComponent<RetroSpellDamageMarker>() != null
+                                || GetComponentInParent<RetroSpellDamageMarker>() != null;
 
                 if (isVSpell)
                 {
@@ -128,7 +131,25 @@ namespace MoreMountains.CorgiEngine
 
         protected virtual bool IsOwner(Health targetHealth)
         {
-            return (_owner != null) && ((targetHealth.gameObject == _owner) || targetHealth.transform.IsChildOf(_owner.transform));
+            if ((_owner == null) || (targetHealth == null))
+            {
+                return false;
+            }
+
+            if ((targetHealth.gameObject == _owner) || targetHealth.transform.IsChildOf(_owner.transform))
+            {
+                return true;
+            }
+
+            Health ownerHealth = _owner.GetComponentInParent<Health>();
+            if ((ownerHealth != null) && (ownerHealth == targetHealth))
+            {
+                return true;
+            }
+
+            Character ownerCharacter = _owner.GetComponentInParent<Character>();
+            Character targetCharacter = GetTargetCharacter(targetHealth);
+            return (ownerCharacter != null) && (targetCharacter != null) && (ownerCharacter == targetCharacter);
         }
 
         protected virtual bool CanHitTarget(Health targetHealth)
@@ -146,28 +167,33 @@ namespace MoreMountains.CorgiEngine
         protected virtual void RegisterHit(Health targetHealth)
         {
             int hitCount = _hitCounts.ContainsKey(targetHealth) ? _hitCounts[targetHealth] : 0;
+
             _hitCounts[targetHealth] = hitCount + 1;
             _nextHitTimes[targetHealth] = Time.time + _hitInterval;
         }
 
         protected virtual void ApplyFreezeEffect(Health targetHealth)
         {
-            if (!_freezeTargetsOnHit || (_freezeDuration <= 0f) || (targetHealth == null))
+            if (!_freezeTargetsOnHit)
             {
                 return;
             }
 
-            RetroTemporaryFreezeEffect freezeEffect = targetHealth.GetComponent<RetroTemporaryFreezeEffect>();
-            if (freezeEffect == null)
+            Character targetCharacter = GetTargetCharacter(targetHealth);
+            GameObject targetObj = (targetCharacter != null) ? targetCharacter.gameObject : targetHealth.gameObject;
+
+            RetroTemporaryFreezeEffect freeze = targetObj.GetComponent<RetroTemporaryFreezeEffect>();
+            if (freeze == null)
             {
-                freezeEffect = targetHealth.gameObject.AddComponent<RetroTemporaryFreezeEffect>();
+                freeze = targetObj.AddComponent<RetroTemporaryFreezeEffect>();
             }
 
-            freezeEffect.FreezeFor(_freezeDuration, _freezeDelay, _freezeTintColor);
+            freeze.FreezeFor(_freezeDuration, _freezeDelay, _freezeTintColor);
         }
 
         protected virtual bool CanDamageTarget(Collider2D targetCollider, Health targetHealth)
         {
+            Character character = GetTargetCharacter(targetHealth);
             bool layerMatches = ((_targetLayerMask.value & (1 << targetCollider.gameObject.layer)) != 0)
                                 || ((_targetLayerMask.value & (1 << targetHealth.gameObject.layer)) != 0);
             if (layerMatches)
@@ -180,13 +206,23 @@ namespace MoreMountains.CorgiEngine
                 return false;
             }
 
+            return (character != null) && (character.CharacterType == Character.CharacterTypes.AI);
+        }
+
+        protected virtual Character GetTargetCharacter(Health targetHealth)
+        {
+            if (targetHealth == null)
+            {
+                return null;
+            }
+
             Character character = targetHealth.GetComponent<Character>();
             if (character == null)
             {
                 character = targetHealth.GetComponentInParent<Character>();
             }
 
-            return (character != null) && (character.CharacterType == Character.CharacterTypes.AI);
+            return character;
         }
 
         protected virtual void OnDrawGizmosSelected()
@@ -196,16 +232,32 @@ namespace MoreMountains.CorgiEngine
         }
     }
 
+    public class RetroSpellDamageMarker : MonoBehaviour
+    {
+    }
+
     public class RetroTemporaryFreezeEffect : MonoBehaviour
     {
+        public const float MaxFreezeDuration = 2f;
+
+        protected struct MovementStateSnapshot
+        {
+            public bool ReadInput;
+            public bool AbilityPermitted;
+            public bool MovementForbidden;
+        }
+
         protected Character _character;
+        protected MoreMountains.Tools.AIBrain _aiBrain;
+        protected CharacterHorizontalMovement[] _horizontalMovements;
         protected Animator[] _animators;
         protected SpriteRenderer[] _spriteRenderers;
         protected readonly Dictionary<Animator, float> _storedAnimatorSpeeds = new Dictionary<Animator, float>();
         protected readonly Dictionary<SpriteRenderer, Color> _storedSpriteColors = new Dictionary<SpriteRenderer, Color>();
-        protected CharacterStates.CharacterConditions _conditionBeforeFreeze;
+        protected readonly Dictionary<CharacterHorizontalMovement, MovementStateSnapshot> _storedMovementStates = new Dictionary<CharacterHorizontalMovement, MovementStateSnapshot>();
         protected Coroutine _freezeCoroutine;
         protected bool _isFrozen;
+        protected float _restoreAtRealtime = -1f;
 
         protected virtual void Awake()
         {
@@ -219,6 +271,9 @@ namespace MoreMountains.CorgiEngine
 
         public virtual void FreezeFor(float duration, float delay, Color tintColor)
         {
+            duration = Mathf.Min(Mathf.Max(0f, duration), MaxFreezeDuration);
+            delay = Mathf.Max(0f, delay);
+
             if (duration <= 0f)
             {
                 return;
@@ -229,46 +284,123 @@ namespace MoreMountains.CorgiEngine
             if (_freezeCoroutine != null)
             {
                 StopCoroutine(_freezeCoroutine);
+                _freezeCoroutine = null;
+            }
+
+            if (_isFrozen)
+            {
+                RestoreSlow();
             }
 
             _freezeCoroutine = StartCoroutine(FreezeCoroutine(duration, delay, tintColor));
+        }
+
+        protected virtual void Update()
+        {
+            if (_isFrozen && _restoreAtRealtime > 0f && Time.realtimeSinceStartup >= _restoreAtRealtime)
+            {
+                if (_freezeCoroutine != null)
+                {
+                    StopCoroutine(_freezeCoroutine);
+                    _freezeCoroutine = null;
+                }
+
+                RestoreSlow();
+            }
         }
 
         protected virtual IEnumerator FreezeCoroutine(float duration, float delay, Color tintColor)
         {
             if (delay > 0f)
             {
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSecondsRealtime(delay);
             }
 
-            ApplyFreeze(tintColor);
-            yield return new WaitForSeconds(duration);
-            RestoreFreeze();
+            ApplySlow(tintColor);
+            _restoreAtRealtime = Time.realtimeSinceStartup + duration;
+            yield return new WaitForSecondsRealtime(duration);
+            RestoreSlow();
             _freezeCoroutine = null;
         }
 
-        protected virtual void ApplyFreeze(Color tintColor)
+        protected virtual void ApplySlow(Color tintColor)
         {
             if (_isFrozen)
             {
-                ApplyVisualFreeze(tintColor);
+                ApplyVisualSlow(tintColor);
                 return;
             }
 
-            if ((_character != null) && (_character.ConditionState != null))
+            if ((_character != null)
+                && (_character.CharacterType == Character.CharacterTypes.Player))
             {
-                _conditionBeforeFreeze = _character.ConditionState.CurrentState;
-                if (_conditionBeforeFreeze != CharacterStates.CharacterConditions.Dead)
-                {
-                    _character.Freeze();
-                }
+                return;
             }
 
-            ApplyVisualFreeze(tintColor);
+            CacheMovementState();
+            ApplyMovementSlow();
+
+            if (_character != null)
+            {
+                _character.Freeze();
+            }
+
+            if (_aiBrain != null)
+            {
+                _aiBrain.enabled = false;
+            }
+
+            ApplyVisualSlow(tintColor);
             _isFrozen = true;
         }
 
-        protected virtual void ApplyVisualFreeze(Color tintColor)
+        protected virtual void CacheMovementState()
+        {
+            if (_horizontalMovements == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < _horizontalMovements.Length; i++)
+            {
+                CharacterHorizontalMovement movement = _horizontalMovements[i];
+                if ((movement == null) || _storedMovementStates.ContainsKey(movement))
+                {
+                    continue;
+                }
+
+                _storedMovementStates[movement] = new MovementStateSnapshot
+                {
+                    ReadInput = movement.ReadInput,
+                    AbilityPermitted = movement.AbilityPermitted,
+                    MovementForbidden = movement.MovementForbidden
+                };
+            }
+        }
+
+        protected virtual void ApplyMovementSlow()
+        {
+            if (_horizontalMovements == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < _horizontalMovements.Length; i++)
+            {
+                CharacterHorizontalMovement movement = _horizontalMovements[i];
+                if (movement == null)
+                {
+                    continue;
+                }
+
+                movement.ReadInput = false;
+                movement.AbilityPermitted = false;
+                movement.MovementForbidden = true;
+                movement.SetHorizontalMove(0f);
+            }
+        }
+
+        protected virtual void ApplyVisualSlow(Color tintColor)
         {
             for (int i = 0; i < _animators.Length; i++)
             {
@@ -301,8 +433,10 @@ namespace MoreMountains.CorgiEngine
             }
         }
 
-        protected virtual void RestoreFreeze()
+        protected virtual void RestoreSlow()
         {
+            RestoreMovementState();
+
             foreach (KeyValuePair<Animator, float> storedAnimator in _storedAnimatorSpeeds)
             {
                 if (storedAnimator.Key != null)
@@ -321,15 +455,38 @@ namespace MoreMountains.CorgiEngine
             }
             _storedSpriteColors.Clear();
 
-            if ((_character != null)
-                && (_character.ConditionState != null)
-                && (_character.ConditionState.CurrentState == CharacterStates.CharacterConditions.Frozen)
-                && (_conditionBeforeFreeze != CharacterStates.CharacterConditions.Dead))
+            if (_aiBrain != null)
+            {
+                _aiBrain.enabled = true;
+            }
+
+            if (_character != null)
             {
                 _character.UnFreeze();
             }
 
+            _restoreAtRealtime = -1f;
+
             _isFrozen = false;
+        }
+
+        protected virtual void RestoreMovementState()
+        {
+            foreach (KeyValuePair<CharacterHorizontalMovement, MovementStateSnapshot> storedMovement in _storedMovementStates)
+            {
+                CharacterHorizontalMovement movement = storedMovement.Key;
+                if (movement == null)
+                {
+                    continue;
+                }
+
+                MovementStateSnapshot snapshot = storedMovement.Value;
+                movement.ReadInput = snapshot.ReadInput;
+                movement.AbilityPermitted = snapshot.AbilityPermitted;
+                movement.MovementForbidden = snapshot.MovementForbidden;
+            }
+
+            _storedMovementStates.Clear();
         }
 
         protected virtual void CacheComponents()
@@ -341,6 +498,8 @@ namespace MoreMountains.CorgiEngine
             }
 
             Transform root = (_character != null) ? _character.transform : transform;
+            _aiBrain = root.GetComponent<MoreMountains.Tools.AIBrain>();
+            _horizontalMovements = root.GetComponentsInChildren<CharacterHorizontalMovement>();
             _animators = root.GetComponentsInChildren<Animator>();
             _spriteRenderers = root.GetComponentsInChildren<SpriteRenderer>();
         }
@@ -352,7 +511,7 @@ namespace MoreMountains.CorgiEngine
                 StopCoroutine(_freezeCoroutine);
                 _freezeCoroutine = null;
             }
-            RestoreFreeze();
+            RestoreSlow();
         }
     }
 }

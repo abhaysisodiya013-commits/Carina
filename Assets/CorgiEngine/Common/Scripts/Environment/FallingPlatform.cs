@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
 
@@ -17,6 +17,9 @@ namespace MoreMountains.CorgiEngine
 		/// the speed at which the platforms falls
 		[Tooltip("the speed at which the platforms falls")]
 		public float FallSpeed = 2f;
+		/// how long the platform falls before disappearing and triggering a respawn. If 0, falls until level bounds.
+		[Tooltip("how long the platform falls before disappearing and triggering a respawn. If 0, falls until level bounds.")]
+		public float FallDuration = 1f;
 		/// the tolerance to apply when comparing the relative positions of the falling platform and 
 		[Tooltip("the tolerance to apply when comparing the relative positions of the falling platform and ")]
 		public float Tolerance = 0.1f;
@@ -29,6 +32,7 @@ namespace MoreMountains.CorgiEngine
 		protected Collider2D _collider2D;
 		protected Vector3 _initialPosition;
 		protected float _timer;
+		protected float _fallTimer;
 		protected float _platformTopY;
 		protected AutoRespawn _autoRespawn;
 
@@ -52,6 +56,7 @@ namespace MoreMountains.CorgiEngine
 			_bounds = LevelManager.Instance.LevelBounds;
 			_initialPosition = this.transform.position;
 			_timer = TimeBeforeFall;
+			_fallTimer = 0f;
 		}
 		
 		/// <summary>
@@ -68,7 +73,9 @@ namespace MoreMountains.CorgiEngine
 				                           
 				transform.Translate(_newPosition,Space.World);
 				
-				if (transform.position.y < _bounds.min.y)
+				_fallTimer += Time.deltaTime;
+				
+				if (transform.position.y < _bounds.min.y || (FallDuration > 0f && _fallTimer >= FallDuration))
 				{
 					DisableFallingPlatform ();
 				}
@@ -90,6 +97,7 @@ namespace MoreMountains.CorgiEngine
 			}
 			this.transform.position = _initialPosition;		
 			_timer = TimeBeforeFall;
+			_fallTimer = 0f;
 			_shaking = false;
 		}
 
@@ -146,6 +154,7 @@ namespace MoreMountains.CorgiEngine
 		{
 			this.transform.position = _initialPosition;		
 			_timer = TimeBeforeFall;
+			_fallTimer = 0f;
 			_shaking = false;
 		}
 

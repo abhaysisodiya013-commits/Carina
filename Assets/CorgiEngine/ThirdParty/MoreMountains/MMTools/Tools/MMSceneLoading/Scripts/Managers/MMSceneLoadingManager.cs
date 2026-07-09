@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -54,13 +54,13 @@ namespace MoreMountains.Tools
 
 		[Header("Time")]
 		/// the duration (in seconds) of the initial fade in
-		public float StartFadeDuration=0.2f;
+		public float StartFadeDuration=0f;
 		/// the speed of the progress bar
-		public float ProgressBarSpeed=2f;
+		public float ProgressBarSpeed=1.25f;
 		/// the duration (in seconds) of the load complete fade out
-		public float ExitFadeDuration=0.2f;
+		public float ExitFadeDuration=1f;
 		/// the delay (in seconds) before leaving the scene when complete
-		public float LoadCompleteDelay=0.5f;
+		public float LoadCompleteDelay=0f;
 
 		protected AsyncOperation _asyncOperation;
 		protected static string _sceneToLoad = "";
@@ -68,6 +68,8 @@ namespace MoreMountains.Tools
 		protected float _fillTarget=0f;
 		protected string _loadingTextValue;
 		protected Image _progressBarImage;
+		protected Slider _progressBarSlider;
+		protected const float _progressCompleteTolerance = 0.001f;
 
 		protected static MMTweenType _tween;
 
@@ -103,9 +105,21 @@ namespace MoreMountains.Tools
 		protected virtual void Start()
 		{
 			_tween = new MMTweenType(MMTween.MMTweenCurve.EaseOutCubic);
-			_progressBarImage = LoadingProgressBar.GetComponent<Image>();
+			StartFadeDuration = 0f;
+			ProgressBarSpeed = Mathf.Max(0.25f, ProgressBarSpeed);
+			LoadCompleteDelay = 0f;
+			ExitFadeDuration = Mathf.Max(1f, ExitFadeDuration);
+			if (LoadingProgressBar != null)
+			{
+				_progressBarSlider = LoadingProgressBar.GetComponent<Slider>();
+				// If a slider is found, we might still have a background image, but we prioritize the slider.
+				if (_progressBarSlider == null)
+				{
+					_progressBarImage = LoadingProgressBar.GetComponent<Image>();
+				}
+			}
             
-			_loadingTextValue =LoadingText.text;
+			_loadingTextValue = (LoadingText != null) ? LoadingText.text : string.Empty;
 			if (!string.IsNullOrEmpty(_sceneToLoad))
 			{
 				StartCoroutine(LoadAsynchronously());
@@ -118,7 +132,14 @@ namespace MoreMountains.Tools
 		protected virtual void Update()
 		{
 			Time.timeScale = 1f;
-			_progressBarImage.fillAmount = MMMaths.Approach(_progressBarImage.fillAmount,_fillTarget,Time.deltaTime*ProgressBarSpeed);
+			if (_progressBarSlider != null)
+			{
+				_progressBarSlider.value = MMMaths.Approach(_progressBarSlider.value, _fillTarget, Time.deltaTime * ProgressBarSpeed);
+			}
+			else if (_progressBarImage != null)
+			{
+				_progressBarImage.fillAmount = MMMaths.Approach(_progressBarImage.fillAmount,_fillTarget,Time.deltaTime*ProgressBarSpeed);
+			}
 		}
 
 		/// <summary>
@@ -129,9 +150,11 @@ namespace MoreMountains.Tools
 			// we setup our various visual elements
 			LoadingSetup();
 
-			// we fade from black
-			MMFadeOutEvent.Trigger(StartFadeDuration, _tween);
-			yield return new WaitForSeconds(StartFadeDuration);
+			if (StartFadeDuration > 0f)
+			{
+				MMFadeOutEvent.Trigger(StartFadeDuration, _tween);
+				yield return new WaitForSeconds(StartFadeDuration);
+			}
             
 			// we start loading the scene
 			_asyncOperation = SceneManager.LoadSceneAsync(_sceneToLoad,LoadSceneMode.Single );
@@ -146,10 +169,21 @@ namespace MoreMountains.Tools
 			// when the load is close to the end (it'll never reach it), we set it to 100%
 			_fillTarget = 1f;
 
-			// we wait for the bar to be visually filled to continue
-			while (_progressBarImage.fillAmount != _fillTarget)
+			if (_progressBarSlider != null)
 			{
-				yield return null;
+				while (Mathf.Abs(_progressBarSlider.value - _fillTarget) > _progressCompleteTolerance)
+				{
+					yield return null;
+				}
+				_progressBarSlider.value = _fillTarget;
+			}
+			else if (_progressBarImage != null)
+			{
+				while (Mathf.Abs(_progressBarImage.fillAmount - _fillTarget) > _progressCompleteTolerance)
+				{
+					yield return null;
+				}
+				_progressBarImage.fillAmount = _fillTarget;
 			}
 
 			// the load is now complete, we replace the bar with the complete animation
@@ -170,9 +204,22 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual void LoadingSetup() 
 		{
-			LoadingCompleteAnimation.alpha=0;
-			_progressBarImage.fillAmount = 0f;
-			LoadingText.text = _loadingTextValue;
+			if (LoadingCompleteAnimation != null)
+			{
+				LoadingCompleteAnimation.alpha=0;
+			}
+			if (_progressBarSlider != null)
+			{
+				_progressBarSlider.value = 0f;
+			}
+			else if (_progressBarImage != null)
+			{
+				_progressBarImage.fillAmount = 0f;
+			}
+			if (LoadingText != null)
+			{
+				LoadingText.text = _loadingTextValue;
+			}
 		}
 
 		/// <summary>
@@ -181,10 +228,19 @@ namespace MoreMountains.Tools
 		protected virtual void LoadingComplete() 
 		{
 			LoadingSceneEvent.Trigger(_sceneToLoad, LoadingStatus.InterpolatedLoadProgressComplete);
-			LoadingCompleteAnimation.gameObject.SetActive(true);
-			StartCoroutine(MMFade.FadeCanvasGroup(LoadingProgressBar,0.1f,0f));
-			StartCoroutine(MMFade.FadeCanvasGroup(LoadingAnimation,0.1f,0f));
-			StartCoroutine(MMFade.FadeCanvasGroup(LoadingCompleteAnimation,0.1f,1f));
+			if (LoadingCompleteAnimation != null)
+			{
+				LoadingCompleteAnimation.gameObject.SetActive(true);
+			}
+			// StartCoroutine(MMFade.FadeCanvasGroup(LoadingProgressBar,0.1f,0f)); // Keep progress bar visible
+			if (LoadingAnimation != null)
+			{
+				StartCoroutine(MMFade.FadeCanvasGroup(LoadingAnimation,0.1f,0f));
+			}
+			if (LoadingCompleteAnimation != null)
+			{
+				StartCoroutine(MMFade.FadeCanvasGroup(LoadingCompleteAnimation,0.1f,1f));
+			}
 		}
 	}
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 #if UNITY_EDITOR
@@ -16,8 +17,18 @@ namespace MoreMountains.CorgiEngine
     /// Plays three direct skill animation clips, with normal/rage variants.
     /// </summary>
     [AddComponentMenu("Corgi Engine/Character/Abilities/Retro Skill Animation Input")]
-    public class RetroSkillAnimationInput : CharacterAbility
+    public class RetroSkillAnimationInput : CharacterAbility, MMEventListener<MMDamageTakenEvent>
     {
+        [System.Serializable]
+        public class SkillCooldownTimerLayout
+        {
+            public Vector2 Position = Vector2.zero;
+            public Vector2 Size = new Vector2(64f, 64f);
+            public Vector3 Rotation = Vector3.zero;
+            public Vector3 Scale = Vector3.one;
+            public int FontSize = 28;
+        }
+
         [Header("Input")]
         public bool ReadInput = true;
         public KeyCode SpellKey = KeyCode.V;
@@ -57,6 +68,7 @@ namespace MoreMountains.CorgiEngine
 
         [Header("Ground Attack VFX")]
         public AnimationClip GroundAttackVfxClip;
+        public Sprite GroundAttackVfxSprite;
         public float GroundAttackVfxDuration = 0f;
         public Vector2 GroundAttackVfxOffset = new Vector2(0.75f, 0f);
         public Vector2 GroundAttackVfxVisualSize = Vector2.one;
@@ -74,7 +86,7 @@ namespace MoreMountains.CorgiEngine
         public bool FlipGroundAttackVfxWithFacing = true;
         public bool GroundAttackVfxFacesRight = true;
         public bool GroundAttackVfxFreezesEnemies = true;
-        public float GroundAttackVfxFreezeDuration = 1f;
+        public float GroundAttackVfxFreezeDuration = 3f;
         public float GroundAttackVfxFreezeDelay = 0f;
         public Color GroundAttackVfxFreezeColor = new Color(0.55f, 0.9f, 1f, 1f);
 
@@ -147,10 +159,9 @@ namespace MoreMountains.CorgiEngine
         public bool EnableSkillDamage = true;
         public LayerMask SkillDamageTargetLayerMask = LayerManager.EnemiesLayerMask;
         public bool DamageAnyAICharacter = true;
-        public bool DestroySpellProjectileOnEnemyHit = true;
         public float SpellDamage = 18f;
-        public Vector2 SpellDamageAreaSize = new Vector2(0.5f, 0.5f);
-        public Vector2 SpellDamageAreaOffset = Vector2.zero;
+        public Vector2 SpellAnimationDamageSize = new Vector2(1.2f, 0.9f);
+        public Vector2 SpellAnimationDamageOffset = Vector2.zero;
         public float MultiAttackDamage = 12f;
         public int MultiAttackHitCount = 3;
         public float MultiAttackHitInterval = 0.08f;
@@ -174,10 +185,47 @@ namespace MoreMountains.CorgiEngine
 
         [Header("Skill Damage Gizmos")]
         public bool ShowSkillDamageGizmos = true;
-        public Color SpellDamageGizmoColor = new Color(0f, 0.8f, 1f, 0.8f);
+        public Color SpellAnimationDamageGizmoColor = new Color(0f, 0.8f, 1f, 0.8f);
         public Color MultiAttackDamageGizmoColor = new Color(1f, 0.8f, 0f, 0.8f);
         public Color SplashAttackDamageGizmoColor = new Color(1f, 0.15f, 0.05f, 0.8f);
 
+        [Header("Mana / Resource")]
+        public float CurrentMana = 100f;
+        public float MaxMana = 100f;
+        [Tooltip("Timed mana regeneration is disabled for this project. Mana refills only through enemy kills.")]
+        public float ManaRechargeRate = 0f;
+        [Tooltip("Flat mana restored when an enemy dies. 10 means +10 mana.")]
+        public float ManaPerKill = 10f;
+        public float SpellManaCost = 5f;
+        public float MultiAttackManaCost = 10f;
+        public float SplashAttackManaCost = 15f;
+        public float GroundAttackManaCost = 7f;
+        public float ShieldManaCost = 5f;
+        public float SpawnJumperManaCost = 7f;
+
+        [Header("Skill Cooldowns")]
+        public float SpellCooldown = 3f;
+        public float MultiAttackCooldown = 5f;
+        public float SplashAttackCooldown = 8f;
+        public float GroundAttackCooldown = 6f;
+        [Range(0f, 1f)]
+        public float SkillCooldownDisabledAlpha = 0.4f;
+        [Range(0f, 1f)]
+        [Tooltip("Opacity applied to a skill button when current mana is below that skill's mana cost. Spell (projectile) button is always full opacity regardless.")]
+        public float ManaInsufficientOpacity = 0.5f;
+        public bool ShowSkillCooldownTimers = true;
+        public int SkillCooldownTimerFontSize = 28;
+        public Vector2 SkillCooldownTimerOffset = Vector2.zero;
+        public Vector2 SkillCooldownTimerSize = new Vector2(64f, 64f);
+        public Color SkillCooldownTimerColor = Color.white;
+        [Header("Skill Cooldown Timer Layouts")]
+        public SkillCooldownTimerLayout SpellCooldownTimerLayout = new SkillCooldownTimerLayout();
+        public SkillCooldownTimerLayout MultiAttackCooldownTimerLayout = new SkillCooldownTimerLayout();
+        public SkillCooldownTimerLayout AreaAttackCooldownTimerLayout = new SkillCooldownTimerLayout();
+        public SkillCooldownTimerLayout GroundAttackCooldownTimerLayout = new SkillCooldownTimerLayout();
+        [Header("Mana UI")]
+        public MMProgressBar ManaBar;
+        public string[] ManaBarObjectNames = { "ManaBar", "Mana Bar", "MPBar", "MP Bar" };
         [Header("Spell Cast Projectile")]
         public Transform SpellCastPoint;
         public string SpellCastPointName = "SpellCastPoint";
@@ -192,6 +240,10 @@ namespace MoreMountains.CorgiEngine
         public bool PlaySpellCastProjectileAnimationOnce = true;
         public bool UseExactSpellCastPointPosition = true;
         public Vector2 SpellCastProjectileSpawnOffset = Vector2.zero;
+        [Tooltip("Set to 0 or higher to spawn the projectile this many seconds after spell cast starts. Leave below 0 to use Frames Before Spell Ends.")]
+        public float SpellCastProjectileDelayOverride = -1f;
+        [Tooltip("Extra seconds added to the frame-based spell projectile spawn time when Delay Override is below 0.")]
+        public float SpellCastProjectileTimeOffset = 0f;
         public int SpellCastProjectileFramesBeforeSpellEnds = 4;
         public float SpellCastProjectileScale = 2f;
         public bool FlipSpellCastProjectileWithFacing = false;
@@ -199,6 +251,14 @@ namespace MoreMountains.CorgiEngine
         public int SpellCastSortingOrderOffset = 1;
         public int SpellCastMinimumSortingOrder = 100;
         public bool LogSpellCastDebug = true;
+
+        [HideInInspector] public bool DestroySpellProjectileOnEnemyHit = true;
+        [HideInInspector] public Vector2 SpellDamageStartPointOffset = Vector2.zero;
+        [HideInInspector] public Vector2 SpellDamageEndPointOffset = Vector2.zero;
+        [HideInInspector] public float SpellDamagePathHeight = 0.75f;
+        [HideInInspector] public Vector2 SpellDamageAreaSize = new Vector2(0.5f, 0.5f);
+        [HideInInspector] public Vector2 SpellDamageAreaOffset = Vector2.zero;
+        [HideInInspector] public Color SpellDamageGizmoColor = new Color(0f, 0.8f, 1f, 0.8f);
 
         protected RetroRageModeAnimator _rageModeAnimator;
         protected CharacterHandleWeapon _characterHandleWeapon;
@@ -210,6 +270,7 @@ namespace MoreMountains.CorgiEngine
         protected Coroutine _splashInvulnerabilityCoroutine;
         protected bool _skillMovementLocked;
         protected bool _storedMovementForbidden;
+        protected bool _storedWeaponAuthorized;
         protected Health _health;
         protected bool _splashProtectionActive;
         protected bool _storedSplashInvulnerable;
@@ -231,11 +292,33 @@ namespace MoreMountains.CorgiEngine
         protected float _spawnJumperVfxEndsAt;
         protected readonly List<GameObject> _groundAttackVfxObjects = new List<GameObject>();
         protected readonly List<PlayableGraph> _groundAttackVfxGraphs = new List<PlayableGraph>();
+        protected Sprite _generatedGroundAttackVfxSprite;
 
         protected MMTouchButton _spellTouchBtn;
         protected MMTouchButton _multiAtkTouchBtn;
         protected MMTouchButton _splashAtkTouchBtn;
         protected MMTouchButton _freezeAtkTouchBtn;
+        protected CanvasGroup _spellCooldownGroup;
+        protected CanvasGroup _multiAttackCooldownGroup;
+        protected CanvasGroup _splashAttackCooldownGroup;
+        protected CanvasGroup _groundAttackCooldownGroup;
+        protected Text _spellCooldownText;
+        protected Text _multiAttackCooldownText;
+        protected Text _splashAttackCooldownText;
+        protected Text _groundAttackCooldownText;
+        protected Image _spellCooldownOverlay;
+        protected Image _multiAttackCooldownOverlay;
+        protected Image _splashAttackCooldownOverlay;
+        protected Image _groundAttackCooldownOverlay;
+        protected float _spellCooldownEndsAt;
+        protected float _multiAttackCooldownEndsAt;
+        protected float _splashAttackCooldownEndsAt;
+        protected float _groundAttackCooldownEndsAt;
+        protected readonly Dictionary<Graphic, float> _cooldownGraphicBaseAlphas = new Dictionary<Graphic, float>();
+        protected readonly Dictionary<MMTouchButton, Graphic[]> _cooldownButtonGraphics = new Dictionary<MMTouchButton, Graphic[]>();
+        protected readonly Dictionary<MMTouchButton, float> _cooldownButtonLastAlpha = new Dictionary<MMTouchButton, float>();
+        protected float _nextSkillCooldownSetupRetryAt = -1f;
+        protected const float SkillCooldownSetupRetryInterval = 0.75f;
 
         public override string HelpBoxText()
         {
@@ -244,94 +327,12 @@ namespace MoreMountains.CorgiEngine
 
         public override void EarlyProcessAbility()
         {
-            if (_shieldActive && HasShieldCancelAttackInputDown())
-            {
-                CancelShieldForWeaponAttack();
-            }
-
             base.EarlyProcessAbility();
         }
 
-        protected virtual void Update()
+        protected override void HandleInput()
         {
-            if (_shieldActive && HasShieldCancelAttackInputDown())
-            {
-                CancelShieldForWeaponAttack();
-            }
-        }
-
-        protected override void Initialization()
-        {
-            base.Initialization();
-
-            _rageModeAnimator = _character?.FindAbility<RetroRageModeAnimator>();
-            _characterHandleWeapon = _character?.FindAbility<CharacterHandleWeapon>();
-            _health = (_character != null) ? _character.GetComponent<Health>() : GetComponent<Health>();
-            if ((_health == null) && (_character != null))
-            {
-                _health = _character.GetComponentInChildren<Health>();
-            }
-            if (_health == null)
-            {
-                _health = GetComponentInParent<Health>();
-            }
-
-            if ((_animator == null) && (_character != null) && (_character.CharacterModel != null))
-            {
-                _animator = _character.CharacterModel.GetComponentInChildren<Animator>();
-            }
-
-            MMTouchButton[] touchButtons = FindObjectsOfType<MMTouchButton>(true);
-            foreach (MMTouchButton btn in touchButtons)
-            {
-                if (btn.gameObject.name == "SpellBtn") _spellTouchBtn = btn;
-                else if (btn.gameObject.name == "MultiAtkBtn") _multiAtkTouchBtn = btn;
-                else if (btn.gameObject.name == "AreaAtkBtn") _splashAtkTouchBtn = btn;
-                else if (btn.gameObject.name == "FreezeAtkBtn") _freezeAtkTouchBtn = btn;
-            }
-        }
-
-        public override void ProcessAbility()
-        {
-            base.ProcessAbility();
-
-            if (_spellCastProjectilePending && (Time.time >= _spellCastProjectileSpawnAt))
-            {
-                _spellCastProjectilePending = false;
-                SpawnSpellCastProjectile();
-            }
-
-            if (_skillGraph.IsValid() && (Time.time >= _skillEndsAt))
-            {
-                StopSkillClip();
-            }
-
-            if (_skillGraph.IsValid())
-            {
-                FreezeSkillMovement();
-            }
-
-            if (_shieldVfxGraph.IsValid() && (Time.time >= _shieldVfxAnimationEndsAt))
-            {
-                StopShieldVfxGraph();
-            }
-
-            if ((_shieldVfxObject != null) && (Time.time >= _shieldVfxEndsAt))
-            {
-                StopShieldVfx();
-            }
-
-            if (_spawnJumperVfxGraph.IsValid() && (Time.time >= _spawnJumperVfxEndsAt))
-            {
-                StopSpawnJumperVfx();
-            }
-
-            if (!ReadInput || !AbilityAuthorized)
-            {
-                return;
-            }
-
-            if (_shieldActive && WantsToUseWeapon())
+            if (_shieldActive && !IsLedgeHanging() && WantsToUseWeapon())
             {
                 if (HasShieldCancelAttackInputDown())
                 {
@@ -341,6 +342,11 @@ namespace MoreMountains.CorgiEngine
                 {
                     CancelShield();
                 }
+            }
+
+            if (!ReadInput || !AbilityAuthorized)
+            {
+                return;
             }
 
             bool spellPressed = Input.GetKeyDown(SpellKey);
@@ -355,13 +361,13 @@ namespace MoreMountains.CorgiEngine
             {
                 if (UnityEngine.InputSystem.Gamepad.current.buttonWest.wasPressedThisFrame) spellPressed = true; // X button
                 if (UnityEngine.InputSystem.Gamepad.current.buttonNorth.wasPressedThisFrame) multiPressed = true; // Y button
-                
+
                 // Triggers in Input System can be treated as buttons with wasPressedThisFrame
                 if (UnityEngine.InputSystem.Gamepad.current.rightTrigger.wasPressedThisFrame) splashPressed = true; // RT button
-                
+
                 // Mapped Freeze to both Right Shoulder (RB) and Face Button B (Circle) to cover all bases
-                if (UnityEngine.InputSystem.Gamepad.current.rightShoulder.wasPressedThisFrame) groundPressed = true; 
-                if (UnityEngine.InputSystem.Gamepad.current.buttonEast.wasPressedThisFrame) groundPressed = true; 
+                if (UnityEngine.InputSystem.Gamepad.current.rightShoulder.wasPressedThisFrame) groundPressed = true;
+                if (UnityEngine.InputSystem.Gamepad.current.buttonEast.wasPressedThisFrame) groundPressed = true;
             }
 #endif
 
@@ -397,8 +403,112 @@ namespace MoreMountains.CorgiEngine
             }
         }
 
+        protected override void Initialization()
+        {
+            base.Initialization();
+
+            _rageModeAnimator = _character?.FindAbility<RetroRageModeAnimator>();
+            _characterHandleWeapon = _character?.FindAbility<CharacterHandleWeapon>();
+            _health = (_character != null) ? _character.GetComponent<Health>() : GetComponent<Health>();
+            ManaRechargeRate = 0f;
+            CurrentMana = MaxMana; // Always start with full mana on scene load / respawn
+            BindManaBar();
+            UpdateManaBar();
+            if ((_health == null) && (_character != null))
+            {
+                _health = _character.GetComponentInChildren<Health>();
+            }
+            if (_health == null)
+            {
+                _health = GetComponentInParent<Health>();
+            }
+
+            if ((_animator == null) && (_character != null) && (_character.CharacterModel != null))
+            {
+                _animator = _character.CharacterModel.GetComponentInChildren<Animator>();
+            }
+
+            BindSkillTouchButtons();
+            SetupSkillCooldownUI();
+        }
+
+        private bool _manaBarInitializedAfterStart = false;
+
+        public override void ProcessAbility()
+        {
+            base.ProcessAbility();
+            UpdateSkillCooldownUI();
+
+            // MMProgressBar resets its value in its own Start() method.
+            // By updating it here on the first frame, we guarantee it shows the correct loaded/respawned value.
+            if (!_manaBarInitializedAfterStart)
+            {
+                UpdateManaBar();
+                CharacterJetpack jetpack = _character?.FindAbility<CharacterJetpack>();
+                if (jetpack != null && GUIManager.HasInstance && jetpack.JetpackFuelDuration > 0f)
+                {
+                    GUIManager.Instance.UpdateJetpackBar(jetpack.JetpackFuelDurationLeft, 0f, jetpack.JetpackFuelDuration, _character.PlayerID);
+                }
+                _manaBarInitializedAfterStart = true;
+            }
+
+            if (IsLedgeHanging())
+            {
+                StopSkillsForLedgeHang();
+                return;
+            }
+
+            if (_spellCastProjectilePending && (Time.time >= _spellCastProjectileSpawnAt))
+            {
+                _spellCastProjectilePending = false;
+                SpawnSpellCastProjectile();
+            }
+
+            if (_skillGraph.IsValid() && (Time.time >= _skillEndsAt))
+            {
+                StopSkillClip();
+            }
+
+            if (_skillGraph.IsValid())
+            {
+                FreezeSkillMovement();
+            }
+
+            if (_shieldVfxGraph.IsValid() && (Time.time >= _shieldVfxAnimationEndsAt))
+            {
+                StopShieldVfxGraph();
+            }
+
+            if ((_shieldVfxObject != null) && (Time.time >= _shieldVfxEndsAt))
+            {
+                StopShieldVfx();
+            }
+
+            if (_spawnJumperVfxGraph.IsValid() && (Time.time >= _spawnJumperVfxEndsAt))
+            {
+                StopSpawnJumperVfx();
+            }
+
+        }
+
         public virtual void PlaySpell()
         {
+            if (!CanStartSkillNow())
+            {
+                return;
+            }
+
+            if (IsSkillOnCooldown(_spellCooldownEndsAt))
+            {
+                return;
+            }
+
+            if (!TrySpendMana(SpellManaCost))
+            {
+                return;
+            }
+
+            StartSkillCooldown(ref _spellCooldownEndsAt, SpellCooldown);
             CancelShield();
             AnimationClip spellClip = IsRageModeActive() && (RageSpellClip != null) ? RageSpellClip : SpellClip;
             PlaySkillClip(spellClip);
@@ -408,6 +518,22 @@ namespace MoreMountains.CorgiEngine
 
         public virtual void PlayMultiAttack()
         {
+            if (!CanStartSkillNow())
+            {
+                return;
+            }
+
+            if (IsSkillOnCooldown(_multiAttackCooldownEndsAt))
+            {
+                return;
+            }
+
+            if (!TrySpendMana(MultiAttackManaCost))
+            {
+                return;
+            }
+
+            StartSkillCooldown(ref _multiAttackCooldownEndsAt, MultiAttackCooldown);
             CancelShield();
             AnimationClip multiAttackClip = IsRageModeActive() && (RageMultiAttackClip != null) ? RageMultiAttackClip : MultiAttackClip;
             PlaySkillClip(multiAttackClip);
@@ -417,6 +543,22 @@ namespace MoreMountains.CorgiEngine
 
         public virtual void PlaySplashOrAreaAttack()
         {
+            if (!CanStartSkillNow())
+            {
+                return;
+            }
+
+            if (IsSkillOnCooldown(_splashAttackCooldownEndsAt))
+            {
+                return;
+            }
+
+            if (!TrySpendMana(SplashAttackManaCost))
+            {
+                return;
+            }
+
+            StartSkillCooldown(ref _splashAttackCooldownEndsAt, SplashAttackCooldown);
             CancelShield();
             AnimationClip splashAttackClip = IsRageModeActive() && (RageAreaAttackClip != null) ? RageAreaAttackClip : SplashAttackClip;
             PlaySkillClip(splashAttackClip);
@@ -427,6 +569,16 @@ namespace MoreMountains.CorgiEngine
 
         public virtual void PlayShield()
         {
+            if (!CanStartSkillNow())
+            {
+                return;
+            }
+
+            if (!TrySpendMana(ShieldManaCost))
+            {
+                return;
+            }
+
             AnimationClip shieldClip = GetShieldClip();
             AnimationClip shieldVfxClip = GetShieldVfxClip();
             float shieldDuration = GetShieldDuration(shieldClip, shieldVfxClip);
@@ -438,6 +590,22 @@ namespace MoreMountains.CorgiEngine
 
         public virtual void PlayGroundAttack()
         {
+            if (!CanStartSkillNow())
+            {
+                return;
+            }
+
+            if (IsSkillOnCooldown(_groundAttackCooldownEndsAt))
+            {
+                return;
+            }
+
+            if (!TrySpendMana(GroundAttackManaCost))
+            {
+                return;
+            }
+
+            StartSkillCooldown(ref _groundAttackCooldownEndsAt, GroundAttackCooldown);
             CancelShield();
             AnimationClip groundAttackClip = GetGroundAttackClip();
             PlaySkillClip(groundAttackClip, GroundAttackAnimationDuration);
@@ -447,12 +615,471 @@ namespace MoreMountains.CorgiEngine
 
         public virtual void PlaySpawnJumper()
         {
+            if (!CanStartSkillNow())
+            {
+                return;
+            }
+
+            if (!TrySpendMana(SpawnJumperManaCost))
+            {
+                return;
+            }
+
             CancelShield();
             AnimationClip spawnJumperClip = GetSpawnJumperClip();
             PlaySkillClip(spawnJumperClip, SpawnJumperAnimationDuration);
             PlaySkillCameraShake();
             PlaySpawnJumperVfx(GetSpawnJumperVfxClip());
             ScheduleSpawnJumperLift();
+        }
+
+        protected virtual bool CanStartSkillNow()
+        {
+            if ((_condition != null) && (_condition.CurrentState == CharacterStates.CharacterConditions.Dead))
+            {
+                return false;
+            }
+
+            return !IsLedgeHanging();
+        }
+
+        protected virtual bool IsLedgeHanging()
+        {
+            return (_movement != null) && (_movement.CurrentState == CharacterStates.MovementStates.LedgeHanging);
+        }
+
+        protected virtual void StopSkillsForLedgeHang()
+        {
+            _spellCastProjectilePending = false;
+            CancelShield();
+            StopGroundAttackVfx();
+            StopSpawnJumper();
+            StopSkillCameraShake();
+            StopSplashCoroutines();
+            StopSkillClip();
+        }
+
+        protected virtual bool TrySpendMana(float manaCost)
+        {
+            CurrentMana = Mathf.Clamp(CurrentMana, 0f, MaxMana);
+
+            if (manaCost <= 0f)
+            {
+                return true;
+            }
+
+            if (CurrentMana < manaCost)
+            {
+                Debug.Log($"[Mana Debug] TrySpendMana({manaCost}) failed. CurrentMana={CurrentMana}");
+                return false;
+            }
+
+            CurrentMana = Mathf.Clamp(CurrentMana - manaCost, 0f, MaxMana);
+            Debug.Log($"[Mana Debug] TrySpendMana({manaCost}) succeeded. New CurrentMana={CurrentMana}");
+            UpdateManaBar();
+            return true;
+        }
+
+        protected virtual void RefillManaFromKill()
+        {
+            if ((MaxMana <= 0f) || (ManaPerKill <= 0f))
+            {
+                return;
+            }
+
+            CurrentMana = Mathf.Clamp(CurrentMana + ManaPerKill, 0f, MaxMana);
+            UpdateManaBar();
+        }
+
+        public virtual void RefillMana()
+        {
+            if (MaxMana <= 0f)
+            {
+                return;
+            }
+
+            CurrentMana = MaxMana;
+            UpdateManaBar();
+        }
+
+        protected virtual void BindManaBar()
+        {
+            if (ManaBar != null)
+            {
+                return;
+            }
+
+            if (GUIManager.HasInstance && GUIManager.Instance.JetPackBars != null && GUIManager.Instance.JetPackBars.Length > 0)
+            {
+                ManaBar = GUIManager.Instance.JetPackBars[0];
+                return;
+            }
+
+            MMProgressBar[] bars = FindObjectsOfType<MMProgressBar>(true);
+            for (int i = 0; i < bars.Length; i++)
+            {
+                if ((bars[i] == null) || (bars[i].gameObject == null))
+                {
+                    continue;
+                }
+
+                string barName = bars[i].gameObject.name;
+                if (IsManaBarName(barName))
+                {
+                    ManaBar = bars[i];
+                    return;
+                }
+            }
+        }
+
+        protected virtual bool IsManaBarName(string barName)
+        {
+            if (string.IsNullOrEmpty(barName))
+            {
+                return false;
+            }
+
+            for (int i = 0; i < ManaBarObjectNames.Length; i++)
+            {
+                string candidate = ManaBarObjectNames[i];
+                if (!string.IsNullOrEmpty(candidate) && barName.IndexOf(candidate, System.StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return true;
+                }
+            }
+
+            return barName.IndexOf("mana", System.StringComparison.OrdinalIgnoreCase) >= 0
+                   || barName.Equals("JetpackBar", System.StringComparison.OrdinalIgnoreCase)
+                   || barName.Equals("JetpackBarFront", System.StringComparison.OrdinalIgnoreCase);
+        }
+
+        protected virtual void UpdateManaBar()
+        {
+            if (ManaBar == null)
+            {
+                BindManaBar();
+            }
+
+            if (ManaBar != null)
+            {
+                ManaBar.UpdateBar(CurrentMana, 0f, MaxMana);
+            }
+        }
+
+        protected virtual bool IsSkillOnCooldown(float cooldownEndsAt)
+        {
+            return Time.time < cooldownEndsAt;
+        }
+
+        protected virtual void StartSkillCooldown(ref float cooldownEndsAt, float cooldownDuration)
+        {
+            cooldownEndsAt = (cooldownDuration > 0f) ? Time.time + cooldownDuration : 0f;
+            UpdateSkillCooldownUI();
+        }
+
+        protected virtual void SetupSkillCooldownUI()
+        {
+            BindSkillTouchButtons();
+            _spellCooldownGroup = SetupSkillCooldownButton(_spellTouchBtn, ref _spellCooldownText, ref _spellCooldownOverlay, SpellCooldownTimerLayout);
+            _multiAttackCooldownGroup = SetupSkillCooldownButton(_multiAtkTouchBtn, ref _multiAttackCooldownText, ref _multiAttackCooldownOverlay, MultiAttackCooldownTimerLayout);
+            _splashAttackCooldownGroup = SetupSkillCooldownButton(_splashAtkTouchBtn, ref _splashAttackCooldownText, ref _splashAttackCooldownOverlay, AreaAttackCooldownTimerLayout);
+            _groundAttackCooldownGroup = SetupSkillCooldownButton(_freezeAtkTouchBtn, ref _groundAttackCooldownText, ref _groundAttackCooldownOverlay, GroundAttackCooldownTimerLayout);
+        }
+
+        protected virtual void BindSkillTouchButtons()
+        {
+            if (_spellTouchBtn == null) _spellTouchBtn = FindSkillTouchButton("SpellBtn");
+            if (_multiAtkTouchBtn == null) _multiAtkTouchBtn = FindSkillTouchButton("MultiAtkBtn");
+            if (_splashAtkTouchBtn == null) _splashAtkTouchBtn = FindSkillTouchButton("AreaAtkBtn");
+            if (_freezeAtkTouchBtn == null) _freezeAtkTouchBtn = FindSkillTouchButton("FreezeAtkBtn");
+        }
+
+        protected virtual MMTouchButton FindSkillTouchButton(string baseName)
+        {
+            MMTouchButton fallback = null;
+            MMTouchButton[] touchButtons = FindObjectsOfType<MMTouchButton>(true);
+            foreach (MMTouchButton btn in touchButtons)
+            {
+                if (btn == null)
+                {
+                    continue;
+                }
+
+                string buttonName = btn.gameObject.name;
+                bool nameMatches = (buttonName == baseName) || buttonName.StartsWith(baseName + " (");
+                if (!nameMatches)
+                {
+                    continue;
+                }
+
+                if (btn.gameObject.activeInHierarchy)
+                {
+                    return btn;
+                }
+
+                if (fallback == null)
+                {
+                    fallback = btn;
+                }
+            }
+
+            return fallback;
+        }
+
+        protected virtual CanvasGroup SetupSkillCooldownButton(MMTouchButton touchButton, ref Text cooldownText, ref Image cooldownOverlay, SkillCooldownTimerLayout timerLayout)
+        {
+            if (touchButton == null)
+            {
+                return null;
+            }
+
+            CanvasGroup canvasGroup = touchButton.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = touchButton.gameObject.AddComponent<CanvasGroup>();
+            }
+
+            Transform existingOverlay = touchButton.transform.Find("CooldownOverlay");
+            if (existingOverlay != null)
+            {
+                cooldownOverlay = existingOverlay.GetComponent<Image>();
+                if (cooldownOverlay != null)
+                {
+                    cooldownOverlay.enabled = false;
+                }
+            }
+            else
+            {
+                cooldownOverlay = null;
+            }
+
+            Transform existingTimer = touchButton.transform.Find("CooldownTimer");
+            GameObject timerObject = (existingTimer != null) ? existingTimer.gameObject : new GameObject("CooldownTimer");
+            RectTransform timerRect = SetupCooldownChildRect(timerObject, touchButton.transform);
+
+            cooldownText = timerObject.GetComponent<Text>();
+            if (cooldownText == null)
+            {
+                cooldownText = timerObject.AddComponent<Text>();
+            }
+
+            Font cooldownFont = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            if (cooldownFont != null)
+            {
+                cooldownText.font = cooldownFont;
+            }
+            cooldownText.alignment = TextAnchor.MiddleCenter;
+            cooldownText.fontStyle = FontStyle.Bold;
+            cooldownText.raycastTarget = false;
+            cooldownText.color = SkillCooldownTimerColor;
+            cooldownText.fontSize = GetCooldownTimerFontSize(timerLayout);
+            cooldownText.text = "";
+            cooldownText.enabled = false;
+
+            ApplyCooldownTimerRect(timerRect, timerLayout);
+            timerRect.SetAsLastSibling();
+
+            CacheSkillButtonGraphics(touchButton, cooldownText);
+            return canvasGroup;
+        }
+
+        protected virtual RectTransform SetupCooldownChildRect(GameObject childObject, Transform parent)
+        {
+            RectTransform childRect = childObject.GetComponent<RectTransform>();
+            if (childRect == null)
+            {
+                childRect = childObject.AddComponent<RectTransform>();
+            }
+
+            if (childObject.transform.parent != parent)
+            {
+                childObject.transform.SetParent(parent, false);
+            }
+
+            childRect.anchorMin = Vector2.zero;
+            childRect.anchorMax = Vector2.one;
+            childRect.offsetMin = Vector2.zero;
+            childRect.offsetMax = Vector2.zero;
+            childRect.localScale = Vector3.one;
+            return childRect;
+        }
+
+        protected virtual void ApplyCooldownTimerRect(RectTransform timerRect, SkillCooldownTimerLayout timerLayout)
+        {
+            if (timerRect == null)
+            {
+                return;
+            }
+
+            timerRect.anchorMin = new Vector2(0.5f, 0.5f);
+            timerRect.anchorMax = new Vector2(0.5f, 0.5f);
+            timerRect.pivot = new Vector2(0.5f, 0.5f);
+            timerRect.anchoredPosition = (timerLayout != null) ? timerLayout.Position : SkillCooldownTimerOffset;
+            timerRect.sizeDelta = (timerLayout != null) ? timerLayout.Size : SkillCooldownTimerSize;
+            timerRect.localEulerAngles = (timerLayout != null) ? timerLayout.Rotation : Vector3.zero;
+            timerRect.localScale = (timerLayout != null) ? timerLayout.Scale : Vector3.one;
+        }
+
+        protected virtual int GetCooldownTimerFontSize(SkillCooldownTimerLayout timerLayout)
+        {
+            if (timerLayout == null || timerLayout.FontSize <= 0)
+            {
+                return SkillCooldownTimerFontSize;
+            }
+
+            return Mathf.Max(SkillCooldownTimerFontSize, timerLayout.FontSize);
+        }
+
+        protected virtual void UpdateSkillCooldownUI()
+        {
+            if (!SkillCooldownUiReady() && Time.unscaledTime >= _nextSkillCooldownSetupRetryAt)
+            {
+                _nextSkillCooldownSetupRetryAt = Time.unscaledTime + SkillCooldownSetupRetryInterval;
+                SetupSkillCooldownUI();
+            }
+
+            // Each skill checks its own mana cost. Spell dims too when it can't be afforded.
+            UpdateSkillCooldownButton(_spellTouchBtn,       _spellCooldownGroup,        _spellCooldownText,        _spellCooldownOverlay,        _spellCooldownEndsAt,        SpellCooldownTimerLayout,        manaInsufficient: !HasEnoughManaForSkill(SpellManaCost));
+            UpdateSkillCooldownButton(_multiAtkTouchBtn,    _multiAttackCooldownGroup,  _multiAttackCooldownText,  _multiAttackCooldownOverlay,  _multiAttackCooldownEndsAt,  MultiAttackCooldownTimerLayout,  manaInsufficient: !HasEnoughManaForSkill(MultiAttackManaCost));
+            UpdateSkillCooldownButton(_splashAtkTouchBtn,   _splashAttackCooldownGroup, _splashAttackCooldownText, _splashAttackCooldownOverlay, _splashAttackCooldownEndsAt, AreaAttackCooldownTimerLayout,   manaInsufficient: !HasEnoughManaForSkill(SplashAttackManaCost));
+            UpdateSkillCooldownButton(_freezeAtkTouchBtn,   _groundAttackCooldownGroup, _groundAttackCooldownText, _groundAttackCooldownOverlay, _groundAttackCooldownEndsAt, GroundAttackCooldownTimerLayout, manaInsufficient: !HasEnoughManaForSkill(GroundAttackManaCost));
+        }
+
+        /// <summary>
+        /// Returns true if CurrentMana is sufficient to pay for a skill. A cost of 0 is always affordable.
+        /// </summary>
+        protected virtual bool HasEnoughManaForSkill(float manaCost)
+        {
+            if (manaCost <= 0f) return true;
+            return CurrentMana >= manaCost;
+        }
+
+        protected virtual bool SkillCooldownUiReady()
+        {
+            return _spellCooldownGroup != null
+                   && _multiAttackCooldownGroup != null
+                   && _splashAttackCooldownGroup != null
+                   && _groundAttackCooldownGroup != null;
+        }
+
+        protected virtual void UpdateSkillCooldownButton(MMTouchButton touchButton, CanvasGroup canvasGroup, Text cooldownText, Image cooldownOverlay, float cooldownEndsAt, SkillCooldownTimerLayout timerLayout, bool manaInsufficient = false)
+        {
+            float remaining = Mathf.Max(0f, cooldownEndsAt - Time.time);
+            bool coolingDown = remaining > 0f;
+
+            // Combine cooldown alpha and mana alpha — whichever is lower wins.
+            float cooldownAlpha = coolingDown ? SkillCooldownDisabledAlpha : 1f;
+            float manaAlpha = manaInsufficient ? ManaInsufficientOpacity : 1f;
+            float finalAlpha = Mathf.Min(cooldownAlpha, manaAlpha);
+
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = finalAlpha;
+                // Only cooldown blocks interaction. Mana-insufficient buttons stay pressable
+                // (TrySpendMana silently rejects the cast) so touch events still fire and
+                // the mana bar can continue to update correctly.
+                canvasGroup.interactable = !coolingDown;
+                canvasGroup.blocksRaycasts = !coolingDown;
+            }
+
+            ApplySkillButtonVisualAlpha(touchButton, cooldownText, finalAlpha);
+
+            if (cooldownOverlay != null)
+            {
+                cooldownOverlay.enabled = false;
+            }
+
+            if (cooldownText != null)
+            {
+                bool shouldShowTimer = ShowSkillCooldownTimers && coolingDown;
+                if (cooldownText.enabled != shouldShowTimer)
+                {
+                    cooldownText.enabled = shouldShowTimer;
+                }
+
+                string timerText = coolingDown ? Mathf.CeilToInt(remaining).ToString() : "";
+                if (cooldownText.text != timerText)
+                {
+                    cooldownText.text = timerText;
+                }
+            }
+        }
+
+        protected virtual void ApplySkillButtonVisualAlpha(MMTouchButton touchButton, Text cooldownText, float alphaMultiplier)
+        {
+            if (touchButton == null)
+            {
+                return;
+            }
+
+            if (_cooldownButtonLastAlpha.TryGetValue(touchButton, out float lastAlpha)
+                && Mathf.Approximately(lastAlpha, alphaMultiplier)
+                && _cooldownButtonGraphics.ContainsKey(touchButton))
+            {
+                return;
+            }
+
+            if (!_cooldownButtonGraphics.TryGetValue(touchButton, out Graphic[] graphics) || graphics == null)
+            {
+                graphics = CacheSkillButtonGraphics(touchButton, cooldownText);
+            }
+
+            _cooldownButtonLastAlpha[touchButton] = alphaMultiplier;
+            for (int i = 0; i < graphics.Length; i++)
+            {
+                Graphic graphic = graphics[i];
+                if ((graphic == null) || IsCooldownTimerGraphic(graphic, cooldownText))
+                {
+                    continue;
+                }
+
+                if (!_cooldownGraphicBaseAlphas.ContainsKey(graphic))
+                {
+                    _cooldownGraphicBaseAlphas[graphic] = graphic.color.a;
+                }
+
+                Color color = graphic.color;
+                color.a = _cooldownGraphicBaseAlphas[graphic] * Mathf.Clamp01(alphaMultiplier);
+                graphic.color = color;
+            }
+        }
+
+        protected virtual Graphic[] CacheSkillButtonGraphics(MMTouchButton touchButton, Text cooldownText)
+        {
+            if (touchButton == null)
+            {
+                return new Graphic[0];
+            }
+
+            Graphic[] graphics = touchButton.GetComponentsInChildren<Graphic>(true);
+            _cooldownButtonGraphics[touchButton] = graphics;
+            _cooldownButtonLastAlpha.Remove(touchButton);
+
+            for (int i = 0; i < graphics.Length; i++)
+            {
+                Graphic graphic = graphics[i];
+                if ((graphic == null) || IsCooldownTimerGraphic(graphic, cooldownText))
+                {
+                    continue;
+                }
+
+                if (!_cooldownGraphicBaseAlphas.ContainsKey(graphic))
+                {
+                    _cooldownGraphicBaseAlphas[graphic] = graphic.color.a;
+                }
+            }
+
+            return graphics;
+        }
+
+        protected virtual bool IsCooldownTimerGraphic(Graphic graphic, Text cooldownText)
+        {
+            if ((graphic == null) || (cooldownText == null))
+            {
+                return false;
+            }
+
+            return (graphic == cooldownText) || graphic.transform.IsChildOf(cooldownText.transform);
         }
 
         protected virtual void PlaySkillCameraShake()
@@ -526,6 +1153,7 @@ namespace MoreMountains.CorgiEngine
             clipPlayable.SetSpeed(GetClipPlaybackSpeed(clip, duration));
             AnimationPlayableOutput output = AnimationPlayableOutput.Create(_skillGraph, "SkillAnimation", _animator);
             output.SetSourcePlayable(clipPlayable);
+            output.SetWeight(1f);
 
             _skillEndsAt = Time.time + GetOneShotPlayableDuration(duration);
             _skillGraph.Play();
@@ -557,7 +1185,13 @@ namespace MoreMountains.CorgiEngine
 
             if (!_skillMovementLocked)
             {
-                _storedMovementForbidden = _characterHorizontalMovement.MovementForbidden;
+                RetroMovementLockRegistry.Acquire(_characterHorizontalMovement);
+                if (_characterHandleWeapon != null)
+                {
+                    _storedWeaponAuthorized = _characterHandleWeapon.AbilityPermitted;
+                    _characterHandleWeapon.PermitAbility(false);
+                    _characterHandleWeapon.ForceStop();
+                }
                 _skillMovementLocked = true;
             }
 
@@ -576,7 +1210,11 @@ namespace MoreMountains.CorgiEngine
                 return;
             }
 
-            _characterHorizontalMovement.MovementForbidden = _storedMovementForbidden;
+            RetroMovementLockRegistry.Release(_characterHorizontalMovement);
+            if (_characterHandleWeapon != null)
+            {
+                _characterHandleWeapon.PermitAbility(_storedWeaponAuthorized);
+            }
             _skillMovementLocked = false;
         }
 
@@ -589,9 +1227,19 @@ namespace MoreMountains.CorgiEngine
             }
 
             _spellCastProjectilePending = true;
+            _spellCastProjectileSpawnAt = Time.time + GetSpellCastProjectileDelay(spellClip);
+        }
+
+        protected virtual float GetSpellCastProjectileDelay(AnimationClip spellClip)
+        {
+            if (SpellCastProjectileDelayOverride >= 0f)
+            {
+                return Mathf.Max(0.01f, SpellCastProjectileDelayOverride);
+            }
+
             float frameDuration = 1f / Mathf.Max(1f, spellClip.frameRate);
-            float spawnDelay = spellClip.length - (frameDuration * Mathf.Max(0, SpellCastProjectileFramesBeforeSpellEnds));
-            _spellCastProjectileSpawnAt = Time.time + Mathf.Max(0.01f, spawnDelay);
+            float spawnDelay = spellClip.length - (frameDuration * Mathf.Max(0, SpellCastProjectileFramesBeforeSpellEnds)) + SpellCastProjectileTimeOffset;
+            return Mathf.Max(0.01f, spawnDelay);
         }
 
         protected virtual void ScheduleSplashAttackDamage(AnimationClip splashAttackClip)
@@ -677,13 +1325,13 @@ namespace MoreMountains.CorgiEngine
             {
                 mover = projectile.AddComponent<RetroSpellCastProjectile>();
             }
-            ConfigureDirectDamageHitbox(projectile, SpellDamage, SpellDamageAreaSize, SpellDamageAreaOffset, 0f, 1, 0f, SkillDamageInvincibilityDuration);
             float projectileSpeed = MoveSpellCastProjectile ? SpellCastProjectileSpeed : 0f;
             float projectileDistance = MoveSpellCastProjectile ? SpellCastProjectileDistance : 0f;
             float projectileLifetime = IgnoreSpellCastProjectileLifetime ? 0f : SpellCastProjectileLifetime;
             float projectileAnimationLength = GetSpellCastProjectileAnimationLength(projectile);
             float minimumVisibleDuration = PlaySpellCastProjectileAnimationOnce ? projectileAnimationLength : 0f;
             float travelDuration = (projectileSpeed > 0f) ? Mathf.Max(0.01f, projectileDistance / projectileSpeed) : 0f;
+            ConfigureDirectDamageHitbox(projectile, SpellDamage, SpellAnimationDamageSize, SpellAnimationDamageOffset, 0f, 1, 0f, SkillDamageInvincibilityDuration);
             mover.Initialize(direction, projectileSpeed, projectileDistance, projectileLifetime, minimumVisibleDuration);
             DestroyAfterOneProjectileAnimation(projectile, Mathf.Max(projectileAnimationLength, travelDuration));
 
@@ -784,6 +1432,10 @@ namespace MoreMountains.CorgiEngine
             if (shieldVfxClip != null)
             {
                 Animator shieldAnimator = shieldVisual.AddComponent<Animator>();
+                if (_animator != null)
+                {
+                    shieldAnimator.runtimeAnimatorController = _animator.runtimeAnimatorController;
+                }
                 _shieldVfxGraph = PlayableGraph.Create("RetroShieldVfx");
                 _shieldVfxGraph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
                 _shieldVfxPlayable = AnimationClipPlayable.Create(_shieldVfxGraph, shieldVfxClip);
@@ -791,6 +1443,7 @@ namespace MoreMountains.CorgiEngine
                 _shieldVfxPlayable.SetDuration(shieldVfxClip.length);
                 AnimationPlayableOutput output = AnimationPlayableOutput.Create(_shieldVfxGraph, "ShieldVfxAnimation", shieldAnimator);
                 output.SetSourcePlayable(_shieldVfxPlayable);
+                output.SetWeight(1f);
                 _shieldVfxGraph.Play();
 
                 float vfxLength = Mathf.Max(0.01f, shieldVfxClip.length);
@@ -899,6 +1552,10 @@ namespace MoreMountains.CorgiEngine
             }
 
             Animator animator = visual.AddComponent<Animator>();
+            if (_animator != null)
+            {
+                animator.runtimeAnimatorController = _animator.runtimeAnimatorController;
+            }
             _spawnJumperVfxGraph = PlayableGraph.Create("RetroSpawnJumperVfx");
             _spawnJumperVfxGraph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
             AnimationClipPlayable clipPlayable = AnimationClipPlayable.Create(_spawnJumperVfxGraph, spawnJumperVfxClip);
@@ -907,6 +1564,7 @@ namespace MoreMountains.CorgiEngine
             clipPlayable.SetSpeed(GetClipPlaybackSpeed(spawnJumperVfxClip, vfxDuration));
             AnimationPlayableOutput output = AnimationPlayableOutput.Create(_spawnJumperVfxGraph, "SpawnJumperVfxAnimation", animator);
             output.SetSourcePlayable(clipPlayable);
+            output.SetWeight(1f);
             _spawnJumperVfxGraph.Play();
 
             _spawnJumperVfxEndsAt = Time.time + vfxDuration;
@@ -1066,11 +1724,6 @@ namespace MoreMountains.CorgiEngine
             StopGroundAttackVfx();
 
             AnimationClip groundAttackVfxClip = GetGroundAttackVfxClip();
-            if (groundAttackVfxClip == null)
-            {
-                return;
-            }
-
             float delay = GetGroundAttackVfxStartDelay(groundAttackClip);
             _groundAttackVfxCoroutine = StartCoroutine(GroundAttackVfxSequenceCo(delay, groundAttackVfxClip));
         }
@@ -1135,26 +1788,35 @@ namespace MoreMountains.CorgiEngine
 
             SpriteRenderer renderer = visual.AddComponent<SpriteRenderer>();
             CopyCharacterSorting(renderer, GroundAttackVfxSortingOrderOffset, GroundAttackVfxMinimumSortingOrder);
-            renderer.sprite = GetFirstSpriteFromClip(groundAttackVfxClip);
+            renderer.sprite = GetGroundAttackVfxSprite(groundAttackVfxClip);
             renderer.color = GroundAttackVfxColor;
             if (FlipGroundAttackVfxWithFacing)
             {
                 renderer.flipX = GroundAttackVfxFacesRight ? direction < 0f : direction > 0f;
             }
 
-            Animator animator = visual.AddComponent<Animator>();
-            PlayableGraph graph = PlayableGraph.Create("RetroGroundAttackVfx");
-            graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
-            AnimationClipPlayable clipPlayable = AnimationClipPlayable.Create(graph, groundAttackVfxClip);
-            clipPlayable.SetTime(0d);
-            clipPlayable.SetDuration(groundAttackVfxClip.length);
-            AnimationPlayableOutput output = AnimationPlayableOutput.Create(graph, "GroundAttackVfxAnimation", animator);
-            output.SetSourcePlayable(clipPlayable);
-            graph.Play();
+            if (groundAttackVfxClip != null)
+            {
+                Animator animator = visual.AddComponent<Animator>();
+                if (_animator != null)
+                {
+                    animator.runtimeAnimatorController = _animator.runtimeAnimatorController;
+                }
+
+                PlayableGraph graph = PlayableGraph.Create("RetroGroundAttackVfx");
+                graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
+                AnimationClipPlayable clipPlayable = AnimationClipPlayable.Create(graph, groundAttackVfxClip);
+                clipPlayable.SetTime(0d);
+                clipPlayable.SetDuration(groundAttackVfxClip.length);
+                AnimationPlayableOutput output = AnimationPlayableOutput.Create(graph, "GroundAttackVfxAnimation", animator);
+                output.SetSourcePlayable(clipPlayable);
+                output.SetWeight(1f);
+                graph.Play();
+                _groundAttackVfxGraphs.Add(graph);
+            }
 
             ConfigureGroundAttackVfxFreezeHitbox(groundVfxObject, duration);
             _groundAttackVfxObjects.Add(groundVfxObject);
-            _groundAttackVfxGraphs.Add(graph);
             Destroy(groundVfxObject, GetOneShotPlayableDuration(duration));
         }
 
@@ -1192,7 +1854,7 @@ namespace MoreMountains.CorgiEngine
                 return GroundAttackVfxDuration;
             }
 
-            return (groundAttackVfxClip != null) ? groundAttackVfxClip.length : 0f;
+            return (groundAttackVfxClip != null) ? groundAttackVfxClip.length : 0.35f;
         }
 
         protected virtual void SpawnSkillDamageArea(string damageAreaName, float damage, Vector2 areaSize, Vector2 areaOffset, float activeDuration)
@@ -1449,6 +2111,22 @@ namespace MoreMountains.CorgiEngine
             return GroundAttackVfxClip;
         }
 
+        protected virtual Sprite GetGroundAttackVfxSprite(AnimationClip groundAttackVfxClip)
+        {
+            if (GroundAttackVfxSprite != null)
+            {
+                return GroundAttackVfxSprite;
+            }
+
+            GroundAttackVfxSprite = GetFirstSpriteFromClip(groundAttackVfxClip);
+            if (GroundAttackVfxSprite != null)
+            {
+                return GroundAttackVfxSprite;
+            }
+
+            return GetGeneratedGroundAttackVfxSprite();
+        }
+
         protected virtual AnimationClip GetShieldClip()
         {
 #if UNITY_EDITOR
@@ -1589,6 +2267,37 @@ namespace MoreMountains.CorgiEngine
             return _generatedShieldVfxSprite;
         }
 
+        protected virtual Sprite GetGeneratedGroundAttackVfxSprite()
+        {
+            if (_generatedGroundAttackVfxSprite != null)
+            {
+                return _generatedGroundAttackVfxSprite;
+            }
+
+            const int width = 64;
+            const int height = 24;
+            Texture2D texture = new Texture2D(width, height, TextureFormat.RGBA32, false);
+            Color clear = new Color(0f, 0f, 0f, 0f);
+            Color core = new Color(0.6f, 0.95f, 1f, 0.55f);
+            Color edge = new Color(0.95f, 1f, 1f, 0.9f);
+            Vector2 center = new Vector2(width * 0.5f, height * 0.5f);
+            float radiusX = width * 0.46f;
+            float radiusY = height * 0.36f;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    float normalized = Mathf.Pow((x - center.x) / radiusX, 2f) + Mathf.Pow((y - center.y) / radiusY, 2f);
+                    texture.SetPixel(x, y, normalized <= 1f ? (normalized > 0.68f ? edge : core) : clear);
+                }
+            }
+
+            texture.Apply();
+            _generatedGroundAttackVfxSprite = Sprite.Create(texture, new Rect(0f, 0f, width, height), new Vector2(0.5f, 0.5f), 32f);
+            return _generatedGroundAttackVfxSprite;
+        }
+
         protected virtual Transform GetSpellCastPoint()
         {
             if (SpellCastPoint != null)
@@ -1698,6 +2407,11 @@ namespace MoreMountains.CorgiEngine
 
         protected virtual void CancelShieldForWeaponAttack()
         {
+            if (IsLedgeHanging())
+            {
+                return;
+            }
+
             if (_lastShieldCancelAttackFrame == Time.frameCount)
             {
                 return;
@@ -1932,8 +2646,16 @@ namespace MoreMountains.CorgiEngine
             StopSkillClip();
         }
 
+        protected virtual void OnEnable()
+        {
+            this.MMEventStartListening<MMDamageTakenEvent>();
+        }
+
         protected virtual void OnDisable()
         {
+            this.MMEventStopListening<MMDamageTakenEvent>();
+            ResetSkillCooldownVisuals();
+
             if (_health != null)
             {
                 RestoreSplashProtection();
@@ -1945,6 +2667,66 @@ namespace MoreMountains.CorgiEngine
             StopSkillCameraShake();
             StopSplashCoroutines();
             StopSkillClip();
+        }
+
+        protected virtual void ResetSkillCooldownVisuals()
+        {
+            ResetSkillCooldownButton(_spellTouchBtn, _spellCooldownGroup, _spellCooldownText, _spellCooldownOverlay);
+            ResetSkillCooldownButton(_multiAtkTouchBtn, _multiAttackCooldownGroup, _multiAttackCooldownText, _multiAttackCooldownOverlay);
+            ResetSkillCooldownButton(_splashAtkTouchBtn, _splashAttackCooldownGroup, _splashAttackCooldownText, _splashAttackCooldownOverlay);
+            ResetSkillCooldownButton(_freezeAtkTouchBtn, _groundAttackCooldownGroup, _groundAttackCooldownText, _groundAttackCooldownOverlay);
+        }
+
+        protected virtual void ResetSkillCooldownButton(MMTouchButton touchButton, CanvasGroup canvasGroup, Text cooldownText, Image cooldownOverlay)
+        {
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 1f;
+                canvasGroup.interactable = true;
+                canvasGroup.blocksRaycasts = true;
+            }
+
+            ApplySkillButtonVisualAlpha(touchButton, cooldownText, 1f);
+
+            if (cooldownOverlay != null)
+            {
+                cooldownOverlay.enabled = false;
+            }
+
+            if (cooldownText != null)
+            {
+                cooldownText.text = "";
+                cooldownText.enabled = false;
+            }
+        }
+
+        public virtual void OnMMEvent(MMDamageTakenEvent damageTakenEvent)
+        {
+            if (damageTakenEvent.CurrentHealth > 0f) return;
+            if (damageTakenEvent.PreviousHealth <= 0f) return;
+            if (damageTakenEvent.AffectedCharacter == _character) return;
+            if (damageTakenEvent.AffectedCharacter != null && damageTakenEvent.AffectedCharacter.CharacterType == Character.CharacterTypes.Player) return;
+            if (!WasDamageCausedByThisCharacter(damageTakenEvent.Instigator)) return;
+
+            if (CurrentMana < MaxMana)
+            {
+                RefillManaFromKill();
+            }
+        }
+
+        protected virtual bool WasDamageCausedByThisCharacter(GameObject instigator)
+        {
+            if ((instigator == null) || (_character == null))
+            {
+                return false;
+            }
+
+            Transform characterTransform = _character.transform;
+            Transform instigatorTransform = instigator.transform;
+
+            return (instigatorTransform == characterTransform)
+                   || instigatorTransform.IsChildOf(characterTransform)
+                   || characterTransform.IsChildOf(instigatorTransform);
         }
 
         protected virtual void StopSkillCameraShake()
@@ -1992,7 +2774,7 @@ namespace MoreMountains.CorgiEngine
 
             if (ShowSkillDamageGizmos)
             {
-                DrawSkillDamageGizmo(GetSpellCastGizmoPosition(direction), SpellDamageAreaSize, SpellDamageGizmoColor);
+                DrawSpellAnimationDamageGizmos(direction);
                 DrawSkillDamageGizmo(transform.position + new Vector3(MultiAttackDamageAreaOffset.x * direction, MultiAttackDamageAreaOffset.y, 0f), MultiAttackDamageAreaSize, MultiAttackDamageGizmoColor);
                 DrawSkillDamageGizmo(transform.position + new Vector3(SplashAttackDamageAreaOffset.x * direction, SplashAttackDamageAreaOffset.y, 0f), SplashAttackDamageAreaSize, SplashAttackDamageGizmoColor);
             }
@@ -2062,7 +2844,7 @@ namespace MoreMountains.CorgiEngine
             Gizmos.color = previousColor;
         }
 
-        protected virtual Vector3 GetSpellCastGizmoPosition(float direction)
+        protected virtual void DrawSpellAnimationDamageGizmos(float direction)
         {
             Transform castPoint = SpellCastPoint;
             if (castPoint == null)
@@ -2071,7 +2853,10 @@ namespace MoreMountains.CorgiEngine
             }
 
             Vector3 origin = (castPoint != null) ? castPoint.position : transform.position;
-            return origin + new Vector3(SpellDamageAreaOffset.x * direction, SpellDamageAreaOffset.y, 0f);
+            DrawSkillDamageGizmo(
+                origin + new Vector3(SpellAnimationDamageOffset.x * direction, SpellAnimationDamageOffset.y, 0f),
+                SpellAnimationDamageSize,
+                SpellAnimationDamageGizmoColor);
         }
 
         protected virtual float GetGizmoFacingDirection()

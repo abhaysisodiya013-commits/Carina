@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 6827138762926177372}
   - component: {fileID: 6827138762926177347}
   - component: {fileID: 6827138762926177356}
+  - component: {fileID: 7568536508070009785}
   m_Layer: 13
   m_Name: RetroBlobDash
   m_TagString: Untagged
@@ -1066,15 +1067,6 @@ MonoBehaviour:
   Aim:
     AimControl: 0
     RotationMode: 0
-    MousePositionAction:
-      m_Name: Mouse Position
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: d9c20eaa-bdd5-4b3e-b65c-867701fe72a9
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
     MinimumAngle: -180
     MaximumAngle: 180
     CurrentAngle: 0
@@ -1082,12 +1074,50 @@ MonoBehaviour:
   FlipCharacterIfNeeded: 1
   AutoCorrectTrajectory: 1
   DashCooldown: 1
+  DashInputBufferDuration: 0.2
   LimitedDashes: 0
   SuccessiveDashAmount: 1
   SuccessiveDashesLeft: 1
   SuccessiveDashResetMethod: 0
   SuccessiveDashResetDuration: 2
   InvincibleWhileDashing: 0
+  UseRollStyleMovement: 0
+  RollStyleDashDuration: 0.28
+  RollStyleDashSpeed: 2.2
+  RollStyleDashReadsInput: 1
+  RollStyleDashIgnoresVerticalInput: 1
+  RequireNeutralVerticalInput: 0
+  EnableAirborneDashKick: 1
+  AirborneDashKickTargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  AirborneDashKickDamage: 10
+  AirborneDashKickAreaSize: {x: 2, y: 1.2}
+  AirborneDashKickAreaOffset: {x: 1.05, y: 0.05}
+  AirborneDashKickInvincibilityDuration: 0.1
+  AirborneDashKickEnemyKnockback: {x: 6, y: 2}
+  RefreshDashOnAirborneKickHit: 1
+  JumpPastTargetOnAirborneKickHit: 1
+  AirborneKickHitHorizontalMove: 1.25
+  AirborneKickHitVerticalMove: 0.2
+  AirborneKickHitMoveDuration: 0.08
+  AirborneKickHitForce: {x: 8, y: 6}
+  AirborneKickHitDashCooldown: 0
+  AirborneKickHitObstacleMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AirborneDashKickVfxPrefab: {fileID: 0}
+  AirborneDashKickVfxClip: {fileID: 0}
+  AirborneDashKickVfxOffset: {x: 1.05, y: 0.05}
+  AirborneDashKickVfxSize: {x: 1.6, y: 1}
+  AirborneDashKickVfxDuration: 0.18
+  AirborneDashKickVfxSortingOrderOffset: 3
+  StopAirborneKickMomentumOnMiss: 1
+  ShowAirborneDashKickHitboxGizmo: 1
+  ShowAirborneDashKickGizmosOnlyWhenSelected: 0
+  AirborneDashKickHitboxGizmoColor: {r: 1, g: 0.05, b: 0.05, a: 0.9}
+  ShowAirborneDashKickVfxGizmo: 1
+  AirborneDashKickVfxGizmoColor: {r: 0.2, g: 0.8, b: 1, a: 0.75}
 --- !u!114 &6827138762926177346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,3 +1288,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitializationMode: 0
   Label: 
+--- !u!114 &7568536508070009785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827138762926177345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightCollider2D
+  shadowType: 1
+  shadowLayer: 0
+  shadowDistance: 0
+  shadowTranslucency: 0
+  maskType: 1
+  maskEffect: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskTranslucency: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 6827138762926177390}
+  applyToChildren: 0
+  usingEvents: 0
+  mainShape:
+    shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    shadowDistance: 0
+    shadowTranslucency: 0
+    maskTranslucency: 1
+    transform: {fileID: 6827138762926177391}
+  shapes:
+  - shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    shadowDistance: 0
+    shadowTranslucency: 0
+    maskTranslucency: 1
+    transform: {fileID: 6827138762926177391}

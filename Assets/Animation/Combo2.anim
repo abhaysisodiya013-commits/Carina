@@ -23,28 +23,28 @@ AnimationClip:
     - time: 0
       value: {fileID: 2841042033015214791, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
-$10.02583334
+    - time: 0.02583334
       value: {fileID: 6773909760351945656, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
-$10.05166667
+    - time: 0.05166667
       value: {fileID: 9056663203623153789, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
-$10.0775
+    - time: 0.0775
       value: {fileID: 8174830846537940748, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
-$10.10333334
+    - time: 0.10333334
       value: {fileID: 106074968515182017, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
-$10.12916667
+    - time: 0.12916667
       value: {fileID: -2449767252306328848, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
-$10.155
+    - time: 0.155
       value: {fileID: 1821806763955137060, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
-$10.18083334
+    - time: 0.18083334
       value: {fileID: 6675499733367010411, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
-$10.20666668
+    - time: 0.20666668
       value: {fileID: -8538898648388667186, guid: 310f7a20ddccbaf438e048f6b9c154ef,
         type: 3}
     attribute: m_Sprite

@@ -23,13 +23,13 @@ AnimationClip:
     - time: 0
       value: {fileID: -817223447185994114, guid: d76173cc184ab514eaf0bcb320853587,
         type: 3}
-$10.03
+    - time: 0.03
       value: {fileID: 7021625484444776659, guid: d76173cc184ab514eaf0bcb320853587,
         type: 3}
-$10.06
+    - time: 0.06
       value: {fileID: 7282760613219019248, guid: d76173cc184ab514eaf0bcb320853587,
         type: 3}
-$10.09
+    - time: 0.09
       value: {fileID: 1264393231116710960, guid: d76173cc184ab514eaf0bcb320853587,
         type: 3}
     attribute: m_Sprite

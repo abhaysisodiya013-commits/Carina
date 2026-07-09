@@ -133,7 +133,7 @@ namespace MoreMountains.CorgiEngine
         {
             if (!_groundAttackMovementLocked)
             {
-                _storedMovementForbidden = _characterHorizontalMovement.MovementForbidden;
+                RetroMovementLockRegistry.Acquire(_characterHorizontalMovement);
                 _groundAttackMovementLocked = true;
             }
 
@@ -149,7 +149,7 @@ namespace MoreMountains.CorgiEngine
                 return;
             }
 
-            _characterHorizontalMovement.MovementForbidden = _storedMovementForbidden;
+            RetroMovementLockRegistry.Release(_characterHorizontalMovement);
             _groundAttackMovementLocked = false;
         }
 
@@ -295,6 +295,45 @@ namespace MoreMountains.CorgiEngine
             }
 
             DestroyAirAttackDamageArea();
+            SyncAnimatorToCurrentMovement();
+        }
+
+        protected virtual void SyncAnimatorToCurrentMovement()
+        {
+            if ((_animator == null) || (_character == null))
+            {
+                return;
+            }
+
+            bool grounded = (_controller != null) && _controller.State.IsGrounded;
+            CharacterStates.MovementStates movementState = (_movement != null)
+                ? _movement.CurrentState
+                : CharacterStates.MovementStates.Idle;
+
+            SetAnimatorParameter("Jumping", movementState == CharacterStates.MovementStates.Jumping);
+            SetAnimatorParameter("DoubleJumping", movementState == CharacterStates.MovementStates.DoubleJumping);
+            SetAnimatorParameter("Grounded", grounded);
+            SetAnimatorParameter("Airborne", !grounded);
+
+            _animator.Update(0f);
+        }
+
+        protected virtual void SetAnimatorParameter(string parameterName, bool value)
+        {
+            if (string.IsNullOrEmpty(parameterName) || (_animator == null))
+            {
+                return;
+            }
+
+            AnimatorControllerParameter[] parameters = _animator.parameters;
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                if ((parameters[i].type == AnimatorControllerParameterType.Bool) && (parameters[i].name == parameterName))
+                {
+                    _animator.SetBool(parameterName, value);
+                    return;
+                }
+            }
         }
 
         protected virtual void DestroyAirAttackDamageArea()
@@ -314,8 +353,9 @@ namespace MoreMountains.CorgiEngine
             _lastWeaponState = Weapon.WeaponStates.WeaponIdle;
         }
 
-        protected virtual void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             StopAirAttackClip();
             RestoreGroundAttackMovement();
         }

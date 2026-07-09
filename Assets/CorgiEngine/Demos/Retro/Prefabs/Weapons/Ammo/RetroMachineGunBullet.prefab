@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 114000013697282846}
   - component: {fileID: 114000012788668036}
   - component: {fileID: 114000010281602892}
+  - component: {fileID: 2039291777917369600}
   m_Layer: 16
   m_Name: RetroMachineGunBullet
   m_TagString: Untagged
@@ -281,6 +282,54 @@ MonoBehaviour:
   UseMaterialPropertyBlocks: 0
   MasterHealth: {fileID: 0}
   TargetDamageResistanceProcessor: {fileID: 0}
+--- !u!114 &2039291777917369600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightCollider2D
+  shadowType: 1
+  shadowLayer: 0
+  shadowDistance: 0
+  shadowTranslucency: 0
+  maskType: 1
+  maskEffect: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskTranslucency: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 212000010073301924}
+  applyToChildren: 0
+  usingEvents: 0
+  mainShape:
+    shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    shadowDistance: 0
+    shadowTranslucency: 0
+    maskTranslucency: 1
+    transform: {fileID: 400002}
+  shapes:
+  - shadowType: 1
+    maskType: 1
+    maskPivot: 0
+    shadowDistance: 0
+    shadowTranslucency: 0
+    maskTranslucency: 1
+    transform: {fileID: 400002}
 --- !u!1 &582718011184460240
 GameObject:
   m_ObjectHideFlags: 0

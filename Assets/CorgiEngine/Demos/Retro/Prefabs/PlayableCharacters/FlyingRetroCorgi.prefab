@@ -5273,8 +5273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  InitialHealth: 100
-  MaximumHealth: 100
+  InitialHealth: 90
+  MaximumHealth: 90
   Invulnerable: 0
   TemporarilyInvulnerable: 0
   PostDamageInvulnerable: 0
@@ -25728,3 +25728,4 @@ MonoBehaviour:
   NestParticles: 0
   ApplyRotation: 0
   ApplyScale: 0
+

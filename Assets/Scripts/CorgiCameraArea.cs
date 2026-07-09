@@ -193,7 +193,7 @@ namespace MoreMountains.CorgiEngine
                 return;
             }
 
-            CameraConfiner = FindObjectOfType<CinemachineConfiner>();
+            CameraConfiner = FindFirstObjectByType<CinemachineConfiner>();
         }
 
         protected virtual Character GetFirstPlayer()
@@ -220,6 +220,46 @@ namespace MoreMountains.CorgiEngine
             else
             {
                 yield return new WaitForSeconds(duration);
+            }
+        }
+
+        public static void RefreshAreaForPlayer(Character player)
+        {
+            if (player == null)
+            {
+                return;
+            }
+
+            CorgiCameraArea[] areas = FindObjectsByType<CorgiCameraArea>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            CorgiCameraArea bestArea = null;
+            float bestAreaSize = float.MaxValue;
+            Vector3 playerPosition = player.transform.position;
+
+            for (int i = 0; i < areas.Length; i++)
+            {
+                CorgiCameraArea area = areas[i];
+                if (area == null || area.AreaBounds == null || area.gameObject.scene != player.gameObject.scene)
+                {
+                    continue;
+                }
+
+                Bounds bounds = area.AreaBounds.bounds;
+                if (!bounds.Contains(playerPosition))
+                {
+                    continue;
+                }
+
+                float areaSize = bounds.size.x * bounds.size.y;
+                if (areaSize < bestAreaSize)
+                {
+                    bestAreaSize = areaSize;
+                    bestArea = area;
+                }
+            }
+
+            if (bestArea != null)
+            {
+                bestArea.ApplyArea();
             }
         }
     }

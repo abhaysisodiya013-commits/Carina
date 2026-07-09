@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
 
@@ -85,6 +85,19 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected override void HandleInput()
 		{
+			if (_movement.CurrentState == CharacterStates.MovementStates.LedgeHanging)
+			{
+				bool upPressed = _inputManager.PrimaryMovement.y > 0.5f;
+				bool jumpPressed = _inputManager.JumpButton.State.CurrentState == MMInput.ButtonStates.ButtonDown;
+
+				if ((upPressed || jumpPressed) && (Time.time - _ledgeHangingStartedTimestamp > MinimumHangingTime))
+				{
+					if (_climbCoroutine == null)
+					{
+						_climbCoroutine = StartCoroutine(Climb());
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -163,7 +176,7 @@ namespace MoreMountains.CorgiEngine
 				}
 				_characterHorizontalMovement.AbilityPermitted = false;
 				_character.CanFlip = false;
-				_controller.transform.position = _ledge.transform.position + _ledge.HangOffset;
+				_controller.transform.position = _ledge.transform.position + _ledge.RotatedHangOffset;
 			}
 		}
 
@@ -189,7 +202,7 @@ namespace MoreMountains.CorgiEngine
 			_animator.Play(IdleAnimationName);
             
 			// we teleport our character to its new position (this offset is specified on the Ledge object)
-			_character.transform.position = _ledge.transform.position + _ledge.ClimbOffset;
+			_character.transform.position = _ledge.transform.position + _ledge.RotatedClimbOffset;
             
 			// we go back to idle and detach from the ledge
 			_movement.ChangeState(CharacterStates.MovementStates.Idle);
@@ -274,7 +287,7 @@ namespace MoreMountains.CorgiEngine
 			float horizontalDirection = GetLedgeHopHorizontalDirection();
 			if (MoveToClimbOffsetBeforeLedgeJump && (_ledge != null))
 			{
-				_character.transform.position = _ledge.transform.position + _ledge.ClimbOffset;
+				_character.transform.position = _ledge.transform.position + _ledge.RotatedClimbOffset;
 			}
 
 			_controller.CollisionsOn();
@@ -294,7 +307,7 @@ namespace MoreMountains.CorgiEngine
 		{
 			if (UseClimbOffsetDirectionForLedgeHop && (_ledge != null))
 			{
-				float climbDirection = _ledge.ClimbOffset.x - _ledge.HangOffset.x;
+				float climbDirection = _ledge.RotatedClimbOffset.x - _ledge.RotatedHangOffset.x;
 				if (Mathf.Abs(climbDirection) > 0.01f)
 				{
 					return Mathf.Sign(climbDirection);

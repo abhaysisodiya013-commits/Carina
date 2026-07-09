@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using MoreMountains.CorgiEngine;
 using UnityEngine;
 
@@ -18,6 +19,17 @@ public class RetroSwordSlashAfterImage : MonoBehaviour
     private Weapon[] _weapons;
     private Weapon.WeaponStates[] _lastStates;
     private RetroRageModeAnimator _rageModeAnimator;
+    private readonly List<SlashInstance> _slashPool = new List<SlashInstance>();
+
+    private class SlashInstance
+    {
+        public GameObject Root;
+        public SpriteRenderer Renderer;
+        public bool Active;
+        public float Age;
+        public float Duration;
+        public Vector3 StartScale;
+    }
 
     private void Awake()
     {
@@ -35,6 +47,8 @@ public class RetroSwordSlashAfterImage : MonoBehaviour
 
     private void LateUpdate()
     {
+        UpdateSlashPool();
+
         if ((_weapons == null) || (_weapons.Length == 0))
         {
             return;
@@ -93,12 +107,13 @@ public class RetroSwordSlashAfterImage : MonoBehaviour
             return;
         }
 
-        GameObject slash = new GameObject("RetroSwordSlashAfterImage");
-        slash.transform.position = (source != null) ? source.transform.position : weapon.transform.position;
-        slash.transform.rotation = (source != null) ? source.transform.rotation : weapon.transform.rotation;
-        slash.transform.localScale = (source != null) ? source.transform.lossyScale : weapon.transform.lossyScale;
+        SlashInstance slash = GetAvailableSlash();
+        Transform slashTransform = slash.Root.transform;
+        slashTransform.position = (source != null) ? source.transform.position : weapon.transform.position;
+        slashTransform.rotation = (source != null) ? source.transform.rotation : weapon.transform.rotation;
+        slashTransform.localScale = (source != null) ? source.transform.lossyScale : weapon.transform.lossyScale;
 
-        SpriteRenderer renderer = slash.AddComponent<SpriteRenderer>();
+        SpriteRenderer renderer = slash.Renderer;
         renderer.sprite = sprite;
         renderer.color = startColor;
         renderer.flipX = (source != null) && source.flipX;
@@ -112,7 +127,11 @@ public class RetroSwordSlashAfterImage : MonoBehaviour
             renderer.sharedMaterial = sortingRenderer.sharedMaterial;
         }
 
-        StartCoroutine(FadeSlash(slash, renderer));
+        slash.Active = true;
+        slash.Age = 0f;
+        slash.Duration = Mathf.Max(0.01f, lifetime);
+        slash.StartScale = slashTransform.localScale;
+        slash.Root.SetActive(true);
     }
 
     private SpriteRenderer GetSlashSource(Weapon weapon)
@@ -163,24 +182,69 @@ public class RetroSwordSlashAfterImage : MonoBehaviour
         return weapon.GetComponentInChildren<SpriteRenderer>();
     }
 
-    private IEnumerator FadeSlash(GameObject slash, SpriteRenderer renderer)
+    private SlashInstance GetAvailableSlash()
     {
-        float duration = Mathf.Max(0.01f, lifetime);
-        float elapsed = 0f;
-        Vector3 startScale = slash.transform.localScale;
-
-        while ((elapsed < duration) && (renderer != null))
+        for (int i = 0; i < _slashPool.Count; i++)
         {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            renderer.color = Color.Lerp(startColor, endColor, t);
-            slash.transform.localScale = startScale;
-            yield return null;
+            if (!_slashPool[i].Active)
+            {
+                return _slashPool[i];
+            }
         }
 
-        if (slash != null)
+        SlashInstance oldest = null;
+        for (int i = 0; i < _slashPool.Count; i++)
         {
-            Destroy(slash);
+            if (oldest == null || _slashPool[i].Age > oldest.Age)
+            {
+                oldest = _slashPool[i];
+            }
+        }
+
+        if (oldest != null)
+        {
+            return oldest;
+        }
+
+        return CreateSlashInstance();
+    }
+
+    private SlashInstance CreateSlashInstance()
+    {
+        GameObject root = new GameObject("RetroSwordSlashAfterImage");
+        SpriteRenderer renderer = root.AddComponent<SpriteRenderer>();
+        root.SetActive(false);
+
+        SlashInstance slash = new SlashInstance
+        {
+            Root = root,
+            Renderer = renderer,
+            Duration = Mathf.Max(0.01f, lifetime)
+        };
+        _slashPool.Add(slash);
+        return slash;
+    }
+
+    private void UpdateSlashPool()
+    {
+        for (int i = 0; i < _slashPool.Count; i++)
+        {
+            SlashInstance slash = _slashPool[i];
+            if (slash == null || !slash.Active || slash.Renderer == null || slash.Root == null)
+            {
+                continue;
+            }
+
+            slash.Age += Time.deltaTime;
+            float t = Mathf.Clamp01(slash.Age / Mathf.Max(0.01f, slash.Duration));
+            slash.Renderer.color = Color.Lerp(startColor, endColor, t);
+            slash.Root.transform.localScale = slash.StartScale;
+
+            if (t >= 1f)
+            {
+                slash.Active = false;
+                slash.Root.SetActive(false);
+            }
         }
     }
 }

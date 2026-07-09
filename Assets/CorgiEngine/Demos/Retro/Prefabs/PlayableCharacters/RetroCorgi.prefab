@@ -4901,7 +4901,6 @@ GameObject:
   - component: {fileID: 114540723652440904}
   - component: {fileID: 114067210621431476}
   - component: {fileID: 114767941446374776}
-  - component: {fileID: 114707064263394120}
   - component: {fileID: 114720526364534534}
   - component: {fileID: 114048862864412380}
   - component: {fileID: 114235575369676186}
@@ -5166,9 +5165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9716d97790a0a49889284ee813194576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 100
-  InitialHealth: 100
-  MaximumHealth: 100
+  CurrentHealth: 90
+  InitialHealth: 90
+  MaximumHealth: 90
   Invulnerable: 0
   TemporarilyInvulnerable: 0
   PostDamageInvulnerable: 0
@@ -5423,35 +5422,6 @@ MonoBehaviour:
   ReadInput: 1
   AutoRun: 0
   AutoRunThreshold: 0.6
---- !u!114 &114707064263394120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383539409296422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d37391d2147a467db78bf732ae24daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AbilityStartFeedbacks: {fileID: 6397893989031167702}
-  AbilityStopFeedbacks: {fileID: 0}
-  AbilityPermitted: 1
-  BlockingMovementStates: 
-  BlockingConditionStates: 
-  MovingPlatformsJumpCollisionOffDuration: 0.08
-  ParticleEmitter: {fileID: 0}
-  JetpackForce: 7.25
-  SmoothJetpackForce: 1
-  JetpackForceAcceleration: 170
-  JetpackUnlimited: 0
-  JetpackFuelDuration: 2.2
-  JetpackRefuelCooldown: 0.35
-  RefuelSpeed: 1.35
-  MinimumFuelRequirement: 0.05
-  JetpackRefueledSfx: {fileID: 0}
-  JetpackFuelDurationLeft: 2.2
 --- !u!114 &114720526364534534
 MonoBehaviour:
   m_ObjectHideFlags: 0

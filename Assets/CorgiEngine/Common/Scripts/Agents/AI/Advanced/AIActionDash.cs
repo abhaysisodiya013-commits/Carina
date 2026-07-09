@@ -35,6 +35,16 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void Dash()
 		{
+			if (_characterDash == null)
+			{
+				Initialization();
+			}
+
+			if (_characterDash == null)
+			{
+				return;
+			}
+
 			_characterDash.StartDash();
 		}
 	}

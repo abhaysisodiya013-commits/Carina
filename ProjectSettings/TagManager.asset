@@ -11,6 +11,8 @@ TagManager:
   - npc
   - Tool
   - People
+  - Swamp
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -41,7 +43,7 @@ TagManager:
   - MidHeightOneWayPlatforms
   - Pushables
   - Stairs
-  - 
+  - 'Obstacle '
   - 
   - 
   m_SortingLayers:

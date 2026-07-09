@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
 
@@ -46,6 +46,11 @@ namespace MoreMountains.CorgiEngine
 		[Tooltip("the offset to apply when climb is complete ")]
 		public Vector3 ClimbOffset;
 
+		public Vector3 RotatedHangOffset { get { return this.transform.rotation * HangOffset; } }
+		
+		/// the rotated offset to apply when climb is complete
+		public Vector3 RotatedClimbOffset { get { return this.transform.rotation * ClimbOffset; } }
+
 		/// the tag used to reference the player
 		protected const string _playerTag = "Player";
 
@@ -68,9 +73,9 @@ namespace MoreMountains.CorgiEngine
 		protected virtual void OnDrawGizmosSelected()
 		{
 			Gizmos.color = Color.blue;
-			Gizmos.DrawWireSphere(this.transform.position + HangOffset, 0.1f);
+			Gizmos.DrawWireSphere(this.transform.position + RotatedHangOffset, 0.1f);
 			Gizmos.color = MMColors.Orange;
-			Gizmos.DrawWireSphere(this.transform.position + ClimbOffset, 0.1f);
+			Gizmos.DrawWireSphere(this.transform.position + RotatedClimbOffset, 0.1f);
 		}
 	}
 }

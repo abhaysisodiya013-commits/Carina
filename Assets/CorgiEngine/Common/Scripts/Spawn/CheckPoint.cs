@@ -28,6 +28,9 @@ namespace MoreMountains.CorgiEngine
 		/// whether or not this checkpoint can be reached more than once
 		[Tooltip("whether or not this checkpoint can be reached more than once")]
 		public bool CanBeReachedMoreThanOnce = true;
+		/// whether this checkpoint triggers automatically when the player enters its collider
+		[Tooltip("whether this checkpoint triggers automatically when the player enters its collider")]
+		public bool TriggerOnEnter = true;
 		/// an event to trigger when this checkpoint is reached
 		[Tooltip("an event to trigger when this checkpoint is reached")]
 		public UnityEvent OnCheckpointReached;
@@ -68,6 +71,8 @@ namespace MoreMountains.CorgiEngine
 		/// <param name="collider">The Collider2D colliding with the checkpoint.</param>
 		protected virtual void OnTriggerEnter2D(Collider2D collider)
 		{
+			if (!TriggerOnEnter) { return; }
+
 			Character character = collider.GetComponent<Character>();
 
 			if (character == null) { return; }

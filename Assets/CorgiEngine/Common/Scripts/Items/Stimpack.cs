@@ -1,5 +1,7 @@
 using UnityEngine;
+using System;
 using System.Collections;
+using System.Reflection;
 
 namespace MoreMountains.CorgiEngine
 {
@@ -18,9 +20,60 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected override void Pick(GameObject picker)
 		{
+			if (name.Contains("RetroStimpackPicker"))
+			{
+				if (TryAddAkerBlood(1))
+				{
+					return;
+				}
+
+				Debug.LogWarning("RetroStimpackPicker was picked but no PlayerUpgradeManager was found.", this);
+				return;
+			}
+
 			Health characterHealth = _pickingCollider.GetComponent<Health>();
 			// else, we give health to the player
 			characterHealth.GetHealth(HealthToGive,gameObject);
+		}
+
+		protected virtual bool TryAddAkerBlood(int amount)
+		{
+			Type managerType = null;
+			Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			for (int i = 0; i < assemblies.Length; i++)
+			{
+				managerType = assemblies[i].GetType("PlayerUpgradeManager");
+				if (managerType != null)
+				{
+					break;
+				}
+			}
+
+			if (managerType == null)
+			{
+				return false;
+			}
+
+			PropertyInfo instanceProperty = managerType.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
+			if (instanceProperty == null)
+			{
+				return false;
+			}
+
+			object instance = instanceProperty.GetValue(null, null);
+			if (instance == null)
+			{
+				return false;
+			}
+
+			MethodInfo addAkerBloodMethod = managerType.GetMethod("AddAkerBlood", BindingFlags.Public | BindingFlags.Instance);
+			if (addAkerBloodMethod == null)
+			{
+				return false;
+			}
+
+			addAkerBloodMethod.Invoke(instance, new object[] { amount });
+			return true;
 		}
 	}
 }

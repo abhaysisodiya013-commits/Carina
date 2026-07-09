@@ -156,7 +156,10 @@ namespace MoreMountains.CorgiEngine
 
 		/// the target frame rate for the game
 		[Tooltip("the target frame rate for the game")]
-		public int TargetFrameRate=300;
+		public int TargetFrameRate = 300;
+
+		/// caps old maximum-FPS test values serialized on manager prefabs/scenes
+		protected const int MaximumResponsiveTargetFrameRate = 300;
 
 		[Header("Lives")]
 
@@ -213,7 +216,8 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void Start()
 		{
-			Application.targetFrameRate = TargetFrameRate;
+			// Keep the runtime frame rate high so input and animation sampling stay responsive in build.
+			Application.targetFrameRate = (TargetFrameRate <= 0) ? -1 : Mathf.Max(30, Mathf.Max(TargetFrameRate, MaximumResponsiveTargetFrameRate));
 			_initialCurrentLives = CurrentLives;
 			_initialMaximumLives = MaximumLives;            
 		}

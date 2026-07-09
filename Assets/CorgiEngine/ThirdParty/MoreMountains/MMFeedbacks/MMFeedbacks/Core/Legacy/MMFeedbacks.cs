@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -525,7 +525,7 @@ namespace MoreMountains.Feedbacks
 			int count = Feedbacks.Count;
 			for (int i = 0; i < count; i++)
 			{
-				if (Feedbacks[i].IsPlaying)
+				if (Feedbacks[i] != null && Feedbacks[i].IsPlaying)
 				{
 					return true;
 				}
@@ -554,7 +554,8 @@ namespace MoreMountains.Feedbacks
 
 				if (Feedbacks[i] == null)
 				{
-					yield break;
+					i += (Direction == Directions.TopToBottom) ? 1 : -1;
+					continue;
 				}
                 
 				if (((Feedbacks[i].Active) && (Feedbacks[i].ScriptDrivenPause)) || InScriptDrivenPause)
@@ -725,7 +726,10 @@ namespace MoreMountains.Feedbacks
 			{
 				for (int i = 0; i < Feedbacks.Count; i++)
 				{
-					Feedbacks[i].Stop(position, feedbacksIntensity);
+					if (Feedbacks[i] != null) 
+					{
+						Feedbacks[i].Stop(position, feedbacksIntensity);
+					}
 				}    
 			}
 			IsPlaying = false;
@@ -888,6 +892,11 @@ namespace MoreMountains.Feedbacks
 		/// <returns></returns>
 		protected bool FeedbackCanPlay(MMFeedback feedback)
 		{
+			if (feedback == null)
+			{
+				return false;
+			}
+			
 			if (feedback.Timing.MMFeedbacksDirectionCondition == MMFeedbackTiming.MMFeedbacksDirectionConditions.Always)
 			{
 				return true;

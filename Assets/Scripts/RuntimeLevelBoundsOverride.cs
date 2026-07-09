@@ -15,6 +15,10 @@ using UnityEditor;
 [DefaultExecutionOrder(-1000)]
 public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEngineEvent>
 {
+    protected const int DefaultResponsiveFrameRate = 60;
+    protected const float DefaultResponsiveFixedDeltaTime = 1f / 60f;
+    protected const float DefaultResponsiveMaximumDeltaTime = 0.066f;
+
     [Header("Horizontal Bounds Override")]
     [Tooltip("Applies the override in Awake so camera and character bounds use the expanded values immediately.")]
     public bool applyOnAwake = true;
@@ -148,7 +152,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
 
     [Tooltip("How often to cap active enemy machine gun bullet speed.")]
     [Min(0.01f)]
-    public float enemyProjectileSpeedCheckInterval = 0.02f;
+    public float enemyProjectileSpeedCheckInterval = 0.25f;
 
     [Tooltip("Repairs rare grounded/falling state desyncs where the player is grounded but jump charges don't reset.")]
     public bool repairGroundedJumpStateAtRuntime = true;
@@ -196,11 +200,26 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
     public float retroWeaponStartupSyncDuration = 1.5f;
 
     [Header("Mobile Performance")]
-    [Tooltip("Applies lightweight mobile runtime settings for smoother frame pacing.")]
+    [Tooltip("Applies lightweight mobile runtime settings for smoother frame pacing. The static runtime fallback still applies the safe default timing if this scene component is disabled.")]
     public bool applyMobilePerformanceSettings = true;
 
     [Tooltip("Target frame rate for mobile/editor play. Use 300 for maximum-FPS testing. Real phone display FPS is still capped by refresh rate.")]
     public int targetFrameRate = 300;
+
+    [Tooltip("Upper cap applied even if an old scene override still has a higher test value serialized.")]
+    [Min(30)]
+    public int maximumRuntimeFrameRate = DefaultResponsiveFrameRate;
+
+    [Tooltip("Legacy field kept for old scene data. Runtime no longer overrides fixed timestep because that can make heavy builds feel like slow motion.")]
+    public bool tunePhysicsForResponsiveCombat = false;
+
+    [Tooltip("Fixed timestep used when tuning physics for responsive combat.")]
+    [Min(0.005f)]
+    public float responsiveFixedDeltaTime = DefaultResponsiveFixedDeltaTime;
+
+    [Tooltip("Caps long frame catch-up bursts so one hitch does not make physics/input feel stuck.")]
+    [Min(0.02f)]
+    public float responsiveMaximumDeltaTime = DefaultResponsiveMaximumDeltaTime;
 
     [Tooltip("Disables vSync so Application.targetFrameRate controls frame pacing.")]
     public bool disableVSyncForTargetFrameRate = true;
@@ -264,6 +283,8 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
     protected bool _cameraPerformanceApplied;
     protected bool _postProcessingPerformanceApplied;
     protected bool _animatorPerformanceApplied;
+    protected bool _startupSceneRepairsStarted;
+    protected bool _startupSceneRepairsCompleted;
     protected Coroutine _spawnInputResetCoroutine;
 
     protected virtual void OnEnable()
@@ -278,6 +299,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
 
     protected virtual void Awake()
     {
+        EnsureSaveSlotManagerExists();
         CacheLevelManager();
         ApplyMobilePerformanceSettings();
 
@@ -287,11 +309,6 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         DisableDebugRays();
-        DisableSceneGravityZones();
-        CacheSceneDamageZones();
-        ActivateScenePropsRoot();
-        DisableBackgroundDepthWrite();
-        ForceScenePropsVisible();
         DisableCharacterHorizontalBounds();
         RepairGroundedJumpState();
         BeginSpawnInputReset();
@@ -299,27 +316,18 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
 
     protected virtual void Start()
     {
+        EnsureSaveSlotManagerExists();
+
         if (applyOnStart)
         {
             ApplyOverride();
         }
 
         DisableDebugRays();
-        DisableSceneGravityZones();
-        CacheSceneDamageZones();
-        ActivateScenePropsRoot();
-        DisableBackgroundDepthWrite();
-        ForceScenePropsVisible();
-        ConfigureGateGameOverTriggers();
-        ReviveSceneItemPickers();
-        RepairDecorativeWeaponPickers();
-        ForceSceneItemPickerVisuals();
         DisableCharacterHorizontalBounds();
         RefreshPlayerAbilityInputManagers();
         BeginSpawnInputReset();
         EnsureAirAttackAnimationOverrides();
-        RepairUninitializedEnemyHealth();
-        DisableDeadEnemyDamageZones();
         RepairGroundedJumpState();
         BeginRetroWeaponStartupSync();
         GrantRetroStartingWeapons();
@@ -328,6 +336,23 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         {
             StartCoroutine(DelayedStartupFixes());
         }
+        else
+        {
+            StartCoroutine(RunStartupSceneRepairsAsync());
+        }
+    }
+
+    protected virtual void EnsureSaveSlotManagerExists()
+    {
+        if (CorgiCustomMechanics.SaveSlotManager.HasInstance)
+        {
+            return;
+        }
+
+        GameObject managerObject = new GameObject("SaveSlotManager");
+        managerObject.AddComponent<CorgiCustomMechanics.SaveSlotManager>();
+        DontDestroyOnLoad(managerObject);
+        Debug.Log("ALTAR: RuntimeLevelBoundsOverride created missing SaveSlotManager for altar save/load.");
     }
 
     protected virtual void LateUpdate()
@@ -368,23 +393,241 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         DisableDebugRays();
-        DisableSceneGravityZones();
-        CacheSceneDamageZones();
-        ActivateScenePropsRoot();
-        DisableBackgroundDepthWrite();
-        ForceScenePropsVisible();
-        ConfigureGateGameOverTriggers();
-        ReviveSceneItemPickers();
-        RepairDecorativeWeaponPickers();
-        ForceSceneItemPickerVisuals();
         DisableCharacterHorizontalBounds();
         RefreshPlayerAbilityInputManagers();
         EnsureAirAttackAnimationOverrides();
-        RepairUninitializedEnemyHealth();
-        DisableDeadEnemyDamageZones();
         RepairGroundedJumpState();
         BeginRetroWeaponStartupSync();
         GrantRetroStartingWeapons();
+        RepairMobileInputs();
+
+        yield return RunStartupSceneRepairsAsync();
+    }
+
+    protected virtual IEnumerator RunStartupSceneRepairsAsync()
+    {
+        if (_startupSceneRepairsCompleted || _startupSceneRepairsStarted)
+        {
+            yield break;
+        }
+
+        _startupSceneRepairsStarted = true;
+
+        DisableSceneGravityZones();
+        yield return null;
+
+        CacheSceneDamageZones();
+        yield return null;
+
+        OptimizeSceneCameras();
+        yield return null;
+
+        DisableScenePostProcessingVolumes();
+        yield return null;
+
+        OptimizeSceneAnimators();
+        yield return null;
+
+        ActivateScenePropsRoot();
+        yield return null;
+
+        DisableBackgroundDepthWrite();
+        yield return null;
+
+        ForceScenePropsVisible();
+        yield return null;
+
+        ConfigureGateGameOverTriggers();
+        yield return null;
+
+        ReviveSceneItemPickers();
+        yield return null;
+
+        RepairDecorativeWeaponPickers();
+        yield return null;
+
+        ForceSceneItemPickerVisuals();
+        yield return null;
+
+        RepairUninitializedEnemyHealth();
+        DisableDeadEnemyDamageZones();
+
+        _startupSceneRepairsCompleted = true;
+    }
+
+    protected virtual void RepairMobileInputs()
+    {
+        Transform arrowsRoot = FindMobileUIGroup("Arrows");
+        if (arrowsRoot != null)
+        {
+            Transform left = arrowsRoot.Find("ArrowLeft");
+            if (left == null) left = arrowsRoot.Find("ArrowLeft (1)");
+            WireUpMMTouchButton(left, (input) => {
+                if (InputManager.Instance != null) InputManager.Instance.SetHorizontalMovement(-1f);
+            }, () => {
+                if (InputManager.Instance != null) InputManager.Instance.SetHorizontalMovement(0f);
+            }, null, true);
+
+            Transform right = arrowsRoot.Find("ArrowRight");
+            if (right == null) right = arrowsRoot.Find("ArrowRight (1)");
+            WireUpMMTouchButton(right, (input) => {
+                if (InputManager.Instance != null) InputManager.Instance.SetHorizontalMovement(1f);
+            }, () => {
+                if (InputManager.Instance != null) InputManager.Instance.SetHorizontalMovement(0f);
+            }, null, true);
+
+            Transform up = arrowsRoot.Find("ArrowUp");
+            if (up == null) up = arrowsRoot.Find("ArrowUp (1)");
+            WireUpMMTouchButton(up, (input) => {
+                if (InputManager.Instance != null) InputManager.Instance.SetVerticalMovement(1f);
+            }, () => {
+                if (InputManager.Instance != null) InputManager.Instance.SetVerticalMovement(0f);
+            });
+
+            Transform down = arrowsRoot.Find("ArrowDown");
+            if (down == null) down = arrowsRoot.Find("ArrowDown (1)");
+            WireUpMMTouchButton(down, (input) => {
+                if (InputManager.Instance != null) InputManager.Instance.SetVerticalMovement(-1f);
+            }, () => {
+                if (InputManager.Instance != null) InputManager.Instance.SetVerticalMovement(0f);
+            });
+        }
+
+        Transform buttonsRoot = FindMobileUIGroup("Buttons");
+        if (buttonsRoot != null)
+        {
+            // Jump
+            WireUpMMTouchButton(buttonsRoot.Find("JumpBtn"), null, null, (state) => {
+                if (InputManager.Instance != null)
+                    ApplyInputButtonState(InputManager.Instance.JumpButton, state);
+            });
+            WireUpMMTouchButton(buttonsRoot.Find("JumpBtn (1)"), null, null, (state) => {
+                if (InputManager.Instance != null)
+                    ApplyInputButtonState(InputManager.Instance.JumpButton, state);
+            });
+
+            // Attack (Shoot)
+            WireUpMMTouchButton(buttonsRoot.Find("AttackBtn"), null, null, (state) => {
+                if (InputManager.Instance != null)
+                    ApplyInputButtonState(InputManager.Instance.ShootButton, state);
+            });
+            WireUpMMTouchButton(buttonsRoot.Find("AttackBtn (1)"), null, null, (state) => {
+                if (InputManager.Instance != null)
+                    ApplyInputButtonState(InputManager.Instance.ShootButton, state);
+            });
+
+            // Spell (Secondary Shoot)
+            WireUpMMTouchButton(buttonsRoot.Find("SpellBtn"), null, null, (state) => {
+                if (InputManager.Instance != null)
+                    ApplyInputButtonState(InputManager.Instance.SecondaryShootButton, state);
+            });
+            WireUpMMTouchButton(buttonsRoot.Find("SpellBtn (1)"), null, null, (state) => {
+                if (InputManager.Instance != null)
+                    ApplyInputButtonState(InputManager.Instance.SecondaryShootButton, state);
+            });
+
+            // Inventory / Interact
+            WireUpMMTouchButton(buttonsRoot.Find("InventoryBtn"), null, null, (state) => {
+                if (InputManager.Instance != null)
+                    ApplyInputButtonState(InputManager.Instance.InteractButton, state);
+            });
+            WireUpMMTouchButton(buttonsRoot.Find("InventoryBtn (1)"), null, null, (state) => {
+                if (InputManager.Instance != null)
+                    ApplyInputButtonState(InputManager.Instance.InteractButton, state);
+            });
+        }
+    }
+
+    protected virtual void ApplyInputButtonState(MMInput.IMButton button, MMInput.ButtonStates state)
+    {
+        if (button == null)
+        {
+            return;
+        }
+
+        switch (state)
+        {
+            case MMInput.ButtonStates.ButtonDown:
+                button.TriggerButtonDown();
+                break;
+            case MMInput.ButtonStates.ButtonPressed:
+                button.TriggerButtonPressed();
+                break;
+            case MMInput.ButtonStates.ButtonUp:
+                button.TriggerButtonUp();
+                break;
+            default:
+                button.State.ChangeState(state);
+                break;
+        }
+    }
+
+    protected virtual Transform FindMobileUIGroup(string groupName)
+    {
+        Transform uiCamera = GameObject.Find("UICamera")?.transform;
+        Transform found = uiCamera != null ? uiCamera.Find("Canvas/Controls/" + groupName) : null;
+        if (found != null)
+        {
+            return found;
+        }
+
+        Transform retroUICamera = GameObject.Find("RetroUICamera")?.transform;
+        found = retroUICamera != null ? retroUICamera.Find("Canvas/Controls/" + groupName) : null;
+        if (found != null)
+        {
+            return found;
+        }
+
+        return retroUICamera != null ? retroUICamera.Find("Canvas/" + groupName) : null;
+    }
+
+    protected virtual void WireUpMMTouchButton(Transform buttonTransform, System.Action<float> onAxisSet, System.Action onAxisReset, System.Action<MMInput.ButtonStates> onStateChange = null, bool stabilizeHeldAxis = false)
+    {
+        if (buttonTransform == null) return;
+
+        MoreMountains.Tools.MMTouchButton touchButton = buttonTransform.GetComponent<MoreMountains.Tools.MMTouchButton>();
+        if (touchButton == null)
+        {
+            touchButton = buttonTransform.gameObject.AddComponent<MoreMountains.Tools.MMTouchButton>();
+        }
+
+        touchButton.MouseMode = false;
+
+        // Ensure events are initialized if null
+        if (touchButton.ButtonPressedFirstTime == null) touchButton.ButtonPressedFirstTime = new UnityEngine.Events.UnityEvent();
+        if (touchButton.ButtonReleased == null) touchButton.ButtonReleased = new UnityEngine.Events.UnityEvent();
+        if (touchButton.ButtonPressed == null) touchButton.ButtonPressed = new UnityEngine.Events.UnityEvent();
+
+        // Clear existing listeners to prevent double firing if called multiple times
+        touchButton.ButtonPressedFirstTime.RemoveAllListeners();
+        touchButton.ButtonReleased.RemoveAllListeners();
+        touchButton.ButtonPressed.RemoveAllListeners();
+
+        touchButton.ButtonPressedFirstTime.AddListener(() => {
+            if (onAxisSet != null) onAxisSet(-1f); // Pass anything, lambda captures right value
+            if (onStateChange != null) onStateChange(MMInput.ButtonStates.ButtonDown);
+        });
+
+        touchButton.ButtonReleased.AddListener(() => {
+            if (onAxisReset != null) onAxisReset();
+            if (onStateChange != null) onStateChange(MMInput.ButtonStates.ButtonUp);
+        });
+
+        touchButton.ButtonPressed.AddListener(() => {
+            if (onAxisSet != null) onAxisSet(-1f);
+            if (onStateChange != null) onStateChange(MMInput.ButtonStates.ButtonPressed);
+        });
+
+        if (stabilizeHeldAxis && onAxisSet != null && onAxisReset != null)
+        {
+            CarinaHeldMovementArrowInput stabilizer = buttonTransform.GetComponent<CarinaHeldMovementArrowInput>();
+            if (stabilizer == null)
+            {
+                stabilizer = buttonTransform.gameObject.AddComponent<CarinaHeldMovementArrowInput>();
+            }
+
+            stabilizer.Configure(() => onAxisSet(-1f), onAxisReset);
+        }
     }
 
     public virtual void OnMMEvent(CorgiEngineEvent engineEvent)
@@ -453,24 +696,32 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
             return;
         }
 
-        Character[] characters = FindObjectsOfType<Character>();
-        foreach (Character character in characters)
+        CacheLevelManager();
+        if (_levelManager != null && _levelManager.Players != null && _levelManager.Players.Count > 0)
         {
-            if (character == null
-                || character.CharacterType != Character.CharacterTypes.Player
-                || character.MovementState == null
-                || character.MovementState.CurrentState != CharacterStates.MovementStates.Dashing)
+            for (int i = 0; i < _levelManager.Players.Count; i++)
             {
-                continue;
+                CancelAccidentalDash(_levelManager.Players[i]);
             }
+        }
+    }
 
-            character.MovementState.ChangeState(CharacterStates.MovementStates.Idle);
+    protected virtual void CancelAccidentalDash(Character character)
+    {
+        if (character == null
+            || character.CharacterType != Character.CharacterTypes.Player
+            || character.MovementState == null
+            || character.MovementState.CurrentState != CharacterStates.MovementStates.Dashing)
+        {
+            return;
+        }
 
-            CorgiController controller = character.GetComponent<CorgiController>();
-            if (controller != null)
-            {
-                controller.SetForce(Vector2.zero);
-            }
+        character.MovementState.ChangeState(CharacterStates.MovementStates.Idle);
+
+        CorgiController controller = character.GetComponent<CorgiController>();
+        if (controller != null)
+        {
+            controller.SetForce(Vector2.zero);
         }
     }
 
@@ -537,6 +788,32 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
     }
 
+    protected virtual T[] FindSceneComponents<T>(bool includeInactive = true) where T : Component
+    {
+        Scene currentScene = gameObject.scene;
+        if (!currentScene.IsValid() || !currentScene.isLoaded)
+        {
+            return new T[0];
+        }
+
+        T[] candidates = Object.FindObjectsByType<T>(
+            includeInactive ? FindObjectsInactive.Include : FindObjectsInactive.Exclude,
+            FindObjectsSortMode.None);
+        List<T> sceneComponents = new List<T>(candidates.Length);
+        for (int i = 0; i < candidates.Length; i++)
+        {
+            T component = candidates[i];
+            if (component == null || component.gameObject.scene != currentScene)
+            {
+                continue;
+            }
+
+            sceneComponents.Add(component);
+        }
+
+        return sceneComponents.ToArray();
+    }
+
     protected virtual void ApplyMobilePerformanceSettings()
     {
         if (!applyMobilePerformanceSettings)
@@ -572,10 +849,19 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
             Physics2D.reuseCollisionCallbacks = true;
         }
 
-        Application.targetFrameRate = targetFrameRate <= 0 ? -1 : Mathf.Max(30, targetFrameRate);
-        OptimizeSceneCameras();
-        DisableScenePostProcessingVolumes();
-        OptimizeSceneAnimators();
+        ApplyResponsiveTimingSettings();
+    }
+
+    protected virtual void ApplyResponsiveTimingSettings()
+    {
+        if (targetFrameRate <= 0)
+        {
+            Application.targetFrameRate = -1;
+        }
+        else
+        {
+            Application.targetFrameRate = Mathf.Max(30, targetFrameRate);
+        }
     }
 
     protected virtual void OptimizeSceneCameras()
@@ -586,7 +872,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        Camera[] cameras = Resources.FindObjectsOfTypeAll<Camera>();
+        Camera[] cameras = FindSceneComponents<Camera>(false);
         for (int i = 0; i < cameras.Length; i++)
         {
             Camera sceneCamera = cameras[i];
@@ -663,7 +949,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        Volume[] volumes = Resources.FindObjectsOfTypeAll<Volume>();
+        Volume[] volumes = FindSceneComponents<Volume>(false);
         for (int i = 0; i < volumes.Length; i++)
         {
             Volume volume = volumes[i];
@@ -686,7 +972,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        Animator[] animators = Resources.FindObjectsOfTypeAll<Animator>();
+        Animator[] animators = FindSceneComponents<Animator>(false);
         for (int i = 0; i < animators.Length; i++)
         {
             Animator animator = animators[i];
@@ -751,7 +1037,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        GravityZone[] gravityZones = Resources.FindObjectsOfTypeAll<GravityZone>();
+        GravityZone[] gravityZones = FindSceneComponents<GravityZone>(true);
         for (int i = 0; i < gravityZones.Length; i++)
         {
             GravityZone gravityZone = gravityZones[i];
@@ -815,7 +1101,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
     {
         Scene currentScene = gameObject.scene;
         _sceneDamageZones.Clear();
-        DamageOnTouch[] damageZones = Resources.FindObjectsOfTypeAll<DamageOnTouch>();
+        DamageOnTouch[] damageZones = FindSceneComponents<DamageOnTouch>(true);
         for (int i = 0; i < damageZones.Length; i++)
         {
             DamageOnTouch damageZone = damageZones[i];
@@ -878,7 +1164,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
     protected virtual void RepairUninitializedEnemyHealth()
     {
         Scene currentScene = gameObject.scene;
-        Health[] healthComponents = Resources.FindObjectsOfTypeAll<Health>();
+        Health[] healthComponents = FindSceneComponents<Health>(true);
         for (int i = 0; i < healthComponents.Length; i++)
         {
             Health health = healthComponents[i];
@@ -1022,7 +1308,8 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
             return;
         }
 
-        if (Time.unscaledTime - _lastEnemyProjectileSpeedCheckAt < enemyProjectileSpeedCheckInterval)
+        float checkInterval = Mathf.Max(0.25f, enemyProjectileSpeedCheckInterval);
+        if (Time.unscaledTime - _lastEnemyProjectileSpeedCheckAt < checkInterval)
         {
             return;
         }
@@ -1034,7 +1321,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
     protected virtual void CapEnemyProjectileSpeed()
     {
         Scene currentScene = gameObject.scene;
-        Projectile[] projectiles = Resources.FindObjectsOfTypeAll<Projectile>();
+        Projectile[] projectiles = FindSceneComponents<Projectile>(false);
         for (int i = 0; i < projectiles.Length; i++)
         {
             Projectile projectile = projectiles[i];
@@ -1492,7 +1779,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        Transform[] transforms = Resources.FindObjectsOfTypeAll<Transform>();
+        Transform[] transforms = FindSceneComponents<Transform>(true);
         for (int i = 0; i < transforms.Length; i++)
         {
             Transform targetTransform = transforms[i];
@@ -1515,7 +1802,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        Transform[] transforms = Resources.FindObjectsOfTypeAll<Transform>();
+        Transform[] transforms = FindSceneComponents<Transform>(true);
         for (int i = 0; i < transforms.Length; i++)
         {
             Transform targetTransform = transforms[i];
@@ -1525,6 +1812,12 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
             }
 
             if (!IsGateGameOverObjectName(targetTransform.name))
+            {
+                continue;
+            }
+
+            if (targetTransform.GetComponentInParent<CorgiCustomMechanics.ChapterTravelTrigger>() != null
+                || targetTransform.GetComponentInChildren<CorgiCustomMechanics.ChapterTravelTrigger>(true) != null)
             {
                 continue;
             }
@@ -1640,7 +1933,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        Renderer[] renderers = Resources.FindObjectsOfTypeAll<Renderer>();
+        MeshRenderer[] renderers = FindSceneComponents<MeshRenderer>(true);
         for (int i = 0; i < renderers.Length; i++)
         {
             Renderer sceneRenderer = renderers[i];
@@ -1691,7 +1984,8 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        Transform[] transforms = Resources.FindObjectsOfTypeAll<Transform>();
+        Transform[] transforms = FindSceneComponents<Transform>(true);
+        HashSet<Transform> processedRoots = new HashSet<Transform>();
         if (!string.IsNullOrEmpty(scenePropsRootName))
         {
             for (int i = 0; i < transforms.Length; i++)
@@ -1704,30 +1998,45 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
                     continue;
                 }
 
-                ActivateParentChain(rootTransform);
-                rootTransform.gameObject.SetActive(true);
-
-                Renderer[] renderers = rootTransform.GetComponentsInChildren<Renderer>(true);
-                for (int j = 0; j < renderers.Length; j++)
-                {
-                    Renderer propRenderer = renderers[j];
-                    if (!IsRegularScenePropRenderer(propRenderer))
-                    {
-                        continue;
-                    }
-
-                    ForceRendererVisible(propRenderer, scenePropVisualSortingOrder, normalizeScenePropDepth);
-                }
+                ForceScenePropRootVisible(rootTransform, processedRoots);
             }
         }
 
-        Renderer[] sceneRenderers = Resources.FindObjectsOfTypeAll<Renderer>();
-        for (int i = 0; i < sceneRenderers.Length; i++)
+        if (scenePropNameMarkers == null || scenePropNameMarkers.Length == 0)
         {
-            Renderer propRenderer = sceneRenderers[i];
-            if (!IsRegularScenePropRenderer(propRenderer)
-                || propRenderer.gameObject.scene != currentScene
-                || !HasAnyParentNameMarker(propRenderer.transform, scenePropNameMarkers))
+            return;
+        }
+
+        for (int i = 0; i < transforms.Length; i++)
+        {
+            Transform rootTransform = transforms[i];
+            if (rootTransform == null
+                || rootTransform.gameObject.scene != currentScene
+                || !NameMatchesAnyMarker(rootTransform.name, scenePropNameMarkers))
+            {
+                continue;
+            }
+
+            ForceScenePropRootVisible(rootTransform, processedRoots);
+        }
+    }
+
+    protected virtual void ForceScenePropRootVisible(Transform rootTransform, HashSet<Transform> processedRoots)
+    {
+        if (rootTransform == null || processedRoots.Contains(rootTransform))
+        {
+            return;
+        }
+
+        processedRoots.Add(rootTransform);
+        ActivateParentChain(rootTransform);
+        rootTransform.gameObject.SetActive(true);
+
+        Renderer[] renderers = rootTransform.GetComponentsInChildren<Renderer>(true);
+        for (int j = 0; j < renderers.Length; j++)
+        {
+            Renderer propRenderer = renderers[j];
+            if (!IsRegularScenePropRenderer(propRenderer))
             {
                 continue;
             }
@@ -1771,11 +2080,30 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         return false;
     }
 
+    protected virtual bool NameMatchesAnyMarker(string objectName, string[] nameMarkers)
+    {
+        if (string.IsNullOrEmpty(objectName) || nameMarkers == null)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < nameMarkers.Length; i++)
+        {
+            string marker = nameMarkers[i];
+            if (!string.IsNullOrEmpty(marker) && objectName.Contains(marker))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     protected virtual void ForceSceneItemPickerVisuals()
     {
         Scene currentScene = gameObject.scene;
 
-        InventoryPickableItem[] inventoryPickers = Resources.FindObjectsOfTypeAll<InventoryPickableItem>();
+        InventoryPickableItem[] inventoryPickers = FindSceneComponents<InventoryPickableItem>(true);
         for (int i = 0; i < inventoryPickers.Length; i++)
         {
             InventoryPickableItem picker = inventoryPickers[i];
@@ -1791,7 +2119,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
             picker.enabled = true;
         }
 
-        PickableItem[] regularPickers = Resources.FindObjectsOfTypeAll<PickableItem>();
+        PickableItem[] regularPickers = FindSceneComponents<PickableItem>(true);
         for (int i = 0; i < regularPickers.Length; i++)
         {
             PickableItem picker = regularPickers[i];
@@ -1809,7 +2137,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
 
     protected virtual void ReviveInventoryPickableItems(Scene currentScene)
     {
-        InventoryPickableItem[] pickers = Resources.FindObjectsOfTypeAll<InventoryPickableItem>();
+        InventoryPickableItem[] pickers = FindSceneComponents<InventoryPickableItem>(true);
         for (int i = 0; i < pickers.Length; i++)
         {
             InventoryPickableItem picker = pickers[i];
@@ -1832,7 +2160,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
 
     protected virtual void ReviveRegularPickableItems(Scene currentScene)
     {
-        PickableItem[] pickers = Resources.FindObjectsOfTypeAll<PickableItem>();
+        PickableItem[] pickers = FindSceneComponents<PickableItem>(true);
         for (int i = 0; i < pickers.Length; i++)
         {
             PickableItem picker = pickers[i];
@@ -1966,7 +2294,7 @@ public class RuntimeLevelBoundsOverride : MonoBehaviour, MMEventListener<CorgiEn
         }
 
         Scene currentScene = gameObject.scene;
-        SpriteRenderer[] spriteRenderers = Resources.FindObjectsOfTypeAll<SpriteRenderer>();
+        SpriteRenderer[] spriteRenderers = FindSceneComponents<SpriteRenderer>(true);
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
             SpriteRenderer spriteRenderer = spriteRenderers[i];

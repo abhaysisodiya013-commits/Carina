@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -15,7 +17,7 @@ namespace MoreMountains.CorgiEngine
     /// Swaps the character animator to a rage override controller for a short duration.
     /// </summary>
     [AddComponentMenu("Corgi Engine/Character/Abilities/Retro Rage Mode Animator")]
-    public class RetroRageModeAnimator : CharacterAbility
+    public class RetroRageModeAnimator : CharacterAbility, MMEventListener<MMDamageTakenEvent>
     {
         [Header("Input")]
         [Tooltip("If true, pressing RageKey will trigger rage mode.")]
@@ -37,7 +39,7 @@ namespace MoreMountains.CorgiEngine
 
         [Header("Timing")]
         [Tooltip("How long rage mode lasts from the moment it is triggered.")]
-        public float RageDuration = 10f;
+        public float RageDuration = 15f;
         [Tooltip("Optional clip reference used only to know how long to wait after playing AbilityAppear.")]
         public AnimationClip AbilityAppearClip;
         [Tooltip("Optional clip reference used only to know how long to wait after playing AbilityDisappear.")]
@@ -51,6 +53,22 @@ namespace MoreMountains.CorgiEngine
         [Tooltip("If true, horizontal movement is paused while AbilityAppear plays.")]
         public bool FreezeMovementDuringAbilityAppear = true;
 
+        [Header("Rage Meter")]
+        [Tooltip("If true, rage mode starts only when the rage meter is full.")]
+        public bool RageRequiresFullMeter = true;
+        [Tooltip("The UI Slider used for the rage meter. If empty, Slider_RageMode is found automatically.")]
+        public Slider RageMeterSlider;
+        public string RageMeterSliderName = "Slider_RageMode";
+        [Tooltip("Rage gained for one enemy kill. 2 means 5 kills fills a 10 point meter.")]
+        public float RageGainPerEnemyKill = 2f;
+        public float RageMeterMaxValue = 10f;
+        [Tooltip("Forces rage mode to last this many seconds when started by the meter.")]
+        public float RageMeterDuration = 15f;
+        [Tooltip("If true, enemy kills during active rage do not refill the next meter.")]
+        public bool IgnoreKillsDuringRage = true;
+        [Tooltip("How often alive enemy health components are scanned for death events.")]
+        public float EnemyDeathScanInterval = 0.5f;
+
         [Header("Rage Buffs")]
         [Tooltip("Movement speed multiplier applied while rage mode is active.")]
         public float RageMovementSpeedMultiplier = 1.5f;
@@ -63,7 +81,9 @@ namespace MoreMountains.CorgiEngine
 
         [Header("Rage Visuals")]
         [Tooltip("If true, the character sprite is tinted while rage mode is active.")]
-        public bool TintCharacterDuringRage = true;
+        public bool TintCharacterDuringRage = false;
+        [Tooltip("If true, blocks the old blue character sprite tint even if old prefab values still have tint enabled.")]
+        public bool DisableCharacterSpriteTint = true;
         [Tooltip("Sprite tint applied while rage mode is active.")]
         public Color RageSpriteColor = new Color(0.25f, 0.65f, 1f, 1f);
         [Tooltip("If true, walking feedback particles are tinted to match the current character sprite color while rage mode is active.")]
@@ -146,7 +166,10 @@ namespace MoreMountains.CorgiEngine
         protected readonly List<ParticleColorSnapshot> _walkFeedbackColorSnapshots = new List<ParticleColorSnapshot>();
         protected readonly List<ParticlePlaybackSnapshot> _rageParticlePlaybackSnapshots = new List<ParticlePlaybackSnapshot>();
         protected readonly List<RendererEnabledSnapshot> _rendererEnabledSnapshots = new List<RendererEnabledSnapshot>();
+        protected readonly HashSet<Health> _trackedEnemyHealths = new HashSet<Health>();
         protected bool _rageVisualsApplied;
+        protected float _rageMeterValue;
+        protected float _nextEnemyScanTime;
 
         protected struct WeaponBuffSnapshot
         {
@@ -208,11 +231,15 @@ namespace MoreMountains.CorgiEngine
             }
 
             _characterHandleWeapon = _character?.FindAbility<CharacterHandleWeapon>();
+            RageDuration = Mathf.Max(0f, RageMeterDuration);
+            InitializeRageMeter();
         }
 
         public override void ProcessAbility()
         {
             base.ProcessAbility();
+
+            ProcessRageMeterTracking();
 
             if (!ReadInput || !AbilityAuthorized || (_rageCoroutine != null))
             {
@@ -232,11 +259,18 @@ namespace MoreMountains.CorgiEngine
                 return;
             }
 
+            if (RageRequiresFullMeter && (_rageMeterValue < RageMeterMaxValue))
+            {
+                return;
+            }
+
             if (NormalAnimatorController == null)
             {
                 NormalAnimatorController = _animator.runtimeAnimatorController;
             }
 
+            RageDuration = Mathf.Max(0f, RageMeterDuration);
+            SetRageMeterValue(RageMeterMaxValue);
             _rageCoroutine = StartCoroutine(RageModeCoroutine());
         }
 
@@ -276,6 +310,197 @@ namespace MoreMountains.CorgiEngine
 
             RageModeActive = false;
             _rageCoroutine = null;
+            ResetRageMeter();
+        }
+
+        protected virtual void InitializeRageMeter()
+        {
+            RageMeterMaxValue = Mathf.Max(0.01f, RageMeterMaxValue);
+            BindRageMeterSlider();
+            ResetRageMeter();
+        }
+
+        protected virtual void BindRageMeterSlider()
+        {
+            if (RageMeterSlider != null)
+            {
+                ConfigureRageMeterSlider();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(RageMeterSliderName))
+            {
+                return;
+            }
+
+            GameObject sliderObject = GameObject.Find(RageMeterSliderName);
+            if (sliderObject != null)
+            {
+                RageMeterSlider = sliderObject.GetComponent<Slider>();
+            }
+
+            ConfigureRageMeterSlider();
+        }
+
+        protected virtual void ConfigureRageMeterSlider()
+        {
+            if (RageMeterSlider == null)
+            {
+                return;
+            }
+
+            RageMeterSlider.minValue = 0f;
+            RageMeterSlider.maxValue = RageMeterMaxValue;
+            RageMeterSlider.wholeNumbers = false;
+            RageMeterSlider.interactable = false;
+            RageMeterSlider.value = Mathf.Clamp(_rageMeterValue, 0f, RageMeterMaxValue);
+        }
+
+        protected virtual void ProcessRageMeterTracking()
+        {
+            if (Time.unscaledTime < _nextEnemyScanTime)
+            {
+                return;
+            }
+
+            _nextEnemyScanTime = Time.unscaledTime + Mathf.Max(0.05f, EnemyDeathScanInterval);
+            if (RageMeterSlider == null)
+            {
+                BindRageMeterSlider();
+            }
+        }
+
+        protected virtual void ScanEnemyHealths()
+        {
+            Health[] healths = FindObjectsByType<Health>(FindObjectsSortMode.None);
+            for (int i = 0; i < healths.Length; i++)
+            {
+                Health health = healths[i];
+                if (!IsRageMeterEnemy(health) || _trackedEnemyHealths.Contains(health))
+                {
+                    continue;
+                }
+
+                _trackedEnemyHealths.Add(health);
+                health.OnDeath += HandleTrackedEnemyDeath;
+            }
+        }
+
+        protected virtual bool IsRageMeterEnemy(Health health)
+        {
+            if ((health == null) || (health.CurrentHealth <= 0f) || IsSelfHealth(health))
+            {
+                return false;
+            }
+
+            Character character = health.GetComponent<Character>();
+            if (character == null)
+            {
+                character = health.GetComponentInParent<Character>();
+            }
+
+            return (character != null) && (character.CharacterType == Character.CharacterTypes.AI);
+        }
+
+        protected virtual void HandleTrackedEnemyDeath()
+        {
+            if (IgnoreKillsDuringRage && RageModeActive)
+            {
+                return;
+            }
+
+            AddRageMeterValue(RageGainPerEnemyKill);
+        }
+
+        public virtual void OnMMEvent(MMDamageTakenEvent damageTakenEvent)
+        {
+            if (damageTakenEvent.CurrentHealth > 0f)
+            {
+                return;
+            }
+
+            if (damageTakenEvent.PreviousHealth <= 0f)
+            {
+                return;
+            }
+
+            if (damageTakenEvent.AffectedCharacter == null
+                || damageTakenEvent.AffectedCharacter == _character
+                || damageTakenEvent.AffectedCharacter.CharacterType == Character.CharacterTypes.Player)
+            {
+                return;
+            }
+
+            if (!WasDamageCausedByThisCharacter(damageTakenEvent.Instigator))
+            {
+                return;
+            }
+
+            AddRageMeterValue(RageGainPerEnemyKill);
+        }
+
+        protected virtual bool WasDamageCausedByThisCharacter(GameObject instigator)
+        {
+            if ((_character == null) || (instigator == null))
+            {
+                return false;
+            }
+
+            Transform characterTransform = _character.transform;
+            Transform instigatorTransform = instigator.transform;
+
+            return instigatorTransform == characterTransform
+                   || instigatorTransform.IsChildOf(characterTransform)
+                   || characterTransform.IsChildOf(instigatorTransform);
+        }
+
+        protected virtual void AddRageMeterValue(float amount)
+        {
+            if ((_rageCoroutine != null) || RageModeActive)
+            {
+                return;
+            }
+
+            SetRageMeterValue(_rageMeterValue + amount);
+            if (_rageMeterValue >= RageMeterMaxValue)
+            {
+                TriggerRageMode();
+            }
+        }
+
+        protected virtual void SetRageMeterValue(float value)
+        {
+            RageMeterMaxValue = Mathf.Max(0.01f, RageMeterMaxValue);
+            _rageMeterValue = Mathf.Clamp(value, 0f, RageMeterMaxValue);
+
+            if (RageMeterSlider == null)
+            {
+                BindRageMeterSlider();
+            }
+
+            if (RageMeterSlider != null)
+            {
+                RageMeterSlider.maxValue = RageMeterMaxValue;
+                RageMeterSlider.value = _rageMeterValue;
+            }
+        }
+
+        protected virtual void ResetRageMeter()
+        {
+            SetRageMeterValue(0f);
+        }
+
+        protected virtual void UnregisterEnemyHealths()
+        {
+            foreach (Health health in _trackedEnemyHealths)
+            {
+                if (health != null)
+                {
+                    health.OnDeath -= HandleTrackedEnemyDeath;
+                }
+            }
+
+            _trackedEnemyHealths.Clear();
         }
 
         protected virtual void ApplyRageBuffs()
@@ -375,7 +600,7 @@ namespace MoreMountains.CorgiEngine
                 return;
             }
 
-            if (TintCharacterDuringRage)
+            if (TintCharacterDuringRage && !DisableCharacterSpriteTint)
             {
                 SpriteRenderer[] characterRenderers = GetCharacterSpriteRenderers();
                 for (int i = 0; i < characterRenderers.Length; i++)
@@ -743,8 +968,7 @@ namespace MoreMountains.CorgiEngine
                 return;
             }
 
-            _storedHorizontalMovementReadInput = _characterHorizontalMovement.ReadInput;
-            _storedHorizontalMovementPermitted = _characterHorizontalMovement.AbilityPermitted;
+            RetroMovementLockRegistry.Acquire(_characterHorizontalMovement);
             _horizontalMovementFrozen = true;
 
             _characterHorizontalMovement.ReadInput = false;
@@ -764,8 +988,7 @@ namespace MoreMountains.CorgiEngine
                 return;
             }
 
-            _characterHorizontalMovement.ReadInput = _storedHorizontalMovementReadInput;
-            _characterHorizontalMovement.AbilityPermitted = _storedHorizontalMovementPermitted;
+            RetroMovementLockRegistry.Release(_characterHorizontalMovement);
             _horizontalMovementFrozen = false;
         }
 
@@ -1339,13 +1562,22 @@ namespace MoreMountains.CorgiEngine
             StopBoltGraph();
             RestoreHorizontalMovement();
             RestoreRageBuffs();
+            RestoreRageVisuals();
             RestoreNormalAnimatorController();
             RageModeActive = false;
+            ResetRageMeter();
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            this.MMEventStartListening<MMDamageTakenEvent>();
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
+            this.MMEventStopListening<MMDamageTakenEvent>();
 
             if (_rageCoroutine != null)
             {
@@ -1357,7 +1589,9 @@ namespace MoreMountains.CorgiEngine
             StopBoltGraph();
             RestoreHorizontalMovement();
             RestoreRageBuffs();
+            RestoreRageVisuals();
             RestoreNormalAnimatorController();
+            UnregisterEnemyHealths();
             RageModeActive = false;
         }
     }

@@ -1,18 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
 namespace MoreMountains.CorgiEngine
-{	
+{
 	/// <summary>
 	/// Add this class to a character and it'll be able to perform a horizontal dash
 	/// Animator parameters : Dashing
 	/// </summary>
-	[AddComponentMenu("Corgi Engine/Character/Abilities/Character Dash")] 
+	[AddComponentMenu("Corgi Engine/Character/Abilities/Character Dash")]
 	public class CharacterDash : CharacterAbility
-	{		
+	{
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
 		public override string HelpBoxText() { return "This component allows your character to dash. Here you can define the distance the dash should cover, " +
 		                                              "how much force to apply during the dash (which impacts its duration), whether forces should be reset on dash exit (otherwise inertia will apply)." +
@@ -82,10 +82,10 @@ namespace MoreMountains.CorgiEngine
 		[MMEnumCondition("SuccessiveDashResetMethod", (int)SuccessiveDashResetMethods.Time)]
 		public float SuccessiveDashResetDuration = 2f;
 
-		[Header("Damage")] 
+		[Header("Damage")]
 		/// if this is true, this character won't receive any damage while a dash is in progress
 		[Tooltip("if this is true, this character won't receive any damage while a dash is in progress")]
-		public bool InvincibleWhileDashing = false; 
+		public bool InvincibleWhileDashing = false;
 
 		[Header("Slide Movement Swap")]
 		/// if this is true, dash keeps its input/state/animation but uses the more stable roll-style movement driver
@@ -256,7 +256,7 @@ namespace MoreMountains.CorgiEngine
 
 			// If the character is dashing with the original force dash, we cancel the gravity.
 			// Roll-style dash keeps gravity so it behaves like the working slide/roll path.
-			if (!UseRollStyleMovement && (_movement.CurrentState == CharacterStates.MovementStates.Dashing)) 
+			if (!UseRollStyleMovement && (_movement.CurrentState == CharacterStates.MovementStates.Dashing))
 			{
 				_controller.GravityActive(false);
 			}
@@ -304,7 +304,7 @@ namespace MoreMountains.CorgiEngine
 		{
 			if (!DashAuthorized())
 			{
-				return; 
+				return;
 			}
 
 			if (!DashConditions())
@@ -409,7 +409,7 @@ namespace MoreMountains.CorgiEngine
 
 			return true;
 		}
-        
+
 		/// <summary>
 		/// initializes all parameters prior to a dash and triggers the pre dash feedbacks
 		/// </summary>
@@ -485,7 +485,7 @@ namespace MoreMountains.CorgiEngine
 				Aim.PrimaryMovement = _character.LinkedInputManager.PrimaryMovement;
 				Aim.SecondaryMovement = _character.LinkedInputManager.SecondaryMovement;
 			}
-            
+
 			Aim.CurrentPosition = _characterTransform.position;
 			_dashDirection = Aim.GetCurrentAim();
 
@@ -495,7 +495,7 @@ namespace MoreMountains.CorgiEngine
 			}
 
 			CheckAutoCorrectTrajectory();
-            
+
 			if (_dashDirection.magnitude < MinimumInputThreshold)
 			{
 				_dashDirection = _character.IsFacingRight ? Vector2.right : Vector2.left;
@@ -559,8 +559,8 @@ namespace MoreMountains.CorgiEngine
 			const float staleCollisionGraceDuration = 0.12f;
 
 			// we keep dashing until we've reached our target distance or until we get interrupted
-			while (_distanceTraveled < DashDistance 
-			       && _shouldKeepDashing 
+			while (_distanceTraveled < DashDistance
+			       && _shouldKeepDashing
 			       && TestForExactDistance()
 			       && _movement.CurrentState == CharacterStates.MovementStates.Dashing)
 			{
@@ -587,7 +587,7 @@ namespace MoreMountains.CorgiEngine
 				yield return null;
 			}
 
-			StopDash();				
+			StopDash();
 		}
 
 		/// <summary>
@@ -621,6 +621,10 @@ namespace MoreMountains.CorgiEngine
 					_drivenInput = gravityShouldReverseInput ? -_drivenInput : _drivenInput;
 					_currentDirection = (_drivenInput < 0f) ? -1f : 1f;
 				}
+				else if (_currentDirection == 0f)
+				{
+					_currentDirection = _character.IsFacingRight ? 1f : -1f;
+				}
 
 				float speed = _characterHorizontalMovement.MovementSpeed
 				              * _controller.Parameters.SpeedFactor
@@ -629,6 +633,7 @@ namespace MoreMountains.CorgiEngine
 				              * _characterHorizontalMovement.AbilityMovementSpeedMultiplier
 				              * _characterHorizontalMovement.StateSpeedMultiplier
 				              * _characterHorizontalMovement.PushSpeedMultiplier;
+				_characterHorizontalMovement.SetHorizontalMove(gravityShouldReverseInput ? -_currentDirection : _currentDirection);
 				_controller.SetHorizontalForce((gravityShouldReverseInput ? -_currentDirection : _currentDirection) * speed);
 
 				yield return null;
@@ -647,17 +652,17 @@ namespace MoreMountains.CorgiEngine
 			{
 				return true;
 			}
-			
+
 			int framesSinceStart = Time.frameCount - _startFrame;
 			_averageDistancePerFrame = _distanceTraveled / framesSinceStart;
-			
+
 			if (DashDistance - _distanceTraveled < _averageDistancePerFrame)
 			{
 				_characterTransform.position = _initialPosition + (_dashDirection * DashDistance);
 				return false;
 			}
-			
-			
+
+
 			return true;
 		}
 
@@ -668,7 +673,7 @@ namespace MoreMountains.CorgiEngine
 		{
 			if (_dashCoroutine != null)
 			{
-				StopCoroutine(_dashCoroutine);    
+				StopCoroutine(_dashCoroutine);
 			}
 
 			if (UseRollStyleMovement && (_characterHorizontalMovement != null))
@@ -699,7 +704,7 @@ namespace MoreMountains.CorgiEngine
 			}
 
 			SetAirborneDashKickHitboxActive(false);
-            
+
 			// we play our exit sound
 			StopStartFeedbacks();
 			MMCharacterEvent.Trigger(_character, MMCharacterEventTypes.Dash, MMCharacterEvent.Moments.End);
@@ -715,7 +720,7 @@ namespace MoreMountains.CorgiEngine
 				else
 				{
 					_movement.RestorePreviousState();
-				}                
+				}
 			}
 		}
 
@@ -728,7 +733,7 @@ namespace MoreMountains.CorgiEngine
 		}
 
 		/// <summary>
-		/// At the end of the cycle, we update our animator's Dashing state 
+		/// At the end of the cycle, we update our animator's Dashing state
 		/// </summary>
 		public override void UpdateAnimator()
 		{
@@ -744,12 +749,12 @@ namespace MoreMountains.CorgiEngine
 			StopAirborneKickSideSwitch();
 			if (_condition.CurrentState == CharacterStates.CharacterConditions.Normal)
 			{
-				StopDash();	
+				StopDash();
 			}
 
 			if (_animator != null)
 			{
-				MMAnimatorExtensions.UpdateAnimatorBool(_animator, _dashingAnimationParameter, false, _character._animatorParameters, _character.PerformAnimatorSanityChecks);	
+				MMAnimatorExtensions.UpdateAnimatorBool(_animator, _dashingAnimationParameter, false, _character._animatorParameters, _character.PerformAnimatorSanityChecks);
 			}
 		}
 

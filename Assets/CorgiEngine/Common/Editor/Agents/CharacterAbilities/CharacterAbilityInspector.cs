@@ -26,8 +26,28 @@ namespace MoreMountains.CorgiEngine
 		{
 			_propertiesToHide = new List<string>();
 
-			_abilityStartFeedbacks = this.serializedObject.FindProperty("AbilityStartFeedbacks");
-			_abilityStopFeedbacks = this.serializedObject.FindProperty("AbilityStopFeedbacks");
+			if (target == null)
+			{
+				return;
+			}
+
+			SerializedObject safeSerializedObject = null;
+			try
+			{
+				safeSerializedObject = serializedObject;
+			}
+			catch (Exception)
+			{
+				return;
+			}
+
+			if (safeSerializedObject == null)
+			{
+				return;
+			}
+
+			_abilityStartFeedbacks = safeSerializedObject.FindProperty("AbilityStartFeedbacks");
+			_abilityStopFeedbacks = safeSerializedObject.FindProperty("AbilityStopFeedbacks");
 
 			MMHiddenPropertiesAttribute[] attributes = (MMHiddenPropertiesAttribute[])target.GetType().GetCustomAttributes(typeof(MMHiddenPropertiesAttribute), false);
 			if (attributes != null)
@@ -49,8 +69,27 @@ namespace MoreMountains.CorgiEngine
 		public override void OnInspectorGUI()
 		{
 			CharacterAbility t = (target as CharacterAbility);
+			if (t == null)
+			{
+				return;
+			}
 
-			serializedObject.Update();
+			SerializedObject safeSerializedObject = null;
+			try
+			{
+				safeSerializedObject = serializedObject;
+			}
+			catch (Exception)
+			{
+				return;
+			}
+
+			if (safeSerializedObject == null)
+			{
+				return;
+			}
+
+			safeSerializedObject.Update();
 			EditorGUI.BeginChangeCheck();
 
 			if (t.HelpBoxText() != "")
@@ -58,7 +97,7 @@ namespace MoreMountains.CorgiEngine
 				EditorGUILayout.HelpBox(t.HelpBoxText(),MessageType.Info);
 			}
 
-			Editor.DrawPropertiesExcluding(serializedObject, new string[] { "AbilityStartFeedbacks", "AbilityStopFeedbacks" });
+			Editor.DrawPropertiesExcluding(safeSerializedObject, new string[] { "AbilityStartFeedbacks", "AbilityStopFeedbacks" });
 
 			EditorGUILayout.Space();
                         
@@ -70,23 +109,35 @@ namespace MoreMountains.CorgiEngine
 				}                
 				if (!_propertiesToHide.Contains("AbilityStartFeedbacks"))
 				{
-					EditorGUILayout.PropertyField(_abilityStartFeedbacks);
+					if (_abilityStartFeedbacks != null)
+					{
+						EditorGUILayout.PropertyField(_abilityStartFeedbacks);
+					}
 				}
 				if (!_propertiesToHide.Contains("AbilityStopFeedbacks"))
 				{
-					EditorGUILayout.PropertyField(_abilityStopFeedbacks);
+					if (_abilityStopFeedbacks != null)
+					{
+						EditorGUILayout.PropertyField(_abilityStopFeedbacks);
+					}
 				}
 			}
 			else
 			{
 				EditorGUILayout.LabelField("Feedbacks", EditorStyles.boldLabel);
-				EditorGUILayout.PropertyField(_abilityStartFeedbacks);
-				EditorGUILayout.PropertyField(_abilityStopFeedbacks);
+				if (_abilityStartFeedbacks != null)
+				{
+					EditorGUILayout.PropertyField(_abilityStartFeedbacks);
+				}
+				if (_abilityStopFeedbacks != null)
+				{
+					EditorGUILayout.PropertyField(_abilityStopFeedbacks);
+				}
 			}
 
 			if (EditorGUI.EndChangeCheck())
 			{
-				serializedObject.ApplyModifiedProperties();
+				safeSerializedObject.ApplyModifiedProperties();
 			}                
 		}	
 	}

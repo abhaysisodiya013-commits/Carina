@@ -4901,7 +4901,6 @@ GameObject:
   - component: {fileID: 114540723652440904}
   - component: {fileID: 114067210621431476}
   - component: {fileID: 114767941446374776}
-  - component: {fileID: 114707064263394120}
   - component: {fileID: 114720526364534534}
   - component: {fileID: 114048862864412380}
   - component: {fileID: 114235575369676186}
@@ -5166,9 +5165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9716d97790a0a49889284ee813194576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 100
-  InitialHealth: 100
-  MaximumHealth: 100
+  CurrentHealth: 90
+  InitialHealth: 90
+  MaximumHealth: 90
   Invulnerable: 0
   TemporarilyInvulnerable: 0
   PostDamageInvulnerable: 0
@@ -5320,6 +5319,37 @@ MonoBehaviour:
   RollStyleDashReadsInput: 1
   RollStyleDashIgnoresVerticalInput: 1
   RequireNeutralVerticalInput: 0
+  EnableAirborneDashKick: 1
+  AirborneDashKickTargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  AirborneDashKickDamage: 10
+  AirborneDashKickAreaSize: {x: 2, y: 1.2}
+  AirborneDashKickAreaOffset: {x: 1.05, y: 0.05}
+  AirborneDashKickInvincibilityDuration: 0.1
+  AirborneDashKickEnemyKnockback: {x: 6, y: 2}
+  RefreshDashOnAirborneKickHit: 1
+  JumpPastTargetOnAirborneKickHit: 1
+  AirborneKickHitHorizontalMove: 1.25
+  AirborneKickHitVerticalMove: 0.2
+  AirborneKickHitMoveDuration: 0.08
+  AirborneKickHitForce: {x: 8, y: 6}
+  AirborneKickHitDashCooldown: 0
+  AirborneKickHitObstacleMask:
+    serializedVersion: 2
+    m_Bits: 264448
+  AirborneDashKickVfxPrefab: {fileID: 0}
+  AirborneDashKickVfxClip: {fileID: 0}
+  AirborneDashKickVfxOffset: {x: 1.05, y: 0.05}
+  AirborneDashKickVfxSize: {x: 1.6, y: 1}
+  AirborneDashKickVfxDuration: 0.18
+  AirborneDashKickVfxSortingOrderOffset: 3
+  StopAirborneKickMomentumOnMiss: 1
+  ShowAirborneDashKickHitboxGizmo: 1
+  ShowAirborneDashKickGizmosOnlyWhenSelected: 0
+  AirborneDashKickHitboxGizmoColor: {r: 1, g: 0.05, b: 0.05, a: 0.9}
+  ShowAirborneDashKickVfxGizmo: 1
+  AirborneDashKickVfxGizmoColor: {r: 0.2, g: 0.8, b: 1, a: 0.75}
 --- !u!114 &114540723652440904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5392,35 +5422,6 @@ MonoBehaviour:
   ReadInput: 1
   AutoRun: 0
   AutoRunThreshold: 0.6
---- !u!114 &114707064263394120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383539409296422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d37391d2147a467db78bf732ae24daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AbilityStartFeedbacks: {fileID: 6397893989031167702}
-  AbilityStopFeedbacks: {fileID: 0}
-  AbilityPermitted: 1
-  BlockingMovementStates: 
-  BlockingConditionStates: 
-  MovingPlatformsJumpCollisionOffDuration: 0.08
-  ParticleEmitter: {fileID: 0}
-  JetpackForce: 7.25
-  SmoothJetpackForce: 1
-  JetpackForceAcceleration: 170
-  JetpackUnlimited: 0
-  JetpackFuelDuration: 2.2
-  JetpackRefuelCooldown: 0.35
-  RefuelSpeed: 1.35
-  MinimumFuelRequirement: 0.05
-  JetpackRefueledSfx: {fileID: 0}
-  JetpackFuelDurationLeft: 2.2
 --- !u!114 &114720526364534534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5512,6 +5513,20 @@ MonoBehaviour:
   LadderClimbingSpeed: 2
   ForceRightFacing: 0
   ForceAnchorToGroundOnExit: 0
+  SmoothCenterCharacterOnLadder: 1
+  LadderCenteringSpeed: 8
+  HoldLastClimbAnimationWhenStopped: 1
+  FreezeLastLadderFrameWhenStopped: 1
+  ExitAtLadderTop: 1
+  StopAtLadderPlatform: 1
+  LadderPlatformStopDistance: 0.2
+  LadderTopManualJumpForce: 10
+  AllowLadderJumpBoost: 1
+  DropFromLadderWhenJumpingDown: 1
+  LadderJumpBoostSpeed: 6
+  LadderJumpBoostDuration: 0.18
+  LadderJumpBoostCooldown: 0.2
+  BlockNormalJumpWhileClimbing: 1
 --- !u!114 &114601844263833296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5730,6 +5745,14 @@ MonoBehaviour:
   IdleAnimationName: PixelCorgiIdle
   ClimbingAnimationDuration: 0.18333334
   MinimumHangingTime: 0.2
+  AllowLedgeClimbJump: 1
+  LedgeClimbJumpKey: 32
+  UseDefaultLedgeClimbJumpSettings: 1
+  LedgeClimbJumpAnimationTime: 0.2
+  MoveToClimbOffsetBeforeLedgeJump: 1
+  LedgeClimbJumpHorizontalForce: 6
+  LedgeClimbJumpVerticalForce: 8
+  UseClimbOffsetDirectionForLedgeHop: 1
 --- !u!114 &1885844844233380838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87762,3 +87785,4 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   Velocity: {x: 6, y: 7, z: 0}
   ClearImpulseOnStop: 0
+
